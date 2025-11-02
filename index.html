@@ -982,7 +982,11 @@ const HERO_FRAMES = [
     .service-card .body h3 {
       margin: 0 0 6px 0; font-size: clamp(16px, 2.4vw, 20px); line-height: 1.2;
     }
-    .service-card .body p { margin: 0; color: var(--muted); }
+    .service-card .body p {
+      margin: 0;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
 
     /* TM-MARK: UTILITIES_STRIP START */
     .utils {
@@ -1000,11 +1004,11 @@ const HERO_FRAMES = [
     /* TM-MARK: UTILITIES_STRIP END */
 
     .actions {
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 12px;
-      padding: 0 12px 20px 12px;
-      justify-items: center;
+      padding: 0 16px 20px 16px;
     }
     .btn {
       display: flex; align-items: center; justify-content: center;
@@ -1014,8 +1018,7 @@ const HERO_FRAMES = [
       font-weight: 600; font-size: 14px; letter-spacing: .02em; line-height: 1.25; text-align: center;
       transition: background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
       box-shadow: 0 6px 20px rgba(0,0,0,.24);
-      width: auto;
-      min-width: 200px;
+      width: min(220px, 100%);
       max-width: 100%;
       white-space: nowrap;
     }
@@ -1024,6 +1027,10 @@ const HERO_FRAMES = [
       padding: 18px 32px;
       font-size: 15px;
       line-height: 1.35;
+    }
+    .services-section .actions .utils {
+      padding: 0;
+      justify-content: center;
     }
     .btn.primary {
       background: var(--accent); color: #101215; border-color: rgba(0,0,0,.08);
@@ -1037,6 +1044,9 @@ const HERO_FRAMES = [
       .services-section .actions .btn {
         min-height: 60px;
         padding: 20px 28px;
+      }
+      .services-section .actions {
+        padding-inline: 12px;
       }
     }
 
@@ -1072,16 +1082,16 @@ const HERO_FRAMES = [
             <h3>Сезонная смена</h3>
             <p>Оперативная замена шин в удобное для вас время.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
@@ -1094,16 +1104,16 @@ const HERO_FRAMES = [
             <h3>Ремонт прокола</h3>
             <p>Быстро устраним повреждение и вернём колесо в строй.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
@@ -1116,16 +1126,16 @@ const HERO_FRAMES = [
             <h3>Балансировка</h3>
             <p>Точная балансировка для комфортного и безопасного движения.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
@@ -1138,16 +1148,16 @@ const HERO_FRAMES = [
             <h3>Подкачка</h3>
             <p>Проверка и корректировка давления для долгого срока службы.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
@@ -1160,16 +1170,16 @@ const HERO_FRAMES = [
             <h3>Эвакуация</h3>
             <p>Надёжная перевозка автомобиля круглосуточно по СПб и ЛО.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
@@ -1182,16 +1192,16 @@ const HERO_FRAMES = [
             <h3>Сезонное хранение</h3>
             <p>Сохраним ваши колёса в сухом и безопасном месте.</p>
           </div>
-          <!-- TM-MARK: UTILITIES_STRIP START -->
-          <ul class="utils" aria-label="Быстрые детали">
-            <li class="badge">24/7</li>
-            <li class="badge">СПб/ЛО</li>
-            <li class="badge">~25 мин</li>
-          </ul>
-          <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
+            <!-- TM-MARK: UTILITIES_STRIP START -->
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
       </div>
