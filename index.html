@@ -1004,23 +1004,24 @@ const HERO_FRAMES = [
       grid-template-columns: 1fr;
       gap: 12px;
       padding: 0 12px 20px 12px;
+      justify-items: center;
     }
     .btn {
-      display: flex; align-items: center; justify-content: center; flex-wrap: wrap; row-gap: 2px;
+      display: flex; align-items: center; justify-content: center;
       min-height: 40px; padding: 12px 14px; border-radius: 10px;
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06); color: #fff; text-decoration: none;
       font-weight: 600; font-size: 14px; letter-spacing: .02em; line-height: 1.25; text-align: center;
       transition: background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
       box-shadow: 0 6px 20px rgba(0,0,0,.24);
-      width: 100%;
-      white-space: normal;
-      word-break: break-word;
-      overflow-wrap: anywhere;
+      width: auto;
+      min-width: 200px;
+      max-width: 100%;
+      white-space: nowrap;
     }
     .services-section .actions .btn {
       min-height: 56px;
-      padding: 18px 28px;
+      padding: 18px 32px;
       font-size: 15px;
       line-height: 1.35;
     }
