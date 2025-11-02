@@ -568,8 +568,10 @@ const HERO_FRAMES = [
 .tm-input{position:relative;display:grid;gap:6px}
 .tm-input > span{font-size:13px;color:var(--steel)}
 .tm-input input,.tm-input select{padding:12px 38px 12px 12px;background:#0B0D10;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:var(--white);outline:none;transition:border-color var(--t), box-shadow var(--t)}
+.tm-input select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:none;padding-right:44px}
+.tm-input select::-ms-expand{display:none}
 .tm-input input:focus,.tm-input select:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,197,44,.15)}
-.tm-input .ico{position:absolute;right:10px;bottom:12px;width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none}
+.tm-input .ico{position:absolute;right:12px;top:50%;width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none;transform:translateY(-50%)}
 .geo-btn{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;display:grid;place-items:center;transition:background var(--t), transform var(--t)}
 .geo-btn svg{width:16px;height:16px;stroke:var(--steel);stroke-width:2;fill:none}
 .geo-btn:hover,.geo-btn:focus{background:rgba(255,255,255,.06);transform:translateY(-1px)}
