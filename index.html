@@ -997,8 +997,10 @@ const HERO_FRAMES = [
     /* TM-MARK: UTILITIES_STRIP END */
 
     .actions {
-      display: flex; flex-direction: column; gap: 10px;
-      padding: 0 16px 16px 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 0 12px 20px 12px;
     }
     .btn {
       display: flex; align-items: center; justify-content: center; flex-wrap: wrap; row-gap: 2px;
@@ -1013,12 +1015,25 @@ const HERO_FRAMES = [
       word-break: break-word;
       overflow-wrap: anywhere;
     }
+    .services-section .actions .btn {
+      min-height: 56px;
+      padding: 18px 28px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
     .btn.primary {
       background: var(--accent); color: #101215; border-color: rgba(0,0,0,.08);
     }
     .btn.ghost:hover, .btn.primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 10px 30px rgba(0,0,0,.34);
+    }
+
+    @media (max-width: 480px) {
+      .services-section .actions .btn {
+        min-height: 60px;
+        padding: 20px 28px;
+      }
     }
 
     /* Адаптивность сетки карточек */
@@ -1061,7 +1076,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1083,7 +1098,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1105,7 +1120,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1127,7 +1142,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1149,7 +1164,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1171,7 +1186,7 @@ const HERO_FRAMES = [
           </ul>
           <!-- TM-MARK: UTILITIES_STRIP END -->
           <div class="actions">
-            <a class="btn primary" href="#calc">Рассчитать и вызвать</a>
+            <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
           </div>
         </article>
@@ -1639,7 +1654,7 @@ const HERO_FRAMES = [
           <p class="price-sub">Прозрачные цены с учётом радиуса. Коэффициенты для RunFlat, SUV и ночного времени выделены отдельно.</p>
         </div>
         <nav class="price-ctas" aria-label="Действия">
-          <a class="btn btn-primary" href="#calc">Рассчитать и вызвать</a>
+          <a class="btn btn-primary" href="#calc">Рассчитать</a>
           <a class="btn btn-secondary" href="#price" aria-current="page">Смотреть цены</a>
         </nav>
       </header>
