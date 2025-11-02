@@ -54,6 +54,13 @@
     .mobile-drawer a { display: block; padding: 10px 14px; border-radius: 10px; color: var(--text-1); text-decoration: none; }
     .mobile-drawer a:hover { background: rgba(255,255,255,0.07); color: var(--text-0); }
 
+    .tm-anchor {
+      position: relative;
+      top: -88px;
+      display: block;
+      height: 0;
+    }
+
     body.drawer-open { overflow: hidden; }
   </style>
 </head>
@@ -210,7 +217,7 @@
   --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.35);
   --t: 220ms;
 }
-.tm-hero{position:relative;min-height:80vh;isolation:isolate;display:grid;place-items:stretch;background:var(--bg-1);}
+.tm-hero{position:relative;min-height:80vh;isolation:isolate;display:grid;place-items:stretch;background:var(--bg-1);scroll-margin-top:88px;}
 .tm-hero__bg{position:absolute;inset:0;overflow:hidden;z-index:-1;}
 .tm-hero__bg-layer{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;transition:opacity 800ms ease;}
 .tm-hero__bg-layer.is-top{opacity:1}
@@ -532,7 +539,7 @@ const HERO_FRAMES = [
   --calc-bg-url:url('photo 2.1.png');
 }
 
-.tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;}
+.tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;}
 /* Декоративные разделители как в Hero */
 .tm-calc::before,.tm-calc::after{content:"";position:absolute;left:0;right:0;height:22px;pointer-events:none}
 .tm-calc::before{top:0;background-image:url("data:image/svg+xml,%3Csvg width='160' height='22' viewBox='0 0 160 22' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%238D99A733' d='M0 22L40 0l40 22 40-22 40 22H0z'/%3E%3C/svg%3E");background-repeat:repeat;background-size:auto 22px}
@@ -896,6 +903,7 @@ const HERO_FRAMES = [
       background:
         linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%),
         var(--services-bg-url) center/cover no-repeat fixed;
+      scroll-margin-top: 88px;
     }
 
     /* TM-MARK: SERVICES_SECTION_PADDING START */
@@ -1064,7 +1072,7 @@ const HERO_FRAMES = [
 </head>
 <body>
   <!-- TM-MARK: SERVICES_BLOCK START -->
-  <section class="services-section" aria-labelledby="services-title">
+  <section id="services" class="services-section" aria-labelledby="services-title">
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Наши услуги</div>
@@ -1208,6 +1216,9 @@ const HERO_FRAMES = [
     </div>
   </section>
   <!-- TM-MARK: SERVICES_BLOCK END -->
+
+  <!-- Anchor target for "Почему мы" navigation item -->
+  <div id="why" class="tm-anchor" aria-hidden="true"></div>
 </body>
 </html>
 
@@ -1224,7 +1235,7 @@ const HERO_FRAMES = [
 -->
 
 <!-- TM-MARK: HOW-IT-WORKS HTML START -->
-<section id="how-it-works" class="howit section" aria-labelledby="howit-title">
+<section id="how" class="howit section" aria-labelledby="howit-title">
   <div class="howit__bg" aria-hidden="true">
     <div class="howit__bg-layer"></div>
   </div>
@@ -1310,7 +1321,7 @@ const HERO_FRAMES = [
   --fade:600ms; --slide-hold:4000ms;
 }
 .section{position:relative; isolation:isolate;}
-.howit{color:var(--txt-0); background:var(--bg-0);} .howit .container{width:var(--container); margin:0 auto; padding:64px 0;}
+.howit{color:var(--txt-0); background:var(--bg-0); scroll-margin-top:88px;} .howit .container{width:var(--container); margin:0 auto; padding:64px 0;}
 
 /* Фон-слайдшоу */
 .howit__bg{position:absolute; inset:0; overflow:hidden; z-index:-2; background:var(--bg-0);} 
@@ -1410,7 +1421,7 @@ const HERO_FRAMES = [
   const FADE = 600;    // мс — кроссфейд (синхронен с CSS var(--fade))
   // ==============================
 
-  const section = document.getElementById('how-it-works');
+  const section = document.getElementById('how');
   const layer = section.querySelector('.howit__bg-layer');
 
   // Создаём img для каждого слайда
@@ -1511,6 +1522,7 @@ const HERO_FRAMES = [
       background:
         linear-gradient(180deg, rgba(11,13,16,.65) 0%, rgba(11,13,16,.85) 60%, rgba(11,13,16,.95) 100%),
         url("photo 77.png") center/cover no-repeat;
+      scroll-margin-top:88px;
 }
 
     .price-container{
@@ -1910,6 +1922,7 @@ Assumptions (разумные допущения):
       background-image: url('photo 88.png');
       background-size:cover; background-position:center center;
       isolation:isolate; overflow:hidden;
+      scroll-margin-top: 88px;
     }
     .geo-overlay{
       position:absolute;inset:0;background:linear-gradient(180deg, rgba(6,8,10,0.6) 0%, rgba(6,8,10,0.85) 100%);pointer-events:none;}
@@ -1961,7 +1974,7 @@ Assumptions (разумные допущения):
   </style>
 </head>
 <body>
-  <section class="geo-section" aria-labelledby="geo-heading">
+  <section id="geo" class="geo-section" aria-labelledby="geo-heading">
     <div class="geo-overlay" aria-hidden="true"></div>
     <div class="geo-container">
       <div class="geo-header">
@@ -2052,7 +2065,7 @@ Assumptions (разумные допущения):
       </nav>
 
       <!-- Demo services list that reacts to badge clicks (for dev/testing) -->
-      <div class="services-list" id="services" aria-live="polite">
+      <div class="services-list" id="geo-services" aria-live="polite">
         <div class="service-card" data-region="Адмиралтейский">Мастер: Смена колеса — Адмиралтейский (ETA ~12 мин)</div>
         <div class="service-card" data-region="Пушкин">Мастер: Балансировка — Пушкин (ETA ~28 мин)</div>
         <div class="service-card" data-region="Кировский">Мастер: Ремонт прокола — Кировский (ETA ~20 мин)</div>
@@ -2212,7 +2225,7 @@ Assumptions (разумные допущения):
 </section>
 
 <style>
-.cases-section {background: rgba(18,20,24,0.9) url('photo 8.png') center/cover no-repeat;color:#fff;padding:80px 0;}
+.cases-section {background: rgba(18,20,24,0.9) url('photo 8.png') center/cover no-repeat;color:#fff;padding:80px 0;scroll-margin-top:88px;}
 .container {max-width:1280px;margin:0 auto;padding:0 16px;}
 .section-title {text-align:center;font-size:2rem;margin-bottom:40px;}
 
@@ -2280,6 +2293,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('a
       max-width: 1280px;
       margin: 0 auto;
       padding: 80px 16px;
+      scroll-margin-top: 88px;
     }
 
     .reviews__title {
@@ -2476,7 +2490,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('a
   </style>
 </head>
 <body>
-  <section class="reviews">
+  <section id="reviews" class="reviews">
     <h2 class="reviews__title">Отзывы клиентов</h2>
     <div class="reviews__grid">
       <div class="review-card">
@@ -2609,6 +2623,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('a
   background-position: center;
   background-repeat: no-repeat;
   padding:48px 16px;
+  scroll-margin-top:88px;
 }
   .container{max-width:1200px;margin:0 auto;}
   .faq-title{font-size:28px;font-weight:700;margin-bottom:12px;}
@@ -2623,7 +2638,7 @@ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('a
 </style>
 </head>
 <body>
-<section class="faq-section">
+<section id="faq" class="faq-section">
 <div class="container">
 <div class="faq-title">Вопросы и ответы</div>
 <div class="faq-sub">10 часто задаваемых вопросов о выездном шиномонтаже</div>
@@ -2720,6 +2735,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  scroll-margin-top: 88px;
 }
 
 .promo-container { max-width: 1200px; margin: 0 auto; }
@@ -2846,6 +2862,7 @@ document.addEventListener("DOMContentLoaded", () => {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    scroll-margin-top: 88px;
   }
 
   .contacts-section .container {
