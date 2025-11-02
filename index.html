@@ -997,16 +997,20 @@ const HERO_FRAMES = [
     /* TM-MARK: UTILITIES_STRIP END */
 
     .actions {
-      display: flex; gap: 10px; padding: 0 16px 16px 16px;
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 0 16px 16px 16px;
     }
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      height: 40px; padding: 0 14px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 40px; padding: 10px 14px; border-radius: 10px;
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.06); color: #fff; text-decoration: none;
       font-weight: 600; font-size: 14px; letter-spacing: .02em;
       transition: background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
       box-shadow: 0 6px 20px rgba(0,0,0,.24);
+      width: 100%;
+      text-align: center;
+      white-space: normal;
     }
     .btn.primary {
       background: var(--accent); color: #101215; border-color: rgba(0,0,0,.08);
