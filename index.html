@@ -156,6 +156,7 @@
       const height = header.getBoundingClientRect().height;
       document.documentElement.style.setProperty('--header-height', `${height}px`);
       document.documentElement.style.setProperty('--header-offset', `${height}px`);
+      document.body.style.paddingTop = `${height}px`;
     }
 
     updateHeaderOffset();
