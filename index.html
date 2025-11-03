@@ -474,7 +474,7 @@ const HERO_FRAMES = [
 
         <!-- Радиус + Тип авто в две колонки -->
         <div class="row-2">
-          <label class="tm-input">
+          <label class="tm-input tm-input--control">
             <span>Радиус шин <em>*</em></span>
             <select name="radius" required>
               <option value="" disabled selected>Выберите R13–R26</option>
@@ -487,7 +487,7 @@ const HERO_FRAMES = [
             <p class="err" id="err-radius" hidden>Выберите радиус</p>
           </label>
 
-          <label class="tm-input">
+          <label class="tm-input tm-input--control">
             <span>Тип авто</span>
             <select name="cartype">
               <option value="sedan" selected>Легковой</option>
@@ -499,7 +499,7 @@ const HERO_FRAMES = [
         </div>
 
         <!-- Адрес + геолокация -->
-        <label class="tm-input">
+        <label class="tm-input tm-input--control tm-input--geo">
           <span>Адрес / локация</span>
           <input type="text" name="address" inputmode="text" placeholder="Улица, ориентир…">
           <button class="geo-btn" type="button" id="geoBtn" aria-label="Определить по геолокации">
@@ -509,7 +509,7 @@ const HERO_FRAMES = [
 
         <!-- Контакты -->
         <div class="row-2">
-          <label class="tm-input">
+          <label class="tm-input tm-input--control">
             <span>Телефон <em>*</em></span>
             <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.78.57 2.63a2 2 0 0 1-.45 2.11L8.1 9.1a16 16 0 0 0 6 6l.64-1.12a2 2 0 0 1 2.11-.45c.85.27 1.73.45 2.63.57A2 2 0 0 1 22 16.92z"/></svg>
@@ -708,6 +708,13 @@ const HERO_FRAMES = [
   .tm-service-grid{grid-template-columns:1fr}
   .row-2{grid-template-columns:1fr}
   .tm-total{flex-direction:column;gap:6px}
+  .tm-input--control{--control-height:60px;}
+  .tm-input--control input,
+  .tm-input--control select{min-height:var(--control-height);padding:16px 56px 16px 14px;font-size:15px;}
+  .tm-input--control select{padding-right:64px;}
+  .tm-input--geo input{padding-right:92px;}
+  .tm-input--control .ico{top:calc(100% - (var(--control-height)/2));transform:translateY(-50%);}
+  .tm-input--control .geo-btn{top:calc(100% - (var(--control-height)/2));width:44px;height:44px;right:12px;transform:translateY(-50%);}
 }
 
   /* TM-MARK: ВЫРАВНИВАНИЕ ПРАВОГО БЛОКА START */
