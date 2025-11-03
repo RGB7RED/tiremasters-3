@@ -2275,18 +2275,24 @@ Assumptions (разумные допущения):
 
 <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
 <script>
-const swiper = new Swiper('.cases-slider',{slidesPerView:1,spaceBetween:16,pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
+(()=>{
+  const sliderEl=document.querySelector('.cases-slider');
+  if(!sliderEl)return;
 
-const modal=document.querySelector('.modal-overlay');
-const cards=document.querySelectorAll('.case-card');
-const closeBtn=document.querySelector('.modal-close');
+  const swiper=new Swiper(sliderEl,{slidesPerView:1,spaceBetween:16,pagination:{el:'.cases-slider .swiper-pagination',clickable:true},navigation:{nextEl:sliderEl.querySelector('.swiper-button-next'),prevEl:sliderEl.querySelector('.swiper-button-prev')},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
 
-cards.forEach(card=>{card.addEventListener('click',()=>{
-  if(!swiper.allowClick)return;
-  modal.classList.add('active');
-});});
-closeBtn.addEventListener('click',()=>{modal.classList.remove('active');});
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
+  const modal=sliderEl.closest('.cases-section')?.querySelector('.modal-overlay');
+  const cards=sliderEl.querySelectorAll('.case-card');
+  const modalCloseBtn=modal?.querySelector('.modal-close');
+
+  cards.forEach(card=>{card.addEventListener('click',()=>{
+    if(!swiper.allowClick)return;
+    modal?.classList.add('active');
+  });});
+
+  modalCloseBtn?.addEventListener('click',()=>{modal?.classList.remove('active');});
+  modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
+})();
 </script>
 <!-- TM-MARK: CASES SECTION END -->
 
