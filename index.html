@@ -2281,7 +2281,10 @@ const modal=document.querySelector('.modal-overlay');
 const cards=document.querySelectorAll('.case-card');
 const closeBtn=document.querySelector('.modal-close');
 
-cards.forEach(card=>{card.addEventListener('click',()=>{modal.classList.add('active');});});
+cards.forEach(card=>{card.addEventListener('click',()=>{
+  if(!swiper.allowClick)return;
+  modal.classList.add('active');
+});});
 closeBtn.addEventListener('click',()=>{modal.classList.remove('active');});
 modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
 </script>
