@@ -119,6 +119,22 @@
     }
 
     body.drawer-open { overflow: hidden; }
+
+    .tm-section-tape {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 12px;
+      background-image: repeating-linear-gradient(
+        135deg,
+        rgba(255, 193, 7, 0.92) 0 28px,
+        rgba(229, 57, 53, 0.92) 28px 56px
+      );
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -1300,6 +1316,7 @@ const HERO_FRAMES = [
   <!-- TM-MARK: SERVICES_BLOCK END -->
 
   <!-- Anchor target for "Почему мы" navigation item -->
+  <div class="tm-section-tape" aria-hidden="true"></div>
   <div id="why" class="tm-anchor" aria-hidden="true"></div>
 </body>
 </html>
@@ -2208,6 +2225,7 @@ Assumptions (разумные допущения):
 
     })();
   </script>
+  <div class="tm-section-tape" aria-hidden="true"></div>
 </body>
 </html>
 
@@ -2377,6 +2395,8 @@ Assumptions (разумные допущения):
 })();
 </script>
 <!-- TM-MARK: CASES SECTION END -->
+
+<div class="tm-section-tape" aria-hidden="true"></div>
 
 <!-- TM-MARK: START -->
 <!DOCTYPE html>
@@ -2707,6 +2727,7 @@ Assumptions (разумные допущения):
       if (e.target === modal) modal.classList.remove('active');
     });
   </script>
+  <div class="tm-section-tape" aria-hidden="true"></div>
 </body>
 </html>
 <!-- TM-MARK: END -->
@@ -2770,6 +2791,7 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
  });
 });
 </script>
+<div class="tm-section-tape" aria-hidden="true"></div>
 </body>
 </html>
 <!-- TM-MARK:END -->
@@ -2926,6 +2948,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 });
 </script>
+<div class="tm-section-tape" aria-hidden="true"></div>
 <!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ END -->
 
 <!-- TM-MARK: КОНТАКТЫ START -->
