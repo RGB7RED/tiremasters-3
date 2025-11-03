@@ -17,6 +17,10 @@
       --header-offset: var(--header-height);
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       background: var(--bg-0);
@@ -649,10 +653,13 @@ const HERO_FRAMES = [
 .tm-input select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:none;padding-right:44px}
 .tm-input select::-ms-expand{display:none}
 .tm-input input:focus,.tm-input select:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,197,44,.15)}
-.tm-input .ico{position:absolute;right:12px;top:50%;width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none;transform:translateY(-50%)}
-.geo-btn{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;display:grid;place-items:center;transition:background var(--t), transform var(--t)}
-.geo-btn svg{width:16px;height:16px;stroke:var(--steel);stroke-width:2;fill:none}
-.geo-btn:hover,.geo-btn:focus{background:rgba(255,255,255,.06);transform:translateY(-1px)}
+.tm-input input,.tm-input select{width:100%;}
+.tm-input .ico{position:absolute;right:12px;top:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none;transform:translateY(-50%);}
+.geo-btn{position:absolute;right:8px;top:50%;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;display:flex;align-items:center;justify-content:center;transition:background var(--t), transform var(--t);transform:translateY(-50%);}
+.geo-btn svg{width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none}
+.tm-input select{padding-right:52px;}
+.tm-input input{padding-right:44px;}
+.geo-btn:hover,.geo-btn:focus{background:rgba(255,255,255,.06);transform:translateY(calc(-50% - 1px));}
 
 /* Коэффициенты */
 .tm-coefs{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
