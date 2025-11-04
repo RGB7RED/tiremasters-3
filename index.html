@@ -120,6 +120,14 @@
 
     body.drawer-open { overflow: hidden; }
 
+    .tm-section-divider {
+      width: 100%;
+      height: 16px;
+      background: linear-gradient(180deg, rgba(82, 90, 104, 0.4) 0%, rgba(45, 52, 63, 0.2) 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    }
+
   </style>
 </head>
 <body>
@@ -414,6 +422,8 @@ const HERO_FRAMES = [
   </script>
 </section>
 <!-- TM-MARK: ХЕРОЙ END -->
+
+<div class="tm-section-divider" aria-hidden="true"></div>
 
 <!-- TM-MARK: КАЛЬКУЛЯТОР START -->
 <section id="calc" class="tm-calc" aria-label="Калькулятор онлайн-заявки TireMasters">
