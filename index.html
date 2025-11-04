@@ -1714,6 +1714,15 @@ const HERO_FRAMES = [
     .price-val{ white-space:nowrap; font-weight:700; color:#fff; }
     .price-val .rub{ opacity:.95; font-weight:600; }
 
+    @media (max-width: 480px){
+      table.price-table{ min-width:100%; }
+      thead th,
+      tbody td{ font-size:13px; padding:10px 12px; }
+      .svc-name{ font-size:13px; gap:8px; }
+      .svc-note{ font-size:11px; }
+      .price-val{ font-size:13px; }
+    }
+
     /* Бейджи/подсказки */
     .badge{ display:inline-flex; align-items:center; gap:6px; 
       padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700;
