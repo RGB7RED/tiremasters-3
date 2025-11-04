@@ -607,7 +607,7 @@ const HERO_FRAMES = [
   --calc-bg-url:url('photo 2.1.png');
 }
 
-.tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;}
+.tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
 
 /* Фон и маска */
 .tm-calc__bg{position:absolute;inset:0;background:var(--bg-1) center/cover no-repeat;filter:saturate(.9) contrast(.95);}
@@ -978,6 +978,7 @@ const HERO_FRAMES = [
         linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%),
         var(--services-bg-url) center/cover no-repeat fixed;
       scroll-margin-top: 88px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     /* TM-MARK: SERVICES_SECTION_PADDING START */
@@ -1395,7 +1396,7 @@ const HERO_FRAMES = [
   --fade:600ms; --slide-hold:4000ms;
 }
 .section{position:relative; isolation:isolate;}
-.howit{color:var(--txt-0); background:var(--bg-0); scroll-margin-top:88px;} .howit .container{width:var(--container); margin:0 auto; padding:64px 0;}
+.howit{color:var(--txt-0); background:var(--bg-0); scroll-margin-top:88px; border-top:1px solid rgba(255,255,255,.08);} .howit .container{width:var(--container); margin:0 auto; padding:64px 0;}
 
 /* Фон-слайдшоу */
 .howit__bg{position:absolute; inset:0; overflow:hidden; z-index:-2; background:var(--bg-0);} 
@@ -1591,7 +1592,8 @@ const HERO_FRAMES = [
         linear-gradient(180deg, rgba(11,13,16,.65) 0%, rgba(11,13,16,.85) 60%, rgba(11,13,16,.95) 100%),
         url("photo 77.png") center/cover no-repeat;
       scroll-margin-top:88px;
-}
+      border-top:1px solid rgba(255,255,255,.08);
+    }
 
     .price-container{
       max-width:var(--container);
@@ -1984,6 +1986,7 @@ Assumptions (разумные допущения):
       background-size:cover; background-position:center center;
       isolation:isolate; overflow:hidden;
       scroll-margin-top: 88px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
     .geo-overlay{
       position:absolute;inset:0;background:linear-gradient(180deg, rgba(6,8,10,0.6) 0%, rgba(6,8,10,0.85) 100%);pointer-events:none;}
@@ -2288,7 +2291,7 @@ Assumptions (разумные допущения):
 <style>
 @import url('https://unpkg.com/swiper@10/swiper-bundle.min.css');
 
-.cases-section {background: rgba(18,20,24,0.9) url('photo 8.png') center/cover no-repeat;color:#fff;padding:80px 0;scroll-margin-top:88px;}
+.cases-section {background: rgba(18,20,24,0.9) url('photo 8.png') center/cover no-repeat;color:#fff;padding:80px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
 .container {max-width:1280px;margin:0 auto;padding:0 16px;}
 .section-title {text-align:center;font-size:2rem;margin-bottom:40px;}
 
@@ -2377,6 +2380,7 @@ Assumptions (разумные допущения):
       margin: 0 auto;
       padding: 80px 16px;
       scroll-margin-top: 88px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .reviews__title {
@@ -2707,6 +2711,7 @@ Assumptions (разумные допущения):
   background-repeat: no-repeat;
   padding:48px 16px;
   scroll-margin-top:88px;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
   .container{max-width:1200px;margin:0 auto;}
   .faq-title{font-size:28px;font-weight:700;margin-bottom:12px;}
@@ -2819,6 +2824,7 @@ body {
   align-items: center;
   justify-content: center;
   scroll-margin-top: 88px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .promo-container { max-width: 1200px; margin: 0 auto; }
@@ -2946,6 +2952,7 @@ document.addEventListener("DOMContentLoaded", () => {
     justify-content: center;
     flex-direction: column;
     scroll-margin-top: 88px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .contacts-section .container {
