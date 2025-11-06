@@ -1113,6 +1113,463 @@ const HERO_FRAMES = [
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
+<!-- TM-MARK: ELECTRICIAN START -->
+<section id="out-electrician" class="tm-electrician" aria-labelledby="electrician-title">
+  <!-- Фото/иконки: требуется изображение мастера у автомобиля или иконка «кабель с молнией» на тёмном фоне. -->
+  <!-- Assumptions: если фирменного фото нет, использовать стоковую иконку автомобиля с гаечным ключом. -->
+
+  <div class="tm-electrician__decor" aria-hidden="true"></div>
+
+  <div class="tm-electrician__container">
+    <header class="tm-electrician__head">
+      <h2 id="electrician-title">Выездной автоэлектрик в Санкт-Петербурге</h2>
+      <p class="tm-electrician__lead">Приедем к вам, когда машина не заводится, села батарея или отказала электроника. Поможем на дороге, во дворе или в гаражном комплексе.</p>
+      <div class="tm-electrician__cta">
+        <a class="tm-electrician__cta-btn" href="#electrician-form" aria-label="Перейти к форме заявки на выезд автоэлектрика">Вызвать мастера</a>
+        <p class="tm-electrician__cta-note">или позвоните <a href="tel:+79211234567">+7&nbsp;921&nbsp;123‑45‑67</a></p>
+      </div>
+    </header>
+
+    <div class="tm-electrician__grid">
+      <section class="tm-electrician__services" aria-labelledby="electrician-services-title">
+        <h3 id="electrician-services-title">Что сделаем на месте</h3>
+        <ul>
+          <li>Компьютерная диагностика и чтение ошибок</li>
+          <li>Замена и подбор аккумулятора</li>
+          <li>Запуск двигателя на месте</li>
+          <li>Ремонт и восстановление проводки</li>
+          <li>Настройка электрооборудования</li>
+        </ul>
+      </section>
+
+      <section class="tm-electrician__benefits" aria-labelledby="electrician-benefits-title">
+        <h3 id="electrician-benefits-title">Преимущества сервиса</h3>
+        <ul>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 5v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            Выезд от 15 минут по городу
+          </li>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 2 3 7v7c0 6 9 8 9 8s9-2 9-8V7l-9-5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            85% всех поломок устраняем на месте
+          </li>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            Экономия до 4000&nbsp;₽ на эвакуаторе и простое
+          </li>
+        </ul>
+      </section>
+
+      <section class="tm-electrician__faq" aria-labelledby="electrician-faq-title">
+        <h3 id="electrician-faq-title">FAQ</h3>
+        <details>
+          <summary>Сколько времени ждать мастера?</summary>
+          <p>В среднем 30–45 минут по Санкт-Петербургу. В час пик сообщим точное время, пока вы готовите автомобиль и документы.</p>
+        </details>
+        <details>
+          <summary>Когда нужен выезд автоэлектрика?</summary>
+          <p>Если стартер не крутит, АКБ внезапно сел, не работают свет или стеклоподъёмники, а также после короткого замыкания.</p>
+        </details>
+      </section>
+
+      <section class="tm-electrician__contacts" aria-labelledby="electrician-contacts-title">
+        <h3 id="electrician-contacts-title">Контакты и география</h3>
+        <p><strong>Телефон:</strong> <a href="tel:+79211234567">+7&nbsp;921&nbsp;123‑45‑67</a></p>
+        <p><strong>Покрытие:</strong> Все районы Санкт-Петербурга и ближайшие города ЛО.</p>
+        <p><strong>График:</strong> ежедневно, 08:00–23:00, экстренный выезд 24/7.</p>
+      </section>
+
+      <aside class="tm-electrician__testimonial" aria-label="Отзыв клиента">
+        <p>«Машина не заводилась после ночной стоянки. Мастер приехал через 40 минут, заменил реле и завёл двигатель на месте.»</p>
+        <span class="tm-electrician__testimonial-author">— Алексей, Ford Focus</span>
+      </aside>
+    </div>
+
+    <form id="electrician-form" class="tm-electrician__form" novalidate>
+      <h3>Заявка на выезд автоэлектрика</h3>
+      <label for="electrician-name">Имя*</label>
+      <input id="electrician-name" name="name" type="text" required placeholder="Как к вам обращаться" />
+
+      <label for="electrician-phone">Телефон*</label>
+      <input id="electrician-phone" name="phone" type="tel" required inputmode="tel" placeholder="+7 (___) ___-__-__" />
+
+      <label for="electrician-problem">Опишите проблему</label>
+      <textarea id="electrician-problem" name="problem" rows="3" placeholder="Например: машина не реагирует на зажигание"></textarea>
+
+      <button type="submit" class="tm-electrician__submit" aria-label="Отправить заявку на выезд автоэлектрика">Оставить заявку</button>
+      <p class="tm-electrician__agreement">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+      <p class="tm-electrician__alert" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+
+  <style>
+    :root {
+      --electrician-bg: linear-gradient(135deg, rgba(11, 13, 16, 0.92), rgba(20, 24, 31, 0.86));
+      --electrician-surface: rgba(18, 22, 28, 0.75);
+      --electrician-surface-alt: rgba(18, 22, 28, 0.6);
+      --electrician-border: rgba(255, 255, 255, 0.1);
+      --electrician-accent: #ffc107;
+      --electrician-radius: 18px;
+      --electrician-gap: clamp(18px, 4vw, 32px);
+      --electrician-text: #f0f3f7;
+      --electrician-muted: #aeb7c4;
+      --electrician-max: min(92vw, 1180px);
+    }
+
+    .tm-electrician {
+      position: relative;
+      overflow: hidden;
+      background: var(--electrician-bg);
+      color: var(--electrician-text);
+      padding: clamp(48px, 8vw, 96px) 0;
+    }
+
+    .tm-electrician__decor {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(120% 120% at 80% 20%, rgba(255, 193, 7, 0.12), transparent 60%),
+        radial-gradient(90% 90% at 10% 80%, rgba(66, 165, 245, 0.12), transparent 70%),
+        url('photo 6,5.png') center/cover no-repeat;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .tm-electrician__container {
+      position: relative;
+      z-index: 1;
+      width: var(--electrician-max);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--electrician-gap);
+    }
+
+    .tm-electrician__head {
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .tm-electrician__head h2 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .tm-electrician__lead {
+      margin: 0 auto;
+      max-width: 70ch;
+      color: var(--electrician-muted);
+      font-size: clamp(16px, 2.2vw, 18px);
+    }
+
+    .tm-electrician__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tm-electrician__cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: var(--electrician-accent);
+      color: #111217;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .tm-electrician__cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(255, 193, 7, 0.3);
+    }
+
+    .tm-electrician__cta-btn:focus-visible {
+      outline: 3px solid rgba(66, 165, 245, 0.6);
+      outline-offset: 3px;
+    }
+
+    .tm-electrician__cta-note {
+      margin: 0;
+      color: var(--electrician-muted);
+      font-size: 15px;
+    }
+
+    .tm-electrician__cta-note a {
+      color: var(--electrician-text);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-decoration-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .tm-electrician__grid {
+      display: grid;
+      gap: var(--electrician-gap);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      align-items: start;
+    }
+
+    .tm-electrician__services,
+    .tm-electrician__benefits,
+    .tm-electrician__faq,
+    .tm-electrician__contacts,
+    .tm-electrician__testimonial {
+      background: var(--electrician-surface);
+      border: 1px solid var(--electrician-border);
+      border-radius: var(--electrician-radius);
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      display: grid;
+      gap: 12px;
+    }
+
+    .tm-electrician__services ul,
+    .tm-electrician__benefits ul {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 8px;
+      color: var(--electrician-muted);
+    }
+
+    .tm-electrician__benefits ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tm-electrician__benefits li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+      color: var(--electrician-text);
+    }
+
+    .tm-electrician__benefit-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--electrician-surface-alt);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--electrician-accent);
+    }
+
+    .tm-electrician__benefit-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .tm-electrician__faq details {
+      background: var(--electrician-surface-alt);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 16px;
+      color: var(--electrician-text);
+    }
+
+    .tm-electrician__faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .tm-electrician__faq summary::marker {
+      color: var(--electrician-accent);
+    }
+
+    .tm-electrician__faq p {
+      margin: 8px 0 0;
+      color: var(--electrician-muted);
+    }
+
+    .tm-electrician__contacts a {
+      color: var(--electrician-text);
+      text-decoration: none;
+    }
+
+    .tm-electrician__contacts a:hover,
+    .tm-electrician__contacts a:focus {
+      text-decoration: underline;
+    }
+
+    .tm-electrician__testimonial {
+      font-style: italic;
+      position: relative;
+    }
+
+    .tm-electrician__testimonial::before {
+      content: "\201C";
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.14);
+      position: absolute;
+      top: -10px;
+      left: 12px;
+    }
+
+    .tm-electrician__testimonial p {
+      margin: 0;
+      color: var(--electrician-text);
+    }
+
+    .tm-electrician__testimonial-author {
+      font-style: normal;
+      color: var(--electrician-muted);
+    }
+
+    .tm-electrician__form {
+      background: var(--electrician-surface);
+      border-radius: var(--electrician-radius);
+      border: 1px solid var(--electrician-border);
+      padding: clamp(20px, 4vw, 28px);
+      display: grid;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .tm-electrician__form h3 {
+      margin: 0;
+      font-size: clamp(20px, 3vw, 24px);
+    }
+
+    .tm-electrician__form label {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .tm-electrician__form input,
+    .tm-electrician__form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(12, 14, 18, 0.9);
+      color: var(--electrician-text);
+      font: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tm-electrician__form input:focus,
+    .tm-electrician__form textarea:focus {
+      outline: none;
+      border-color: var(--electrician-accent);
+      box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3);
+    }
+
+    .tm-electrician__submit {
+      margin-top: 8px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: none;
+      background: var(--electrician-accent);
+      color: #111217;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tm-electrician__submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(255, 193, 7, 0.28);
+    }
+
+    .tm-electrician__submit:focus-visible {
+      outline: 3px solid rgba(66, 165, 245, 0.6);
+      outline-offset: 2px;
+    }
+
+    .tm-electrician__agreement {
+      margin: 0;
+      font-size: 13px;
+      color: var(--electrician-muted);
+    }
+
+    .tm-electrician__alert {
+      margin: 0;
+      font-size: 14px;
+      color: var(--electrician-accent);
+    }
+
+    @media (min-width: 769px) {
+      .tm-electrician__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .tm-electrician__testimonial {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tm-electrician__testimonial::before {
+        left: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tm-electrician {
+        padding: 40px 0;
+      }
+
+      .tm-electrician__cta-btn {
+        width: 100%;
+      }
+
+      .tm-electrician__benefits li {
+        grid-template-columns: auto 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    (function electricianFormInit() {
+      const form = document.getElementById('electrician-form');
+      if (!form) return;
+      const alertBox = form.querySelector('.tm-electrician__alert');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+
+        if (!name || !phone) {
+          alertBox.textContent = 'Заполните имя и телефон, чтобы мы связались с вами.';
+          alertBox.hidden = false;
+          return;
+        }
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        alertBox.textContent = 'Отправляем заявку…';
+        alertBox.hidden = false;
+
+        setTimeout(() => {
+          alertBox.textContent = 'Готово! Мы перезвоним в течение 10 минут.';
+          submitBtn.disabled = false;
+          form.reset();
+        }, 1000);
+      });
+    })();
+  </script>
+</section>
+<!-- TM-MARK: ELECTRICIAN END -->
+
+<div class="tm-section-divider" aria-hidden="true"></div>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
