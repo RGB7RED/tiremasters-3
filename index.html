@@ -846,11 +846,9 @@ const HERO_FRAMES = [
 @media (max-width: 1024px){
   .tm-calc__container{grid-template-columns:1fr}
 }
-@media (max-width: 359px){
-  .tm-service-grid{grid-template-columns:1fr}
-}
 
 @media (max-width: 720px){
+  .tm-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .row-2{grid-template-columns:1fr}
   .tm-total{flex-direction:column;gap:6px}
   .tm-input--control{--control-height:60px;}
@@ -860,6 +858,10 @@ const HERO_FRAMES = [
   .tm-input--geo input{padding-right:92px;}
   .tm-input--control .ico{top:calc(100% - (var(--control-height)/2));transform:translateY(-50%);}
   .tm-input--control .geo-btn{top:calc(100% - (var(--control-height)/2));width:44px;height:44px;right:12px;transform:translateY(-50%);}
+}
+
+@media (max-width: 359px){
+  .tm-service-grid{grid-template-columns:1fr}
 }
 
   /* TM-MARK: ВЫРАВНИВАНИЕ ПРАВОГО БЛОКА START */
