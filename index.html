@@ -774,7 +774,7 @@ const HERO_FRAMES = [
 .tm-fieldset legend{padding:0 6px;color:var(--steel);font-size:13px}
 
 /* Сетка услуг (иконки-карточки) */
-.tm-service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.tm-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .service-card{display:grid;grid-template-columns:auto 1fr;grid-auto-rows:auto;gap:4px 10px;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t);min-height:72px}
 .service-card input{display:none}
 .service-card .icon{grid-row:1/span 2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow);}
@@ -847,7 +847,7 @@ const HERO_FRAMES = [
   .tm-calc__container{grid-template-columns:1fr}
 }
 @media (max-width: 720px){
-  .tm-service-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .tm-service-grid{grid-template-columns:1fr}
   .row-2{grid-template-columns:1fr}
   .tm-total{flex-direction:column;gap:6px}
   .tm-input--control{--control-height:60px;}
