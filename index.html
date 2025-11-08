@@ -462,22 +462,154 @@ const HERO_FRAMES = [
           <legend>Выберите услугу <span aria-hidden="true">*</span></legend>
           <div class="tm-service-grid" role="group" aria-label="Услуга">
             <label class="service-card">
-              <input type="radio" name="service" value="mount" required>
-              <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M7 12h10M12 7v10"/></svg></span>
-              <span class="title">Сезонная смена</span>
-              <span class="hint">4 колеса</span>
+              <input type="radio" name="service" value="repair-puncture" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></span>
+              <span class="title">Ремонт проколов</span>
+              <span class="hint">Шиномонтаж</span>
             </label>
             <label class="service-card">
-              <input type="radio" name="service" value="puncture" required>
-              <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 3v18"/></svg></span>
-              <span class="title">Ремонт прокола</span>
-              <span class="hint">1 колесо</span>
+              <input type="radio" name="service" value="sidewall-repair" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6"/></svg></span>
+              <span class="title">Ремонт боковых порезов</span>
+              <span class="hint">Шиномонтаж</span>
             </label>
             <label class="service-card">
-              <input type="radio" name="service" value="balance" required>
-              <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="10" width="18" height="4" rx="2"/></svg></span>
-              <span class="title">Балансировка</span>
-              <span class="hint">2–4 колеса</span>
+              <input type="radio" name="service" value="hernia-repair" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>
+              <span class="title">Ремонт грыж</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="spare-install" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5 12h14"/></svg></span>
+              <span class="title">Установка запаски</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="tire-change" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5h12l2 7-2 7H6L4 12l2-7Z"/></svg></span>
+              <span class="title">Замена резины</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="stud-install" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9h6v6H9z"/></svg></span>
+              <span class="title">Дошиповка шин</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="rim-straightening" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8"/></svg></span>
+              <span class="title">Правка дисков</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="tire-storage" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M4 11h16"/></svg></span>
+              <span class="title">Хранение шин</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="lock-removal" required>
+              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 10h4v4h-4z"/></svg></span>
+              <span class="title">Снятие секреток</span>
+              <span class="hint">Шиномонтаж</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="computer-diagnostics" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M12 16v4"/><path d="M8 20h8"/></svg></span>
+              <span class="title">Компьютерная диагностика</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="engine-start" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 13l6-10 6 10h-5l5 9-11-9h5z"/></svg></span>
+              <span class="title">Запуск двигателя</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="engine-diagnostics" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h3l3 7 4-14 4 7h4"/></svg></span>
+              <span class="title">Диагностика двигателя</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="battery-replacement" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 4v3M17 4v3"/></svg></span>
+              <span class="title">Замена аккумулятора</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="truck-electric" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h13V6H3z"/><path d="M16 10h4l1 3v5h-5z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+              <span class="title">Грузовой автоэлектрик</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="jump-start" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7h4l-2 5h4l-3 7"/></svg></span>
+              <span class="title">Прикурить автомобиль</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="odometer-correction" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 16 0"/><path d="M12 4v8l4 2"/></svg></span>
+              <span class="title">Скрутить пробег</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="alarm-disable" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 10V7a7 7 0 0 1 14 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg></span>
+              <span class="title">Отключение сигнализации</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="key-making" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7a5 5 0 1 1 5 5l-2 2v3H8v-2H6v-2H5"/></svg></span>
+              <span class="title">Изготовление ключей</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="wiring-repair" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h4v10H4z"/><path d="M10 7h4v10h-4z"/><path d="M16 7h4v10h-4z"/></svg></span>
+              <span class="title">Ремонт проводки</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="alternator-repair" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v8l4 4"/></svg></span>
+              <span class="title">Ремонт генераторов</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="starter-repair" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6h9l5 6-5 6H5z"/></svg></span>
+              <span class="title">Ремонт стартеров</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="immobilizer-disable" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 12h14v8H5z"/></svg></span>
+              <span class="title">Отключение иммобилайзера</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="immobilizer-flash" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14v4H5z"/><path d="M7 13l5-6 5 6"/><path d="M12 11v8"/></svg></span>
+              <span class="title">Перепрошивка иммобилайзера</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="alarm-repair" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11V7a8 8 0 0 1 16 0v4"/><path d="M7 14h10"/><path d="M7 18h10"/></svg></span>
+              <span class="title">Ремонт сигнализации</span>
+              <span class="hint">Автоэлектрик</span>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="mobile-autoservice" required>
+              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11h11l3 3v5H5z"/><path d="M9 11V7h7v4"/><circle cx="8" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
+              <span class="title">Автосервис на выезд</span>
+              <span class="hint">Автоэлектрик</span>
             </label>
           </div>
           <p class="err" id="err-service" hidden>Выберите услугу</p>
@@ -642,13 +774,16 @@ const HERO_FRAMES = [
 .tm-fieldset legend{padding:0 6px;color:var(--steel);font-size:13px}
 
 /* Сетка услуг (иконки-карточки) */
-.tm-service-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:10px}
-.service-card{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:6px 10px;align-items:center;padding:10px 12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t)}
+.tm-service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.service-card{display:grid;grid-template-columns:auto 1fr;grid-auto-rows:auto;gap:4px 10px;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t);min-height:72px}
 .service-card input{display:none}
-.service-card .icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--yellow)}
-.service-card svg{width:22px;height:22px;stroke:var(--steel);stroke-width:2;fill:none}
-.service-card .title{font-weight:700}
-.service-card .hint{font-size:12px;color:var(--muted)}
+.service-card .icon{grid-row:1/span 2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow);}
+.service-card .icon--electric{border-color:#4ec8ff;background:rgba(78,200,255,.08);color:#4ec8ff}
+.service-card .icon--tire{border-color:var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow)}
+.service-card svg{width:18px;height:18px}
+.service-card svg *{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.service-card .title{font-weight:700;font-size:14px;line-height:1.25}
+.service-card .hint{grid-column:2;font-size:11px;color:var(--muted)}
 .service-card:has(input:checked){border-color:var(--yellow);background:rgba(255,197,44,.08)}
 .service-card:hover{transform:translateY(-1px)}
 
@@ -712,7 +847,7 @@ const HERO_FRAMES = [
   .tm-calc__container{grid-template-columns:1fr}
 }
 @media (max-width: 720px){
-  .tm-service-grid{grid-template-columns:1fr}
+  .tm-service-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
   .row-2{grid-template-columns:1fr}
   .tm-total{flex-direction:column;gap:6px}
   .tm-input--control{--control-height:60px;}
@@ -871,9 +1006,31 @@ const HERO_FRAMES = [
   const errPhone = root.querySelector('#err-phone');
 
   const svc = {
-    mount: { base:[2400, 3400] },
-    puncture: { base:[900, 1200] },
-    balance: { base:[1300, 2200] }
+    'repair-puncture': { base:[1200, 1800] },
+    'sidewall-repair': { base:[1600, 2600] },
+    'hernia-repair': { base:[2200, 3200] },
+    'spare-install': { base:[1000, 1500] },
+    'tire-change': { base:[2800, 4200] },
+    'stud-install': { base:[1800, 2600] },
+    'rim-straightening': { base:[2500, 3800] },
+    'tire-storage': { base:[1900, 2600] },
+    'lock-removal': { base:[1300, 2000] },
+    'computer-diagnostics': { base:[2500, 3800] },
+    'engine-start': { base:[1500, 2200] },
+    'engine-diagnostics': { base:[3200, 4800] },
+    'battery-replacement': { base:[2200, 3600] },
+    'truck-electric': { base:[4200, 6200] },
+    'jump-start': { base:[1600, 2300] },
+    'odometer-correction': { base:[4500, 7000] },
+    'alarm-disable': { base:[2800, 4200] },
+    'key-making': { base:[3200, 5200] },
+    'wiring-repair': { base:[2600, 4600] },
+    'alternator-repair': { base:[3800, 5600] },
+    'starter-repair': { base:[3200, 5000] },
+    'immobilizer-disable': { base:[3400, 5200] },
+    'immobilizer-flash': { base:[3600, 5400] },
+    'alarm-repair': { base:[2800, 4500] },
+    'mobile-autoservice': { base:[4500, 7200] }
   };
 
   function coefTotal(base){
@@ -906,7 +1063,7 @@ const HERO_FRAMES = [
     if(!validate()) return;
     const f = new FormData(form);
     const service = f.get('service');
-    const base = (svc[service]||svc.mount).base;
+    const base = (svc[service]||svc['repair-puncture']).base;
     const [from, to] = coefTotal(base);
     outFrom.textContent = from.toLocaleString('ru-RU');
     outTo.textContent = to.toLocaleString('ru-RU');
@@ -1802,140 +1959,483 @@ const HERO_FRAMES = [
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Наши услуги</div>
-        <h2 class="title" id="services-title">Выездной шиномонтаж 24/7 в СПб и ЛО</h2>
-        <p class="subtitle">Среднее время прибытия мастера — около 25 минут.</p>
+        <h2 class="title" id="services-title">Выездной шиномонтаж и автоэлектрик 24/7</h2>
+        <p class="subtitle">Полный спектр мобильных работ по СПб и ЛО — приезжаем в среднем за 25 минут.</p>
       </div>
 
-      <div class="grid">
-        <!-- Карточка 1 -->
+      <div class="grid" aria-label="Каталог услуг">
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2070&auto=format&fit=crop" alt="Сезонная смена шин" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1592853625513-e1641f83e1df?q=80&w=2070&auto=format&fit=crop" alt="Ремонт проколов на месте" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Сезонная смена</h3>
-            <p>Оперативная замена шин в удобное для вас время.</p>
+            <h3>Ремонт проколов</h3>
+            <p>Быстро устраним прокол прямо на месте, без снятия колеса.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
-        <!-- Карточка 2 -->
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1592853625513-e1641f83e1df?q=80&w=2070&auto=format&fit=crop" alt="Ремонт прокола" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2070&auto=format&fit=crop" alt="Ремонт боковых порезов шины" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Ремонт прокола</h3>
-            <p>Быстро устраним повреждение и вернём колесо в строй.</p>
+            <h3>Ремонт боковых порезов</h3>
+            <p>Восстановим целостность боковой части шины с гарантией герметичности.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
-        <!-- Карточка 3 -->
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2070&auto=format&fit=crop" alt="Балансировка" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1588888801209-c1a3471b1af2?q=80&w=2090&auto=format&fit=crop" alt="Ремонт грыж на колесе" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Балансировка</h3>
-            <p>Точная балансировка для комфортного и безопасного движения.</p>
+            <h3>Ремонт грыж</h3>
+            <p>Исправим выпуклости и деформации покрышки на выезде.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
-        <!-- Карточка 4 -->
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1588888801209-c1a3471b1af2?q=80&w=2090&auto=format&fit=crop" alt="Подкачка" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1613686723137-bb4389f42b08?q=80&w=2069&auto=format&fit=crop" alt="Установка запасного колеса" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Подкачка</h3>
-            <p>Проверка и корректировка давления для долгого срока службы.</p>
+            <h3>Установка запаски</h3>
+            <p>Поможем установить запасное колесо в экстренной ситуации.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
-        <!-- Карточка 5 -->
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1613686723137-bb4389f42b08?q=80&w=2069&auto=format&fit=crop" alt="Эвакуация" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1531390980331-c32a6ac4ad67?q=80&w=2070&auto=format&fit=crop" alt="Замена комплекта шин" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Эвакуация</h3>
-            <p>Надёжная перевозка автомобиля круглосуточно по СПб и ЛО.</p>
+            <h3>Замена резины</h3>
+            <p>Проведем полную замену комплекта шин с балансировкой.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
           </div>
         </article>
 
-        <!-- Карточка 6 -->
         <article class="service-card">
           <div class="media">
-            <img src="https://images.unsplash.com/photo-1531390980331-c32a6ac4ad67?q=80&w=2070&auto=format&fit=crop" alt="Сезонное хранение" loading="lazy" width="1280" height="720" />
+            <img src="https://images.unsplash.com/photo-1588888801209-c1a3471b1af2?q=80&w=2090&auto=format&fit=crop" alt="Дошиповка шин" loading="lazy" width="1280" height="720" />
           </div>
           <div class="body">
-            <h3>Сезонное хранение</h3>
-            <p>Сохраним ваши колёса в сухом и безопасном месте.</p>
+            <h3>Дошиповка шин</h3>
+            <p>Вернем сцепление, восстановив утраченные шипы.</p>
           </div>
           <div class="actions">
             <a class="btn primary" href="#calc">Рассчитать</a>
             <a class="btn ghost" href="#price">Прайс</a>
-            <!-- TM-MARK: UTILITIES_STRIP START -->
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
               <li class="badge">~25 мин</li>
             </ul>
-            <!-- TM-MARK: UTILITIES_STRIP END -->
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2070&auto=format&fit=crop" alt="Правка дисков" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Правка дисков</h3>
+            <p>Выровняем деформации дисков без потери геометрии.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1531390980331-c32a6ac4ad67?q=80&w=2070&auto=format&fit=crop" alt="Хранение шин на складе" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Хранение шин</h3>
+            <p>Надежное хранение ваших шин в сезон.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1592853625513-e1641f83e1df?q=80&w=2070&auto=format&fit=crop" alt="Снятие секреток" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Снятие секреток</h3>
+            <p>Снимем любые секретки без повреждения дисков.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=2070&auto=format&fit=crop" alt="Компьютерная диагностика автомобиля" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Компьютерная диагностика</h3>
+            <p>Определим неисправности с помощью профессионального оборудования.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=2070&auto=format&fit=crop" alt="Запуск двигателя от внешнего источника" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Запуск двигателя</h3>
+            <p>Запустим автомобиль при севшем аккумуляторе.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1549921296-3b4a6b9b3cfa?q=80&w=2070&auto=format&fit=crop" alt="Диагностика двигателя" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Диагностика двигателя</h3>
+            <p>Проверим систему зажигания, датчики и блок управления.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=2070&auto=format&fit=crop" alt="Замена аккумулятора" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Замена аккумулятора</h3>
+            <p>Быстрая установка нового аккумулятора с проверкой зарядки.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=2070&auto=format&fit=crop" alt="Автоэлектрик для грузового транспорта" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Грузовой автоэлектрик</h3>
+            <p>Электроработы для грузовых и спецавтомобилей.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=2070&auto=format&fit=crop" alt="Прикуривание автомобиля" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Прикурить автомобиль</h3>
+            <p>Поможем завести авто при разряженном аккумуляторе.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=2070&auto=format&fit=crop" alt="Коррекция пробега" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Скрутить пробег</h3>
+            <p>Корректировка показаний одометра при необходимости.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=2070&auto=format&fit=crop" alt="Отключение сигнализации" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Отключение сигнализации</h3>
+            <p>Разблокировка автомобиля при неисправной сигнализации.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop" alt="Изготовление ключей" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Изготовление ключей</h3>
+            <p>Изготовим или восстановим ключ прямо на месте.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=2070&auto=format&fit=crop" alt="Ремонт проводки" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Ремонт проводки</h3>
+            <p>Устраним обрывы, короткие замыкания и восстановим электросеть.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1549921296-3b4a6b9b3cfa?q=80&w=2070&auto=format&fit=crop" alt="Ремонт генератора" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Ремонт генераторов</h3>
+            <p>Починим генератор, заменим щетки и регуляторы.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop" alt="Ремонт стартера" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Ремонт стартеров</h3>
+            <p>Отремонтируем стартер, проверим тяговое реле.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=2070&auto=format&fit=crop" alt="Отключение иммобилайзера" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Отключение иммобилайзера</h3>
+            <p>Снимем блокировку, если иммобилайзер мешает запуску.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1517148815978-75f6acaaf32c?q=80&w=2070&auto=format&fit=crop" alt="Перепрошивка иммобилайзера" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Перепрошивка иммобилайзера</h3>
+            <p>Обновим или заменим программное обеспечение иммобилайзера.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?q=80&w=2070&auto=format&fit=crop" alt="Ремонт сигнализации" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Ремонт сигнализации</h3>
+            <p>Починим, заменим блоки или настроим систему сигнализации.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="media">
+            <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?q=80&w=2070&auto=format&fit=crop" alt="Автосервис на выезд" loading="lazy" width="1280" height="720" />
+          </div>
+          <div class="body">
+            <h3>Автосервис на выезд</h3>
+            <p>Полный комплекс автоэлектрических услуг с выездом к клиенту.</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calc">Рассчитать</a>
+            <a class="btn ghost" href="#price">Прайс</a>
+            <ul class="utils" aria-label="Быстрые детали">
+              <li class="badge">24/7</li>
+              <li class="badge">СПб/ЛО</li>
+              <li class="badge">~25 мин</li>
+            </ul>
           </div>
         </article>
       </div>
@@ -2435,9 +2935,9 @@ const HERO_FRAMES = [
 
       <div class="coef-panel" id="coef-badges" aria-live="polite">
         <!-- Бейджи коэффициентов -->
-        <span class="badge b-steel" title="Покрышки RunFlat требуют аккуратной посадки на борт."><span class="dot"></span> RunFlat +Х%</span>
-        <span class="badge b-yellow" title="Кроссоверы и SUV — увеличенная масса колеса."><span class="dot"></span> SUV +Х%</span>
-        <span class="badge b-red" title="С 22:00 до 08:00 действует надбавка."><span class="dot"></span> Ночь +Х%</span>
+        <span class="badge b-steel" title="Покрышки RunFlat требуют аккуратной посадки на борт."><span class="dot"></span> RunFlat +20%</span>
+        <span class="badge b-yellow" title="Кроссоверы и SUV — увеличенная масса колеса."><span class="dot"></span> SUV +15%</span>
+        <span class="badge b-red" title="С 22:00 до 08:00 действует надбавка."><span class="dot"></span> Ночь +20%</span>
       </div>
 
       <p class="microtext">Цены указаны без учёта выезда за КАД и доп. работ. Формат: «от 1&nbsp;500&nbsp;₽».</p>
@@ -2458,15 +2958,15 @@ const HERO_FRAMES = [
     const pricesByRadius = {
       R13: {
         rows: [
-          { key:"mount", name:"Снятие / установка", price:"от 1\u00A0000 ₽" },
-          { key:"demont", name:"Демонтаж / монтаж", price:"от 1\u00A0500 ₽" },
-          { key:"bal", name:"Балансировка", price:"от 1\u00A0700 ₽" },
-          { key:"puncture", name:"Ремонт прокола", price:"от 900 ₽" },
-          { key:"valve", name:"Замена вентиля", price:"от 300 ₽" },
-          { key:"storage", name:"Сезонное хранение (комплект)", price:"от 1\u00A0900 ₽" },
-          { key:"ring", name:"Выезд за КАД (за км)", price:"от 50 ₽" },
-          { key:"coef_rf", name:"Коэф. RunFlat", price:"+ Х%", note:"Точная надбавка по модели шины" },
-          { key:"coef_suv", name:"Коэф. SUV", price:"+ Х%", note:"По массе и размеру колеса" }
+          { key:"puncture", name:"Ремонт проколов", price:"от 1\u00A0200 ₽" },
+          { key:"sidewall", name:"Ремонт боковых порезов", price:"от 1\u00A0600 ₽" },
+          { key:"hernia", name:"Ремонт грыж", price:"от 2\u00A0200 ₽" },
+          { key:"spare", name:"Установка запаски", price:"от 1\u00A0000 ₽" },
+          { key:"swap", name:"Замена резины", price:"от 2\u00A0800 ₽" },
+          { key:"stud", name:"Дошиповка шин", price:"от 1\u00A0800 ₽" },
+          { key:"straighten", name:"Правка дисков", price:"от 2\u00A0500 ₽", note:"Цена за один диск" },
+          { key:"storage", name:"Хранение шин", price:"от 1\u00A0900 ₽", note:"Сезон, комплект" },
+          { key:"locks", name:"Снятие секреток", price:"от 1\u00A0300 ₽" }
         ]
       },
     };
