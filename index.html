@@ -697,10 +697,6 @@ const HERO_FRAMES = [
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.78.57 2.63a2 2 0 0 1-.45 2.11L8.1 9.1a16 16 0 0 0 6 6l.64-1.12a2 2 0 0 1 2.11-.45c.85.27 1.73.45 2.63.57A2 2 0 0 1 22 16.92z"/></svg></span>
           <span class="txt"><strong>Позвонить</strong><em>+7 953 158 0900</em></span>
         </a>
-        <a class="cta-btn cta-accent" href="#calc" aria-label="Вызвать шиномонтаж — перейти к форме">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7 12h10M12 7v10"/></svg></span>
-          <span class="txt"><strong>Вызвать шиномонтаж</strong><em>оформить заявку</em></span>
-        </a>
         <a class="cta-btn" href="https://t.me/Tiar_MASTERSPro" target="_blank" rel="noopener" aria-label="Написать в Telegram">
           <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.44 3.2 2.35 10.63c-.86.35-.86 1.64.1 1.97l4.86 1.6 1.87 6.07c.24.78 1.22.86 1.66.14l2.67-4.33 4.9 3.66c.77.57 1.86.14 2.06-.82l-.34-14.1Z"/></svg></span>
           <span class="txt"><strong>Telegram</strong><em>@Tiar_MASTERSPro</em></span>
@@ -837,7 +833,8 @@ const HERO_FRAMES = [
   align-items:center;
   justify-content:flex-start;
   gap:12px;
-  padding:12px 16px;
+  padding:14px 20px;
+  min-height:72px;
   border-radius:var(--ctaRadius);
   text-decoration:none;
   background:rgba(20,24,28,.72);
@@ -871,6 +868,7 @@ const HERO_FRAMES = [
 
 .cta-btn .txt{
   display:grid;
+  gap:4px;
 }
 .cta-btn .txt strong{
   font-size:16px;
@@ -894,10 +892,6 @@ const HERO_FRAMES = [
 .cta-primary:hover .ico{
   border-color:#111;
 }
-.cta-accent{
-  border:2px solid #FF4545;
-}
-
 /* Адаптив */
 @media (max-width:1024px){
   .tm-cta-corner{
