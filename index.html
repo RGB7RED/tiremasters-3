@@ -2343,10 +2343,9 @@ const HERO_FRAMES = [
   <style>
     :root {
       /* TM-MARK: SERVICES_BG_VARS START */
-      /* Путь к фото фона блока услуг (можно переопределить из вне) */
-      --services-bg-url: url('photo 134.png');
       --services-mask-from: rgba(10, 12, 14, .72);
       --services-mask-to: rgba(10, 12, 14, .42);
+      --services-line-color: rgba(185, 36, 40, .32);
       --services-container-max: 1200px; /* синхронизировано с 120.html */
       --surface-glass: rgba(17, 19, 22, .48);
       --surface-glass-hover: rgba(17, 19, 22, .62);
@@ -2373,8 +2372,7 @@ const HERO_FRAMES = [
       align-items: center;
       isolation: isolate; /* чтобы оверлеи не конфликтовали */
       background:
-        linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%),
-        var(--services-bg-url) center/cover no-repeat fixed;
+        linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%);
       scroll-margin-top: 88px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
@@ -2393,21 +2391,50 @@ const HERO_FRAMES = [
     .services-section::after {
       content: "";
       position: absolute;
-      left: 0; right: 0;
-      z-index: -1;
+      inset: 0;
       pointer-events: none;
     }
     .services-section::before {
-      top: 0; height: 120px;
-      background: linear-gradient(to bottom, rgba(10,12,14,.9), transparent);
-      mask: linear-gradient(to bottom, black, transparent);
+      z-index: -2;
+      background:
+        repeating-linear-gradient(135deg,
+          var(--services-line-color) 0px 3px,
+          transparent 3px 30px);
+      opacity: .7;
+      mix-blend-mode: screen;
+      mask-image: linear-gradient(180deg,
+        rgba(0, 0, 0, .92) 0%,
+        rgba(0, 0, 0, .92) 18%,
+        transparent 24%,
+        transparent 34%,
+        rgba(0, 0, 0, .92) 42%,
+        rgba(0, 0, 0, .92) 64%,
+        transparent 70%,
+        transparent 78%,
+        rgba(0, 0, 0, .92) 86%,
+        rgba(0, 0, 0, .92) 100%);
+      mask-size: 100% 320px;
+      mask-repeat: repeat;
+      -webkit-mask-image: linear-gradient(180deg,
+        rgba(0, 0, 0, .92) 0%,
+        rgba(0, 0, 0, .92) 18%,
+        transparent 24%,
+        transparent 34%,
+        rgba(0, 0, 0, .92) 42%,
+        rgba(0, 0, 0, .92) 64%,
+        transparent 70%,
+        transparent 78%,
+        rgba(0, 0, 0, .92) 86%,
+        rgba(0, 0, 0, .92) 100%);
+      -webkit-mask-size: 100% 320px;
+      -webkit-mask-repeat: repeat;
     }
     .services-section::after {
-      bottom: 0; height: 140px;
+      z-index: -1;
       background:
+        linear-gradient(to bottom, rgba(10,12,14,.88), transparent 55%),
         radial-gradient(90% 100% at 50% 120%, rgba(255,255,255,.06), transparent 70%),
-        linear-gradient(to top, rgba(8,9,11,.85), transparent 60%);
-      mask: linear-gradient(to top, black, transparent);
+        linear-gradient(to top, rgba(8,9,11,.82), transparent 60%);
     }
 
     .container {
