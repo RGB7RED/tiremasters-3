@@ -431,6 +431,241 @@ const HERO_FRAMES = [
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
+<!-- TM-MARK: О НАС START -->
+<section id="about" class="tm-about" aria-labelledby="about-title">
+  <!-- TM-MARK: HTML START -->
+  <!--
+    Блок «Кто мы такие?» — общий рассказ о сервисе TireMasters.
+    Контент внутри .tm-about__text можно редактировать вручную: замените или дополните текст по своему сценарию.
+  -->
+
+  <div class="tm-about__texture" aria-hidden="true"></div>
+
+  <div class="tm-about__container">
+    <header class="tm-about__header">
+      <span class="tm-about__badge" aria-hidden="true">🧰</span>
+      <div class="tm-about__heading">
+        <p class="tm-about__eyebrow">TireMasters</p>
+        <h2 class="tm-about__title" id="about-title">Кто мы такие?</h2>
+      </div>
+    </header>
+
+    <div class="tm-about__content">
+      <!-- TM-MARK: EDITABLE TEXT START -->
+      <article class="tm-about__text" id="about-text">
+        <p class="tm-about__lead">TireMasters — это выездной автосервис, который приезжает, когда другим ещё только звонят. Мы работаем 24/7 по всему Санкт-Петербургу и Ленинградской области, помогая водителям в самых непредсказуемых ситуациях — от прокола колеса до отказа электроники и полной остановки автомобиля.</p>
+        <p>Наша миссия проста: вернуть вам движение. Без нервов, без ожиданий и без лишних слов.</p>
+
+        <div class="tm-about__separator" aria-hidden="true">⸻</div>
+
+        <h3>🚗 Выездной шиномонтаж</h3>
+        <p>Мы приедем туда, где вы остановились — на трассу, во двор, на парковку или к офису. Починим прокол, заменим колесо, устраним боковой порез или грыжу, поможем с дошиповкой и хранением шин. Вы экономите время, деньги и нервы — всё решается на месте.</p>
+
+        <div class="tm-about__separator" aria-hidden="true">⸻</div>
+
+        <h3>⚡ Автоэлектрик на выезд</h3>
+        <p>Современные авто — это сложная электроника, и ошибка может стоить дорого. Наши автоэлектрики проведут компьютерную диагностику, запустят двигатель, устранят короткое замыкание, заменят аккумулятор, восстановят проводку, а при необходимости — отремонтируют или перепрошьют блоки прямо на месте. Без эвакуатора, без сервисов, без ожидания.</p>
+
+        <div class="tm-about__separator" aria-hidden="true">⸻</div>
+
+        <h3>🚨 Эвакуатор</h3>
+        <p>Если ремонт невозможен на месте — мы аккуратно и безопасно доставим ваш автомобиль куда нужно: домой, в сервис, на стоянку. Работаем с легковыми, внедорожниками и коммерческим транспортом. Никаких скрытых платежей — только честный расчёт и аккуратная подача.</p>
+
+        <div class="tm-about__separator" aria-hidden="true">⸻</div>
+
+        <h3>💬 Почему выбирают TireMasters</h3>
+        <ul class="tm-about__list">
+          <li>Работаем круглосуточно и без выходных</li>
+          <li>Реально приезжаем быстро — в среднем за 25 минут</li>
+          <li>У нас свои мастера, а не диспетчерская с подрядчиками</li>
+          <li>Используем профессиональное оборудование и инструменты</li>
+          <li>Ценим честность, скорость и ответственность</li>
+        </ul>
+      </article>
+      <!-- TM-MARK: EDITABLE TEXT END -->
+    </div>
+  </div>
+
+  <!-- TM-MARK: CSS START -->
+  <style>
+    .tm-about {
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(160deg, rgba(12, 14, 18, 0.94) 0%, rgba(9, 11, 15, 0.9) 45%, rgba(7, 9, 12, 0.96) 100%);
+      padding: clamp(56px, 8vw, 88px) 0 clamp(60px, 9vw, 96px);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .tm-about__texture {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(70% 120% at 10% 10%, rgba(44, 107, 211, 0.14) 0%, rgba(10, 12, 16, 0) 55%),
+        radial-gradient(90% 90% at 90% 20%, rgba(255, 197, 44, 0.16) 0%, rgba(10, 12, 16, 0) 60%),
+        url('photo 6,4.png') center/cover no-repeat;
+      opacity: 0.22;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .tm-about__container {
+      width: var(--container);
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+      gap: clamp(28px, 5vw, 60px);
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tm-about__header {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: sticky;
+      top: calc(var(--header-offset) + 32px);
+      padding-right: clamp(0px, 2vw, 12px);
+    }
+
+    .tm-about__badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .tm-about__heading {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tm-about__eyebrow {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.52);
+    }
+
+    .tm-about__title {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      letter-spacing: 0.015em;
+    }
+
+    .tm-about__content {
+      background: rgba(9, 12, 16, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
+      padding: clamp(26px, 4vw, 44px);
+      backdrop-filter: blur(18px);
+    }
+
+    .tm-about__text {
+      display: grid;
+      gap: 18px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .tm-about__lead {
+      font-size: clamp(18px, 1.6vw, 20px);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .tm-about__text h3 {
+      margin: 0;
+      font-size: clamp(18px, 1.6vw, 22px);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .tm-about__separator {
+      font-size: 24px;
+      letter-spacing: 0.4em;
+      color: rgba(255, 255, 255, 0.2);
+      text-align: center;
+    }
+
+    .tm-about__list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .tm-about__list li {
+      color: var(--white);
+    }
+
+    @media (max-width: 1024px) {
+      .tm-about__container {
+        grid-template-columns: 1fr;
+      }
+
+      .tm-about__header {
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .tm-about__heading {
+        gap: 4px;
+      }
+
+      .tm-about__eyebrow {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tm-about__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .tm-about__badge {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        border-radius: 14px;
+      }
+
+      .tm-about__content {
+        padding: 22px;
+      }
+
+      .tm-about__separator {
+        font-size: 20px;
+        letter-spacing: 0.3em;
+      }
+
+      .tm-about__list {
+        gap: 8px;
+      }
+    }
+  </style>
+  <!-- TM-MARK: CSS END -->
+</section>
+<!-- TM-MARK: О НАС END -->
+
+<div class="tm-section-divider" aria-hidden="true"></div>
+
 <!-- TM-MARK: КАЛЬКУЛЯТОР START -->
 <section id="calc" class="tm-calc" aria-label="Калькулятор онлайн-заявки TireMasters">
   <!-- TM-MARK: HTML START -->
