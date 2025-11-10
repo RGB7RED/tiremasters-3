@@ -432,14 +432,12 @@ const HERO_FRAMES = [
 <div class="tm-section-divider" aria-hidden="true"></div>
 
 <!-- TM-MARK: О НАС START -->
-<section id="about" class="tm-about" aria-labelledby="about-title">
+<section id="about" class="tm-about tm-surface--services" aria-labelledby="about-title">
   <!-- TM-MARK: HTML START -->
   <!--
     Блок «Кто мы такие?» — общий рассказ о сервисе TireMasters.
     Контент внутри .tm-about__text можно редактировать вручную: замените или дополните текст по своему сценарию.
   -->
-
-  <div class="tm-about__texture" aria-hidden="true"></div>
 
   <div class="tm-about__container">
     <header class="tm-about__header">
@@ -490,25 +488,9 @@ const HERO_FRAMES = [
   <style>
     .tm-about {
       position: relative;
-      isolation: isolate;
-      background: linear-gradient(160deg, rgba(12, 14, 18, 0.94) 0%, rgba(9, 11, 15, 0.9) 45%, rgba(7, 9, 12, 0.96) 100%);
       padding: clamp(56px, 8vw, 88px) 0 clamp(60px, 9vw, 96px);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
       border-bottom: 1px solid rgba(0, 0, 0, 0.6);
       color: var(--white);
-      overflow: hidden;
-    }
-
-    .tm-about__texture {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(70% 120% at 10% 10%, rgba(44, 107, 211, 0.14) 0%, rgba(10, 12, 16, 0) 55%),
-        radial-gradient(90% 90% at 90% 20%, rgba(255, 197, 44, 0.16) 0%, rgba(10, 12, 16, 0) 60%),
-        url('photo 6,4.png') center/cover no-repeat;
-      opacity: 0.22;
-      mix-blend-mode: screen;
-      pointer-events: none;
     }
 
     .tm-about__container {
@@ -1210,15 +1192,12 @@ const HERO_FRAMES = [
 <div id="tow-anchor" class="tm-anchor" aria-hidden="true"></div>
 
 <!-- TM-MARK: ЭВАКУАТОР START -->
-<section id="tow" class="tm-tow" aria-label="Эвакуатор 24/7 в Санкт-Петербурге и ЛО">
+<section id="tow" class="tm-tow tm-surface--services" aria-label="Эвакуатор 24/7 в Санкт-Петербурге и ЛО">
   <!-- TM-MARK: HTML START -->
   <!-- Разумные допущения:
-       1) Фон можно заменить на собственное изображение, указав путь в свойстве background-image.
+       1) Фон наследуется от общего оформления tm-surface--services (см. блок «Услуги»).
        2) Кнопка "Вызвать эвакуатор" открывает отдельную форму (расположена под карточками).
        3) Иконки Telegram и WhatsApp оформлены в едином стиле с остальными секциями. -->
-
-  <div class="tm-tow__bg" aria-hidden="true"></div>
-  <div class="tm-tow__mask" aria-hidden="true"></div>
 
   <div class="tm-tow__container">
     <header class="tm-tow__head">
@@ -1285,9 +1264,6 @@ const HERO_FRAMES = [
   <!-- TM-MARK: CSS START -->
   <style>
   :root {
-    --tow-bg: #0B0D10;
-    --tow-mask-from: rgba(10,12,14,.85);
-    --tow-mask-to: rgba(10,12,14,.55);
     --tow-yellow: #FFC52C;
     --tow-muted: #A3AFBF;
     --tow-white: #EEF1F4;
@@ -1296,9 +1272,7 @@ const HERO_FRAMES = [
     --tow-t: 220ms;
   }
 
-  .tm-tow { position: relative; isolation: isolate; color: var(--tow-white); padding: 60px 0; }
-  .tm-tow__bg { position: absolute; inset: 0; background: url('photo.jpg') center/cover no-repeat; z-index: -2; }
-  .tm-tow__mask { position: absolute; inset: 0; background: linear-gradient(135deg, var(--tow-mask-from), var(--tow-mask-to)); z-index: -1; }
+  .tm-tow { position: relative; color: var(--tow-white); padding: 60px 0; }
   .tm-tow__container { width: min(92vw,1280px); margin-inline: auto; display: grid; gap: 28px; justify-items: center; text-align: center; }
 
   .tm-tow__title { font-size: clamp(26px,3vw,42px); font-weight: 800; margin: 0; }
@@ -2363,38 +2337,25 @@ const HERO_FRAMES = [
     html, body { margin: 0; padding: 0; background: #0E1114; color: var(--text);
       font: 400 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
 
-    /* TM-MARK: SERVICES_SECTION START */
-    .services-section {
+    .tm-surface--services {
       position: relative;
+      isolation: isolate;
       overflow: clip;
-      min-height: 100vh;
-      display: grid;
-      align-items: center;
-      isolation: isolate; /* чтобы оверлеи не конфликтовали */
       background:
         linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%);
-      scroll-margin-top: 88px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* TM-MARK: SERVICES_SECTION_PADDING START */
-    /* Добавлен нижний внутренний отступ секции, чтобы увеличить расстояние
-       между нижним рядом карточек и границей блока */
-    .services-section {
-      padding-block-end: 40px; /* одинаково на всех брейкпоинтах */
-    }
-    /* TM-MARK: SERVICES_SECTION_PADDING END */
-
-
     /* Верхний «шеврон» и нижний «протектор» как декоративные слои */
-    .services-section::before,
-    .services-section::after {
+    .tm-surface--services::before,
+    .tm-surface--services::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
     }
-    .services-section::before {
+
+    .tm-surface--services::before {
       z-index: -2;
       background:
         repeating-linear-gradient(135deg,
@@ -2429,13 +2390,33 @@ const HERO_FRAMES = [
       -webkit-mask-size: 100% 320px;
       -webkit-mask-repeat: repeat;
     }
-    .services-section::after {
+
+    .tm-surface--services::after {
       z-index: -1;
       background:
         linear-gradient(to bottom, rgba(10,12,14,.88), transparent 55%),
         radial-gradient(90% 100% at 50% 120%, rgba(255,255,255,.06), transparent 70%),
         linear-gradient(to top, rgba(8,9,11,.82), transparent 60%);
     }
+
+    /* TM-MARK: SERVICES_SECTION START */
+    .services-section {
+      position: relative;
+      overflow: clip;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      isolation: isolate; /* чтобы оверлеи не конфликтовали */
+      scroll-margin-top: 88px;
+    }
+
+    /* TM-MARK: SERVICES_SECTION_PADDING START */
+    /* Добавлен нижний внутренний отступ секции, чтобы увеличить расстояние
+       между нижним рядом карточек и границей блока */
+    .services-section {
+      padding-block-end: 40px; /* одинаково на всех брейкпоинтах */
+    }
+    /* TM-MARK: SERVICES_SECTION_PADDING END */
 
     .container {
       width: min(100% - 32px, var(--services-container-max));
@@ -2586,7 +2567,7 @@ const HERO_FRAMES = [
 </head>
 <body>
   <!-- TM-MARK: SERVICES_BLOCK START -->
-  <section id="services" class="services-section" aria-labelledby="services-title">
+  <section id="services" class="services-section tm-surface--services" aria-labelledby="services-title">
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">Наши услуги</div>
@@ -3685,7 +3666,7 @@ Assumptions (разумные допущения):
 2. Верстка Swiper-карусели выровнена горизонтально, карточки отображаются в одну строку.
 3. Добавлены стили для корректного горизонтального скролла и обрезки переполнения. -->
 
-<section class="cases-section" id="cases">
+<section class="cases-section tm-surface--services" id="cases">
   <div class="container">
     <h2 class="section-title">Кейсы выездного шиномонтажа</h2>
 
@@ -3777,7 +3758,7 @@ Assumptions (разумные допущения):
 <style>
 @import url('https://unpkg.com/swiper@10/swiper-bundle.min.css');
 
-.cases-section {background: rgba(18,20,24,0.9) url('photo 8.png') center/cover no-repeat;color:#fff;padding:80px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
+.cases-section {color:#fff;padding:80px 0;scroll-margin-top:88px;}
 .container {max-width:1280px;margin:0 auto;padding:0 16px;}
 .section-title {text-align:center;font-size:2rem;margin-bottom:40px;}
 
@@ -4193,14 +4174,8 @@ Assumptions (разумные допущения):
 <style>
   body{margin:0;background:#0b0d10;color:#e6eef5;font-family:Inter,ui-sans-serif,system-ui;-webkit-font-smoothing:antialiased;}
   .faq-section{
-  background-image: url("photo 11-11.png"),
-                    linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding:48px 16px;
   scroll-margin-top:88px;
-  border-top:1px solid rgba(255,255,255,0.08);
 }
   .container{max-width:1200px;margin:0 auto;}
   .faq-title{font-size:28px;font-weight:700;margin-bottom:12px;}
@@ -4215,7 +4190,7 @@ Assumptions (разумные допущения):
 </style>
 </head>
 <body>
-<section id="faq" class="faq-section">
+<section id="faq" class="faq-section tm-surface--services">
 <div class="container">
 <div class="faq-title">Вопросы и ответы</div>
 <div class="faq-sub">10 часто задаваемых вопросов о выездном шиномонтаже</div>
