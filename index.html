@@ -13,6 +13,7 @@
       --accent-yellow: #FFC107;
       --focus: rgba(41,182,246,0.6);
       --anim-mid: 220ms;
+      --anim-long: 320ms;
       --header-height: 64px;
       --header-offset: var(--header-height);
     }
@@ -1853,10 +1854,26 @@ const HERO_FRAMES = [
       line-height: 1.6;
       display: grid;
       gap: 14px;
+      overflow: hidden;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: height var(--anim-long) ease, opacity var(--anim-mid) ease;
+    }
+
+    .tm-electrician-service.is-open .tm-electrician-service__body {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .tm-electrician-service__body p {
       margin: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tm-electrician-service__body {
+        transition: none;
+      }
     }
 
     .tm-electrician-service__cta {
@@ -2106,18 +2123,84 @@ const HERO_FRAMES = [
   <script>
     (function electricianServicesToggle() {
       const services = document.querySelectorAll('.tm-electrician-service');
+      if (!services.length) return;
+
+      const reduceMotion = typeof window.matchMedia === 'function'
+        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const MORE_LABEL = 'Подробнее';
+      const LESS_LABEL = 'Свернуть';
+
       services.forEach((service) => {
         const toggle = service.querySelector('.tm-electrician-service__toggle');
         const body = service.querySelector('.tm-electrician-service__body');
         if (!toggle || !body) return;
 
+        service.classList.remove('is-open');
+        body.style.height = '0px';
+        body.hidden = true;
+        body.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = MORE_LABEL;
+
+        const collapse = () => {
+          body.setAttribute('aria-hidden', 'true');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.textContent = MORE_LABEL;
+
+          if (reduceMotion) {
+            service.classList.remove('is-open');
+            body.style.height = '0px';
+            body.hidden = true;
+            return;
+          }
+
+          const startHeight = body.scrollHeight;
+          body.style.height = `${startHeight}px`;
+          body.getBoundingClientRect();
+          service.classList.remove('is-open');
+          body.style.height = '0px';
+        };
+
+        const expand = () => {
+          body.hidden = false;
+          body.setAttribute('aria-hidden', 'false');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.textContent = LESS_LABEL;
+
+          if (reduceMotion) {
+            service.classList.add('is-open');
+            body.style.height = 'auto';
+            return;
+          }
+
+          const targetHeight = body.scrollHeight;
+          body.style.height = '0px';
+          service.classList.add('is-open');
+          body.getBoundingClientRect();
+          body.style.height = `${targetHeight}px`;
+        };
+
         toggle.addEventListener('click', () => {
           const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-          toggle.setAttribute('aria-expanded', String(!isExpanded));
-          body.hidden = isExpanded;
-          service.classList.toggle('is-open', !isExpanded);
-          toggle.textContent = isExpanded ? 'Подробнее' : 'Свернуть';
+          if (isExpanded) {
+            collapse();
+          } else {
+            expand();
+          }
         });
+
+        if (!reduceMotion) {
+          body.addEventListener('transitionend', (event) => {
+            if (event.propertyName !== 'height') return;
+
+            if (toggle.getAttribute('aria-expanded') === 'true') {
+              body.style.height = 'auto';
+            } else {
+              body.hidden = true;
+              body.style.height = '0px';
+            }
+          });
+        }
       });
     })();
   </script>
