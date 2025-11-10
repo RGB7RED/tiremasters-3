@@ -1293,14 +1293,168 @@ const HERO_FRAMES = [
 
     <div class="tm-electrician__grid">
       <section class="tm-electrician__services" aria-labelledby="electrician-services-title">
-        <h3 id="electrician-services-title">Что сделаем на месте</h3>
-        <ul>
-          <li>Компьютерная диагностика и чтение ошибок</li>
-          <li>Замена и подбор аккумулятора</li>
-          <li>Запуск двигателя на месте</li>
-          <li>Ремонт и восстановление проводки</li>
-          <li>Настройка электрооборудования</li>
-        </ul>
+        <h3 id="electrician-services-title">Услуги автоэлектрика</h3>
+        <div class="tm-electrician__services-list">
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Компьютерная диагностика</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-1">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-1" hidden>
+              <p>Современная диагностика позволяет точно определить неисправности электрооборудования без разбора. Наши специалисты используют профессиональные сканеры, совместимые со всеми марками авто. Диагностика занимает не более 20 минут прямо на месте. Это помогает сэкономить на ненужных заменах деталей. После проверки мастер объяснит проблему простыми словами и предложит оптимальное решение.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Запуск двигателя</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-2">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-2" hidden>
+              <p>Если машина не заводится — не паникуйте. Мастер приедет с профессиональным оборудованием и безопасно запустит двигатель. Мы исключим риск повреждения электроники и аккумулятора. Услуга доступна круглосуточно, в любую погоду. Запуск осуществляется без ущерба для электроцепей автомобиля.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Диагностика двигателя</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-3">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-3" hidden>
+              <p>Позволяет выявить сбои в работе системы зажигания, датчиков и топливной подачи. Мы используем цифровые приборы, чтобы точно определить причину нестабильной работы мотора. Результаты диагностики выдаются сразу. После осмотра вы получите чёткие рекомендации по ремонту. Это помогает избежать дорогостоящих поломок в будущем.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Замена аккумулятора</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-4">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-4" hidden>
+              <p>Если ваш аккумулятор разрядился или вышел из строя, мы приедем и заменим его на новый. Подберём подходящий вариант под конкретную модель авто. Установка займёт не более 15 минут. Все действия проводятся безопасно и с гарантией. Старый аккумулятор утилизируем бесплатно.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Грузовой автоэлектрик</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-5">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-5" hidden>
+              <p>Работаем не только с легковыми, но и с грузовыми автомобилями. Выезжаем на место поломки и проводим диагностику электроцепей грузовиков и спецтехники. Устраняем проблемы с генераторами, стартером и освещением. Все мастера имеют опыт работы с коммерческим транспортом. Поможем быстро вернуть машину в рейс.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Прикурить автомобиль</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-6">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-6" hidden>
+              <p>Безопасно прикурим авто с профессиональным оборудованием. Исключаем любые риски для электроники и проводки. Приезжаем в течение 20–30 минут. Подходит для всех типов машин, включая гибриды. Услуга доступна 24/7 по СПБ и области.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Скрутить пробег</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-7">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-7" hidden>
+              <p>Мы производим корректировку пробега для приборных панелей после замены панели или блока управления. Работаем аккуратно и без вмешательства в электронные системы двигателя. Используем сертифицированное оборудование. Процедура занимает до 30 минут. Гарантируем полную конфиденциальность.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Отключение сигнализации</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-8">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-8" hidden>
+              <p>Если сигнализация блокирует запуск или срабатывает без причины, мастер оперативно устранит неисправность. Мы знаем особенности всех популярных систем. При необходимости демонтируем неисправную сигнализацию и установим новую. Всё выполняется аккуратно, без повреждения проводки. Ваша машина снова будет под контролем.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Изготовление ключей</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-9">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-9" hidden>
+              <p>Изготавливаем и прописываем новые ключи прямо на месте. Работаем с ключами с чипом и без. При необходимости можем восстановить утерянный ключ по VIN. Используем профессиональное оборудование и оригинальные заготовки. Время изготовления — от 15 до 40 минут.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Ремонт проводки</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-10">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-10" hidden>
+              <p>Проводим восстановление или замену повреждённой электропроводки. Используем оригинальные разъёмы и качественные материалы. Работаем с любыми типами авто — от старых до современных. После ремонта проводка будет как с завода. Все работы сопровождаются гарантией.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Ремонт генераторов</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-11">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-11" hidden>
+              <p>Устраняем любые неисправности генератора — щётки, подшипники, диодный мост. Проверяем напряжение, заменяем неисправные элементы. Работаем прямо на месте, без снятия узла. После ремонта проводим проверку заряда. Машина снова будет стабильно заводиться.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Ремонт стартеров</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-12">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-12" hidden>
+              <p>Если стартер не крутит или издаёт щелчки — вызовите мастера. Мы разберёмся с проблемой и устраним её быстро. Возможен ремонт без замены узла. Используем проверенные детали и даём гарантию на работу. После ремонта стартер будет работать мягко и уверенно.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Отключение иммобилайзера</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-13">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-13" hidden>
+              <p>При поломке или утере ключей иммобилайзер может заблокировать запуск. Мы отключим его корректно, без ошибок в ЭБУ. После процедуры автомобиль снова запускается с любого ключа. Всё выполняется с сохранением безопасности и без вмешательства в другие системы. Услуга помогает сэкономить время и деньги.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Перепрошивка иммобилайзера</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-14">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-14" hidden>
+              <p>Обновим или восстановим прошивку иммобилайзера, если система даёт сбои. После этого ключи снова корректно распознаются. Работаем с современными моделями авто. Процесс занимает около часа. Вы получите полностью восстановленную систему безопасности.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Ремонт сигнализации</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-15">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-15" hidden>
+              <p>Исправим ложные срабатывания, ошибки подключения и неисправности датчиков. Мастер проверит каждый элемент и устранит проблему. Возможен ремонт с заменой модулей. После обслуживания сигнализация снова работает надёжно. Даём гарантию на все виды работ.</p>
+            </div>
+          </article>
+
+          <article class="tm-electrician-service">
+            <div class="tm-electrician-service__header">
+              <h4 class="tm-electrician-service__title">Автосервис на выезд</h4>
+              <button class="tm-electrician-service__toggle" type="button" aria-expanded="false" aria-controls="electrician-service-16">Подробнее</button>
+            </div>
+            <div class="tm-electrician-service__body" id="electrician-service-16" hidden>
+              <p>Мы предоставляем полный спектр услуг автоэлектрика прямо на дороге. От диагностики до ремонта любой сложности. Все инструменты и оборудование всегда при мастере. Вы экономите время и получаете качественный результат. Работы выполняются в тот же день.</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="tm-electrician__benefits" aria-labelledby="electrician-benefits-title">
@@ -1496,18 +1650,88 @@ const HERO_FRAMES = [
       gap: 12px;
     }
 
-    .tm-electrician__services ul,
-    .tm-electrician__benefits ul {
-      margin: 0;
-      padding-left: 20px;
+    .tm-electrician__services-list {
       display: grid;
-      gap: 8px;
+      gap: 12px;
+    }
+
+    .tm-electrician-service {
+      background: var(--electrician-surface-alt);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: calc(var(--electrician-radius) - 4px);
+      padding: 16px 18px;
+      display: grid;
+      gap: 12px;
+      transition: background var(--anim-mid) ease, border-color var(--anim-mid) ease, box-shadow var(--anim-mid) ease;
+    }
+
+    .tm-electrician-service.is-open {
+      background: rgba(18, 22, 28, 0.85);
+      border-color: rgba(255, 193, 7, 0.4);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    .tm-electrician-service__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .tm-electrician-service__title {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--electrician-text);
+    }
+
+    .tm-electrician-service__toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--electrician-accent);
+      color: #111418;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: transform var(--anim-mid) ease, box-shadow var(--anim-mid) ease, background var(--anim-mid) ease;
+    }
+
+    .tm-electrician-service__toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(255, 193, 7, 0.35);
+    }
+
+    .tm-electrician-service__toggle:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .tm-electrician-service.is-open .tm-electrician-service__toggle {
+      background: #ffd54f;
+      box-shadow: 0 10px 28px rgba(255, 193, 7, 0.32);
+    }
+
+    .tm-electrician-service__body {
       color: var(--electrician-muted);
+      line-height: 1.6;
+    }
+
+    .tm-electrician-service__body p {
+      margin: 0;
     }
 
     .tm-electrician__benefits ul {
-      list-style: none;
+      margin: 0;
       padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--electrician-muted);
     }
 
     .tm-electrician__benefits li {
@@ -1589,6 +1813,21 @@ const HERO_FRAMES = [
     .tm-electrician__testimonial-author {
       font-style: normal;
       color: var(--electrician-muted);
+    }
+
+    @media (max-width: 640px) {
+      .tm-electrician-service {
+        padding: 14px 16px;
+      }
+
+      .tm-electrician-service__header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tm-electrician-service__toggle {
+        width: 100%;
+      }
     }
 
     .tm-electrician__form {
@@ -1696,6 +1935,25 @@ const HERO_FRAMES = [
       }
     }
   </style>
+
+  <script>
+    (function electricianServicesToggle() {
+      const services = document.querySelectorAll('.tm-electrician-service');
+      services.forEach((service) => {
+        const toggle = service.querySelector('.tm-electrician-service__toggle');
+        const body = service.querySelector('.tm-electrician-service__body');
+        if (!toggle || !body) return;
+
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          body.hidden = isExpanded;
+          service.classList.toggle('is-open', !isExpanded);
+          toggle.textContent = isExpanded ? 'Подробнее' : 'Свернуть';
+        });
+      });
+    })();
+  </script>
 
   <script>
     (function electricianFormInit() {
