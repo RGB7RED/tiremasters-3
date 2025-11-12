@@ -654,7 +654,7 @@ const HERO_FRAMES = [
 <div class="tm-section-divider" aria-hidden="true"></div>
 
 <!-- TM-MARK: КАЛЬКУЛЯТОР START -->
-<section id="calc" class="tm-calc" aria-label="Калькулятор онлайн-заявки TireMasters">
+<section id="calc" class="tm-calc tm-surface--services tm-surface--services--yellow" aria-label="Калькулятор онлайн-заявки TireMasters">
   <!-- TM-MARK: HTML START -->
   <!--
     Разумные допущения:
@@ -946,9 +946,9 @@ const HERO_FRAMES = [
 .tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
 
 /* Фон и маска */
-.tm-calc__bg{position:absolute;inset:0;background:var(--bg-1) center/cover no-repeat;filter:saturate(.9) contrast(.95);}
+.tm-calc__bg{position:absolute;inset:0;background:var(--bg-1) center/cover no-repeat;filter:saturate(.9) contrast(.95);z-index:-3;}
 .tm-calc__bg{background-image:var(--calc-bg-url)}
-.tm-calc__mask{position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,12,14,.72) 0%, rgba(10,12,14,.58) 40%, rgba(10,12,14,.42) 100%)}
+.tm-calc__mask{position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,12,14,.72) 0%, rgba(10,12,14,.58) 40%, rgba(10,12,14,.42) 100%);z-index:-1}
 
 /* Контейнер: единая колонка на всю ширину до 1280px */
 .tm-calc__container{width:var(--container);margin-inline:auto;display:flex;flex-direction:column;gap:24px;align-items:stretch}
@@ -1353,7 +1353,7 @@ const HERO_FRAMES = [
 <div id="electrician-anchor" class="tm-anchor" aria-hidden="true"></div>
 
 <!-- TM-MARK: ELECTRICIAN START -->
-<section id="out-electrician" class="tm-electrician" aria-labelledby="electrician-title">
+<section id="out-electrician" class="tm-electrician tm-surface--services tm-surface--services--yellow" aria-labelledby="electrician-title">
   <!-- Фото/иконки: требуется изображение мастера у автомобиля или иконка «кабель с молнией» на тёмном фоне. -->
   <!-- Assumptions: если фирменного фото нет, использовать стоковую иконку автомобиля с гаечным ключом. -->
 
@@ -1729,6 +1729,7 @@ const HERO_FRAMES = [
         url('photo 6,5.png') center/cover no-repeat;
       opacity: 0.35;
       pointer-events: none;
+      z-index: -3;
     }
 
     .tm-electrician__container {
@@ -2409,6 +2410,10 @@ const HERO_FRAMES = [
         linear-gradient(to top, rgba(8,9,11,.82), transparent 60%);
     }
 
+    .tm-surface--services--yellow {
+      --services-line-color: rgba(255, 193, 7, .48);
+    }
+
     /* TM-MARK: SERVICES_SECTION START */
     .services-section {
       position: relative;
@@ -2772,7 +2777,7 @@ const HERO_FRAMES = [
 -->
 
 <!-- TM-MARK: HOW-IT-WORKS HTML START -->
-<section id="how" class="howit section" aria-labelledby="howit-title">
+<section id="how" class="howit section tm-surface--services tm-surface--services--yellow" aria-labelledby="howit-title">
   <div class="howit__bg" aria-hidden="true">
     <div class="howit__bg-layer"></div>
   </div>
@@ -2862,7 +2867,7 @@ const HERO_FRAMES = [
 .howit{color:var(--txt-0); background:var(--bg-0); scroll-margin-top:88px; border-top:1px solid rgba(255,255,255,.08);} .howit .container{width:var(--container); margin:0 auto; padding:64px 0;}
 
 /* Фон-слайдшоу */
-.howit__bg{position:absolute; inset:0; overflow:hidden; z-index:-2; background:var(--bg-0);} 
+.howit__bg{position:absolute; inset:0; overflow:hidden; z-index:-3; background:var(--bg-0);}
 .howit__bg-layer{position:absolute; inset:0;} 
 .howit__bg-layer img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity var(--fade) ease;} 
 .howit__bg-layer img.is-active{opacity:1;} 
@@ -3650,7 +3655,7 @@ Assumptions (разумные допущения):
   </style>
 </head>
 <body>
-  <section id="reviews" class="reviews">
+  <section id="reviews" class="reviews tm-surface--services tm-surface--services--yellow">
     <h2 class="reviews__title">Отзывы клиентов</h2>
     <div class="reviews__grid">
       <div class="review-card">
@@ -3989,7 +3994,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <div class="tm-section-divider" aria-hidden="true"></div>
 
 <!-- TM-MARK: КОНТАКТЫ START -->
-<section class="contacts-section" id="contacts">
+<section class="contacts-section tm-surface--services tm-surface--services--yellow" id="contacts">
   <div class="container" data-animate="fade-up">
     <div class="section-divider"></div>
 
