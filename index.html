@@ -964,15 +964,15 @@ const HERO_FRAMES = [
 
 /* Сетка услуг (иконки-карточки) */
 .tm-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.tm-service-card{display:grid;grid-template-columns:auto 1fr;grid-auto-rows:auto;gap:4px 10px;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t);min-height:72px}
+.tm-service-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:16px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t);min-height:140px;text-align:center}
 .tm-service-card input{display:none}
-.tm-service-card .icon{grid-row:1/span 2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow);}
+.tm-service-card .icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow);}
 .tm-service-card .icon--electric{border-color:#4ec8ff;background:rgba(78,200,255,.08);color:#4ec8ff}
 .tm-service-card .icon--tire{border-color:var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow)}
-.tm-service-card svg{width:18px;height:18px}
+.tm-service-card svg{width:22px;height:22px}
 .tm-service-card svg *{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.tm-service-card .title{font-weight:700;font-size:14px;line-height:1.25}
-.tm-service-card .hint{grid-column:2;font-size:11px;color:var(--muted)}
+.tm-service-card .title{font-weight:700;font-size:14px;line-height:1.3}
+.tm-service-card .hint{font-size:11px;color:var(--muted)}
 .tm-service-card:has(input:checked){border-color:var(--yellow);background:rgba(255,197,44,.08)}
 .tm-service-card:hover{transform:translateY(-1px)}
 
