@@ -225,13 +225,6 @@
     4) Верхний «шеврон» и нижний «протектор» реализованы как фоновые SVG-паттерны.
   -->
 
-  <!-- Фон: слайд-шоу (2 слоя для кросс-фейда) + радиальный спот для читабельности текста -->
-  <div class="tm-hero__bg" aria-hidden="true">
-    <div class="tm-hero__bg-layer is-top"></div>
-    <div class="tm-hero__bg-layer is-bottom"></div>
-    <div class="tm-hero__spot"></div>
-  </div>
-
   <div class="tm-hero__container">
     <!-- Колонка 1: текст + CTA + мессенджеры -->
     <div class="tm-hero__col tm-hero__col--left">
@@ -304,14 +297,25 @@
   --container: min(92vw, 1280px);
   --radius: 14px; --shadow: 0 10px 30px rgba(0,0,0,.35);
   --t: 220ms;
+  --hero-stripe-red: rgba(255, 69, 69, .42);
+  --hero-stripe-yellow: rgba(255, 197, 44, .42);
+  --hero-stripe-width: 140px;
 }
-.tm-hero{position:relative;min-height:80vh;isolation:isolate;display:grid;place-items:stretch;background:var(--bg-1);scroll-margin-top:calc(var(--header-offset) + 24px);}
-.tm-hero__bg{position:absolute;inset:0;overflow:hidden;z-index:-1;}
-.tm-hero__bg-layer{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;transition:opacity 800ms ease;}
-.tm-hero__bg-layer.is-top{opacity:1}
-.tm-hero__bg-layer.is-bottom{opacity:0}
-/* радиальный спот под текст */
-.tm-hero__spot{position:absolute;inset:0;background:radial-gradient(60% 60% at 30% 40%, rgba(10,10,12,.55) 45%, rgba(10,10,12,.4) 60%, rgba(10,10,12,.1) 100%)}
+.tm-hero{position:relative;min-height:80vh;isolation:isolate;display:grid;place-items:stretch;scroll-margin-top:calc(var(--header-offset) + 24px);background:
+    linear-gradient(125deg, rgba(8, 10, 12, .92) 0%, rgba(8, 10, 12, .76) 55%, rgba(8, 10, 12, .82) 100%);
+}
+.tm-hero::before,.tm-hero::after{content:"";position:absolute;inset:0;pointer-events:none;}
+.tm-hero::before{z-index:-2;background:
+    repeating-linear-gradient(135deg,
+      var(--hero-stripe-red) 0 calc(var(--hero-stripe-width)),
+      var(--hero-stripe-yellow) calc(var(--hero-stripe-width)) calc(var(--hero-stripe-width) * 2));
+  opacity:.85;
+  mix-blend-mode:screen;
+}
+.tm-hero::after{z-index:-1;background:
+    radial-gradient(65% 65% at 28% 40%, rgba(8, 9, 11, .88) 0%, rgba(8, 9, 11, .7) 48%, rgba(8, 9, 11, .46) 70%, rgba(8, 9, 11, .3) 100%),
+    linear-gradient(180deg, rgba(5, 6, 7, .65) 0%, rgba(5, 6, 7, .3) 55%, rgba(5, 6, 7, .76) 100%);
+}
 
 .tm-hero__container{width:var(--container);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;padding:48px 0;align-items:center;}
 .tm-hero__col{color:var(--white);}
@@ -368,63 +372,10 @@
 
   <script>
 // TM-MARK: JS START
-// 1) Поменяйте пути на свои реальные файлы (12 штук). Для каждой фотографии задана индивидуальная длительность показа (hold: 4000 мс).
-const HERO_FRAMES = [
-  { src: "photo 1.png",  hold: 4000 }, // 1. Ночной город, мокрый асфальт и огни фар
-  { src: "photo 2.png",  hold: 4000 }, // 2. Эстакада КАД ночью, световые следы
-  { src: "photo 3.png",  hold: 4000 }, // 3. Крупный план шины на мокром асфальте
-  { src: "photo 4.png",  hold: 4000 }, // 4. Мастер работает на трассе ночью
-  { src: "photo 5.png",  hold: 4000 }, // 5. Машина с аварийкой на обочине
-  { src: "photo 6.png",  hold: 4000 }, // 6. Невский проспект, огни
-  { src: "photo 7.png",  hold: 4000 }, // 7. Рука с гаечным ключом
-  { src: "photo 8.png",  hold: 4000 }, // 8. Машина на домкрате
-  { src: "photo 9.png",  hold: 4000 }, // 9. Инструменты крупным планом
-  { src: "photo 10.png", hold: 4000 }, // 10. Эвакуатор на ночной трассе
-  { src: "photo 11.png", hold: 4000 }, // 11. Парковка ТЦ ночью
-  { src: "photo 12.png", hold: 4000 }  // 12. Логотип на форме мастера (если есть)
-];
-
-(function heroSlideshow(){
-  const hero   = document.querySelector('.tm-hero');
-  const top    = document.querySelector('.tm-hero__bg-layer.is-top');
-  const bottom = document.querySelector('.tm-hero__bg-layer.is-bottom');
-  if(!hero || !top || !bottom || !HERO_FRAMES.length) return;
-
-  // Монтируем класс для анимаций появления контента
-  requestAnimationFrame(()=> hero.classList.add('is-mounted'));
-
-  // Плавный кросс-фейд должен совпадать с transition в CSS
-  const XFADE = 800; // ms — см. .tm-hero__bg-layer { transition: opacity 800ms ease; }
-
-  // Предзагрузка изображений
-  HERO_FRAMES.forEach(f => { const i = new Image(); i.src = f.src; });
-
-  // Инициализация: показываем первый кадр, следующий — под ним
-  let index = 0;
-  top.style.backgroundImage    = `url('${HERO_FRAMES[0].src}')`;
-  bottom.style.backgroundImage = `url('${HERO_FRAMES[1 % HERO_FRAMES.length].src}')`;
-
-  function queueNext(){
-    const cur = HERO_FRAMES[index];
-    // Держим текущий кадр ровно его hold (по задаче — 4000 мс для всех)
-    setTimeout(() => {
-      const next = (index + 1) % HERO_FRAMES.length;
-      // Начинаем кросс-фейд
-      top.style.opacity = 0;
-      // После завершения фейда меняем изображения и возвращаем непрозрачность
-      setTimeout(() => {
-        // Подложка получает предыдущий кадр (на всякий случай при следующем фейде)
-        bottom.style.backgroundImage = `url('${HERO_FRAMES[index].src}')`;
-        // Верхний слой — следующий кадр
-        top.style.backgroundImage = `url('${HERO_FRAMES[next].src}')`;
-        top.style.opacity = 1;
-        index = next;
-        queueNext(); // планируем следующий показ по его hold
-      }, XFADE);
-    }, cur.hold);
-  }
-
-  queueNext();
+(function heroMount(){
+  const hero = document.querySelector('.tm-hero');
+  if(!hero) return;
+  requestAnimationFrame(() => hero.classList.add('is-mounted'));
 })();
 // TM-MARK: JS END
   </script>
