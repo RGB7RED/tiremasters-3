@@ -406,8 +406,8 @@
     <header class="tm-about__header">
       <span class="tm-about__badge" aria-hidden="true">🧰</span>
       <div class="tm-about__heading">
-        <p class="tm-about__eyebrow">TireMasters</p>
-        <h2 class="tm-about__title" id="about-title">Кто мы такие?</h2>
+        <p class="tm-about__eyebrow" aria-hidden="true">TireMasters</p>
+        <h2 class="tm-about__title" id="about-title"><span class="tm-about__title-brand">TireMasters</span> — кто мы такие?</h2>
       </div>
     </header>
 
@@ -504,10 +504,17 @@
 
     .tm-about__title {
       margin: 0;
-      font-size: clamp(34px, 4.5vw, 56px);
+      font-size: clamp(38px, 5.4vw, 68px);
       font-weight: 800;
       letter-spacing: 0.01em;
       line-height: 1.05;
+      text-wrap: balance;
+    }
+
+    .tm-about__title-brand {
+      display: inline-block;
+      color: var(--accent-yellow);
+      text-shadow: 0 16px 36px rgba(255, 193, 7, 0.3);
     }
 
     .tm-about__content {
