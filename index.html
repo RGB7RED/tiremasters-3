@@ -159,6 +159,7 @@
       <li><a href="#hero">Главная</a></li>
       <li><a href="#about">Кто мы такие?</a></li>
       <li><a href="#calc">Калькулятор</a></li>
+      <li><a href="#promo">Спец предложение</a></li>
       <li><a href="#tow-anchor">Эвакуатор</a></li>
       <li><a href="#electrician-anchor">Автоэлектрик</a></li>
       <li><a href="#services">Услуги</a></li>
@@ -167,7 +168,6 @@
       <li><a href="#cases">Кейсы</a></li>
       <li><a href="#reviews">Отзывы</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#promo">Акции</a></li>
       <li><a href="#contacts">Контакты</a></li>
     </ul>
   </aside>
@@ -1144,6 +1144,146 @@
   <!-- TM-MARK: JS END -->
 </section>
 <!-- TM-MARK: КАЛЬКУЛЯТОР END -->
+
+<div class="tm-section-divider" aria-hidden="true"></div>
+
+<!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ START -->
+<section class="promo-section" id="promo">
+  <div class="promo-container">
+    <div class="promo-card">
+      <div class="promo-content">
+        <h2 class="promo-title">СпецПредложение</h2>
+        <p class="promo-subtitle">
+          Промокод для тех, кто узнал о <strong>TireMasters</strong> через сайт — <span class="promo-percent">15%</span> скидка на выездной шиномонтаж
+        </p>
+        <div class="promo-metrics">
+          <div class="metric-item"><span class="metric-value">24/7</span><span class="metric-label">Работаем круглосуточно</span></div>
+          <div class="metric-item"><span class="metric-value">25 мин</span><span class="metric-label">Среднее ETA</span></div>
+          <div class="metric-item"><span class="metric-value">1 500+</span><span class="metric-label">Выполненных вызовов</span></div>
+        </div>
+        <p class="promo-description">Успей воспользоваться нашим спецпредложением до конца месяца. Скидка действует на все услуги, включая балансировку, ремонт проколов и сезонную замену шин. При заказе через сайт — приоритетная очередь и бесплатный выезд в черте СПб.</p>
+        <button class="promo-btn" id="promoBtn">Промокод</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-modal" id="promoModal" aria-hidden="true">
+    <div class="promo-modal-overlay"></div>
+    <div class="promo-modal-content" role="dialog" aria-modal="true">
+      <button class="promo-modal-close" id="promoClose" aria-label="Закрыть">×</button>
+      <h3>Ваш промокод</h3>
+      <div class="promo-code" id="promoCode">M7ZOND</div>
+      <button class="copy-btn" id="copyBtn">Скопировать</button>
+      <p class="promo-note">Промокод действует при оформлении заявки через калькулятор.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+/* ===== СЕКЦИЯ ===== */
+.promo-section {
+  position: relative;
+  background: radial-gradient(ellipse at top right, #1b1d20 0%, #0f1114 100%);
+  background-image: url('assets/img/promo-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #e8eaed;
+  padding: 140px 16px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: 88px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.promo-container { max-width: 1200px; margin: 0 auto; }
+
+.promo-card {
+  background: rgba(18, 20, 24, 0.9);
+  border: 1px solid rgba(255, 69, 69, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba(255, 69, 69, 0.05);
+  padding: 64px 48px;
+  text-align: center;
+  transition: all 0.25s ease;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.promo-card:hover { box-shadow: 0 0 32px rgba(255, 69, 69, 0.3); transform: translateY(-4px); }
+
+.promo-title { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 2.5rem; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+.promo-subtitle { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.25rem; color: #b6bbc3; margin-bottom: 40px; line-height: 1.6; }
+
+.promo-metrics { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+.metric-item { text-align: center; }
+.metric-value { display: block; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.75rem; color: #ffc107; margin-bottom: 4px; }
+.metric-label { color: #b6bbc3; font-size: 0.95rem; }
+
+.promo-description { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1rem; line-height: 1.7; color: #e8eaed; margin-bottom: 40px; }
+
+.promo-btn { background: #ff4545; border: none; border-radius: 8px; color: #fff; padding: 16px 36px; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.2s ease; }
+.promo-btn:hover { background: #ff5e5e; box-shadow: 0 0 16px rgba(255, 69, 69, 0.5); }
+
+/* ===== МОДАЛ ===== */
+.promo-modal { display: none; position: fixed; inset: 0; z-index: 1000; justify-content: center; align-items: center; }
+.promo-modal.active { display: flex; }
+.promo-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+.promo-modal-content { position: relative; background: #121418; border: 1px solid #ff4545; border-radius: 16px; padding: 32px 24px; text-align: center; z-index: 1001; max-width: 340px; width: 90%; box-shadow: 0 0 24px rgba(255, 69, 69, 0.3); }
+.promo-modal-content h3 { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #ffffff; margin-bottom: 16px; }
+.promo-code { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.5rem; color: #ff4545; background: rgba(255, 69, 69, 0.1); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; user-select: all; }
+.copy-btn { background: #ff4545; border: none; border-radius: 6px; color: #fff; padding: 10px 20px; cursor: pointer; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 500; transition: 0.2s; }
+.copy-btn:hover { background: #ff5e5e; }
+.promo-note { color: #b6bbc3; font-size: 0.875rem; margin-top: 12px; }
+.promo-modal-close { position: absolute; top: 8px; right: 12px; background: none; border: none; color: #e8eaed; font-size: 1.5rem; cursor: pointer; }
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px){
+  .promo-card{ padding: 32px 20px; }
+  .promo-title{ font-size: 1.8rem; }
+  .promo-subtitle{ font-size: 1.05rem; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const promoBtn = document.getElementById("promoBtn");
+  const promoModal = document.getElementById("promoModal");
+  const promoClose = document.getElementById("promoClose");
+  const copyBtn = document.getElementById("copyBtn");
+  const promoCode = document.getElementById("promoCode");
+
+  function openModal(){
+    promoModal.classList.add("active");
+    promoModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    promoModal.classList.remove("active");
+    promoModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = '';
+  }
+
+  promoBtn.addEventListener("click", openModal);
+  promoClose.addEventListener("click", closeModal);
+
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(promoCode.textContent);
+    copyBtn.textContent = "Скопировано!";
+    setTimeout(() => (copyBtn.textContent = "Скопировать"), 2000);
+  });
+
+  promoModal.addEventListener("click", (e) => {
+    if (e.target.classList.contains('promo-modal') || e.target.classList.contains('promo-modal-overlay')) {
+      closeModal();
+    }
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+});
+</script>
+<!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ END -->
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
@@ -3820,143 +3960,7 @@ body {
 }
 </style>
 
-<!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ START -->
-<section class="promo-section" id="promo">
-  <div class="promo-container">
-    <div class="promo-card">
-      <div class="promo-content">
-        <h2 class="promo-title">СпецПредложение</h2>
-        <p class="promo-subtitle">
-          Промокод для тех, кто узнал о <strong>TireMasters</strong> через сайт — <span class="promo-percent">15%</span> скидка на выездной шиномонтаж
-        </p>
-        <div class="promo-metrics">
-          <div class="metric-item"><span class="metric-value">24/7</span><span class="metric-label">Работаем круглосуточно</span></div>
-          <div class="metric-item"><span class="metric-value">25 мин</span><span class="metric-label">Среднее ETA</span></div>
-          <div class="metric-item"><span class="metric-value">1 500+</span><span class="metric-label">Выполненных вызовов</span></div>
-        </div>
-        <p class="promo-description">Успей воспользоваться нашим спецпредложением до конца месяца. Скидка действует на все услуги, включая балансировку, ремонт проколов и сезонную замену шин. При заказе через сайт — приоритетная очередь и бесплатный выезд в черте СПб.</p>
-        <button class="promo-btn" id="promoBtn">Промокод</button>
-      </div>
-    </div>
-  </div>
 
-  <div class="promo-modal" id="promoModal" aria-hidden="true">
-    <div class="promo-modal-overlay"></div>
-    <div class="promo-modal-content" role="dialog" aria-modal="true">
-      <button class="promo-modal-close" id="promoClose" aria-label="Закрыть">×</button>
-      <h3>Ваш промокод</h3>
-      <div class="promo-code" id="promoCode">M7ZOND</div>
-      <button class="copy-btn" id="copyBtn">Скопировать</button>
-      <p class="promo-note">Промокод действует при оформлении заявки через калькулятор.</p>
-    </div>
-  </div>
-</section>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-/* ===== СЕКЦИЯ ===== */
-.promo-section {
-  position: relative;
-  background: radial-gradient(ellipse at top right, #1b1d20 0%, #0f1114 100%);
-  background-image: url('assets/img/promo-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #e8eaed;
-  padding: 140px 16px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  scroll-margin-top: 88px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.promo-container { max-width: 1200px; margin: 0 auto; }
-
-.promo-card {
-  background: rgba(18, 20, 24, 0.9);
-  border: 1px solid rgba(255, 69, 69, 0.25);
-  border-radius: 16px;
-  box-shadow: 0 0 24px rgba(255, 69, 69, 0.05);
-  padding: 64px 48px;
-  text-align: center;
-  transition: all 0.25s ease;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.promo-card:hover { box-shadow: 0 0 32px rgba(255, 69, 69, 0.3); transform: translateY(-4px); }
-
-.promo-title { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 2.5rem; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
-.promo-subtitle { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.25rem; color: #b6bbc3; margin-bottom: 40px; line-height: 1.6; }
-
-.promo-metrics { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
-.metric-item { text-align: center; }
-.metric-value { display: block; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.75rem; color: #ffc107; margin-bottom: 4px; }
-.metric-label { color: #b6bbc3; font-size: 0.95rem; }
-
-.promo-description { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1rem; line-height: 1.7; color: #e8eaed; margin-bottom: 40px; }
-
-.promo-btn { background: #ff4545; border: none; border-radius: 8px; color: #fff; padding: 16px 36px; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 600; font-size: 1.1rem; cursor: pointer; transition: all 0.2s ease; }
-.promo-btn:hover { background: #ff5e5e; box-shadow: 0 0 16px rgba(255, 69, 69, 0.5); }
-
-/* ===== МОДАЛ ===== */
-.promo-modal { display: none; position: fixed; inset: 0; z-index: 1000; justify-content: center; align-items: center; }
-.promo-modal.active { display: flex; }
-.promo-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
-.promo-modal-content { position: relative; background: #121418; border: 1px solid #ff4545; border-radius: 16px; padding: 32px 24px; text-align: center; z-index: 1001; max-width: 340px; width: 90%; box-shadow: 0 0 24px rgba(255, 69, 69, 0.3); }
-.promo-modal-content h3 { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; color: #ffffff; margin-bottom: 16px; }
-.promo-code { font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 1.5rem; color: #ff4545; background: rgba(255, 69, 69, 0.1); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; user-select: all; }
-.copy-btn { background: #ff4545; border: none; border-radius: 6px; color: #fff; padding: 10px 20px; cursor: pointer; font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 500; transition: 0.2s; }
-.copy-btn:hover { background: #ff5e5e; }
-.promo-note { color: #b6bbc3; font-size: 0.875rem; margin-top: 12px; }
-.promo-modal-close { position: absolute; top: 8px; right: 12px; background: none; border: none; color: #e8eaed; font-size: 1.5rem; cursor: pointer; }
-
-/* ===== АДАПТИВ ===== */
-@media (max-width: 768px){
-  .promo-card{ padding: 32px 20px; }
-  .promo-title{ font-size: 1.8rem; }
-  .promo-subtitle{ font-size: 1.05rem; }
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const promoBtn = document.getElementById("promoBtn");
-  const promoModal = document.getElementById("promoModal");
-  const promoClose = document.getElementById("promoClose");
-  const copyBtn = document.getElementById("copyBtn");
-  const promoCode = document.getElementById("promoCode");
-
-  function openModal(){
-    promoModal.classList.add("active");
-    promoModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal(){
-    promoModal.classList.remove("active");
-    promoModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = '';
-  }
-
-  promoBtn.addEventListener("click", openModal);
-  promoClose.addEventListener("click", closeModal);
-
-  copyBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(promoCode.textContent);
-    copyBtn.textContent = "Скопировано!";
-    setTimeout(() => (copyBtn.textContent = "Скопировать"), 2000);
-  });
-
-  promoModal.addEventListener("click", (e) => {
-    if (e.target.classList.contains('promo-modal') || e.target.classList.contains('promo-modal-overlay')) {
-      closeModal();
-    }
-  });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-});
-</script>
-<!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ END -->
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
@@ -4321,7 +4325,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <li><a class="tm-nav__link focusable" href="#cases">Кейсы</a></li>
             <li><a class="tm-nav__link focusable" href="#reviews">Отзывы</a></li>
             <li><a class="tm-nav__link focusable" href="#faq">FAQ</a></li>
-            <li><a class="tm-nav__link focusable" href="#promo">Акции</a></li>
+            <li><a class="tm-nav__link focusable" href="#promo">Спец предложение</a></li>
             <li><a class="tm-nav__link focusable" href="#contacts">Контакты</a></li>
           </ul>
         </nav>
