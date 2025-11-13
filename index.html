@@ -1148,7 +1148,7 @@
 <div class="tm-section-divider" aria-hidden="true"></div>
 
 <!-- TM-MARK: СПЕЦПРЕДЛОЖЕНИЕ START -->
-<section class="promo-section" id="promo">
+<section class="promo-section tm-surface--services tm-surface--services--promo" id="promo">
   <div class="promo-container">
     <div class="promo-card">
       <div class="promo-content">
@@ -1184,11 +1184,6 @@
 /* ===== СЕКЦИЯ ===== */
 .promo-section {
   position: relative;
-  background: radial-gradient(ellipse at top right, #1b1d20 0%, #0f1114 100%);
-  background-image: url('assets/img/promo-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #e8eaed;
   padding: 140px 16px;
   min-height: 100vh;
@@ -1196,7 +1191,19 @@
   align-items: center;
   justify-content: center;
   scroll-margin-top: 88px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tm-surface--services--promo {
+  --services-mask-from: rgba(255, 214, 64, 0.96);
+  --services-mask-to: rgba(255, 202, 40, 0.82);
+  --services-line-color: rgba(229, 57, 53, 0.72);
+}
+
+.tm-surface--services--promo::after {
+  background:
+    linear-gradient(to bottom, rgba(255, 214, 64, 0.35), transparent 55%),
+    radial-gradient(90% 100% at 50% 120%, rgba(255, 255, 255, 0.25), transparent 70%),
+    linear-gradient(to top, rgba(255, 193, 7, 0.38), transparent 60%);
 }
 
 .promo-container { max-width: 1200px; margin: 0 auto; }
