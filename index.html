@@ -86,8 +86,13 @@
 
     /* Drawer */
     .mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(85vw,340px); background: #0E1116; transform: translateX(100%);
-      transition: transform var(--anim-mid) ease; z-index: 1500; padding: 16px; display: flex; flex-direction: column; }
+      transition: transform var(--anim-mid) ease; z-index: 1500; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
     .mobile-drawer.open { transform: translateX(0); }
+    .mobile-drawer__close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: auto;
+      border: none; border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--text-0); cursor: pointer; transition: background var(--anim-mid) ease, color var(--anim-mid) ease; }
+    .mobile-drawer__close:hover { background: rgba(255,255,255,0.16); color: #fff; }
+    .mobile-drawer__close:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); background: rgba(255,255,255,0.16); color: #fff; }
+    .mobile-drawer__close svg { pointer-events: none; }
     .mobile-drawer ul { list-style: none; margin: 20px 0; padding: 0; }
     .mobile-drawer li { margin-bottom: 8px; }
     .mobile-drawer a { display: block; padding: 10px 14px; border-radius: 10px; color: var(--text-1); text-decoration: none; }
@@ -150,9 +155,9 @@
   </header>
 
   <aside class="mobile-drawer" id="mobileDrawer">
-    <button class="contact-icon" id="closeDrawer" aria-label="Скрыть меню" title="Скрыть меню">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 14.5 12 8.5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <button class="mobile-drawer__close" id="closeDrawer" aria-label="Скрыть меню" title="Скрыть меню">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <ul>
