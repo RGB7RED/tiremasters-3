@@ -87,15 +87,17 @@
     /* Drawer */
     .mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(85vw,340px); background: #0E1116; transform: translateX(100%);
       transition: transform var(--anim-mid) ease; z-index: 1500; padding: calc(16px + env(safe-area-inset-top, 0)) 16px calc(16px + env(safe-area-inset-bottom, 0)); display: flex;
-      flex-direction: column; gap: 12px; overflow: hidden; }
+      flex-direction: column; gap: 12px; overflow: hidden; min-height: 0; max-height: 100vh; }
     .mobile-drawer.open { transform: translateX(0); }
     .mobile-drawer__close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: auto;
       border: none; border-radius: 12px; background: rgba(255,255,255,0.08); color: var(--text-0); cursor: pointer; transition: background var(--anim-mid) ease, color var(--anim-mid) ease; position: sticky; top: 0; right: 0; z-index: 1; }
     .mobile-drawer__close:hover { background: rgba(255,255,255,0.16); color: #fff; }
     .mobile-drawer__close:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); background: rgba(255,255,255,0.16); color: #fff; }
     .mobile-drawer__close svg { pointer-events: none; }
-    .mobile-drawer ul { list-style: none; margin: 20px 0 0; padding: 0; flex: 1 1 auto; overflow-y: auto; min-height: 0; }
-    .mobile-drawer li { margin-bottom: 8px; }
+    .mobile-drawer__list { flex: 1 1 auto; min-height: 0; overflow-y: auto; margin-top: 8px; padding-right: 4px; -webkit-overflow-scrolling: touch; }
+    .mobile-drawer__list::-webkit-scrollbar { width: 6px; }
+    .mobile-drawer__list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 10px; }
+    .mobile-drawer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
     .mobile-drawer a { display: block; padding: 10px 14px; border-radius: 10px; color: var(--text-1); text-decoration: none; }
     .mobile-drawer a:hover { background: rgba(255,255,255,0.07); color: var(--text-0); }
 
@@ -161,21 +163,23 @@
         <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <ul>
-      <li><a href="#hero">Главная</a></li>
-      <li><a href="#about">Кто мы такие?</a></li>
-      <li><a href="#calc">Калькулятор</a></li>
-      <li><a href="#promo">Спец предложение</a></li>
-      <li><a href="#tow-anchor">Эвакуатор</a></li>
-      <li><a href="#electrician-anchor">Автоэлектрик</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#how">Как это работает</a></li>
-      <li><a href="#geo">География</a></li>
-      <li><a href="#cases">Кейсы</a></li>
-      <li><a href="#reviews">Отзывы</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contacts">Контакты</a></li>
-    </ul>
+    <div class="mobile-drawer__list">
+      <ul>
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#about">Кто мы такие?</a></li>
+        <li><a href="#calc">Калькулятор</a></li>
+        <li><a href="#promo">Спец предложение</a></li>
+        <li><a href="#tow-anchor">Эвакуатор</a></li>
+        <li><a href="#electrician-anchor">Автоэлектрик</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#how">Как это работает</a></li>
+        <li><a href="#geo">География</a></li>
+        <li><a href="#cases">Кейсы</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </div>
   </aside>
 
   <script>
