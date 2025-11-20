@@ -1118,13 +1118,17 @@
 .row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tm-input{position:relative;display:grid;gap:6px}
 .tm-input > span{font-size:13px;color:var(--steel)}
+.tm-input--control{--control-height:56px;}
 .tm-input input,.tm-input select{padding:12px 38px 12px 12px;background:#0B0D10;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:var(--white);outline:none;transition:border-color var(--t), box-shadow var(--t)}
+.tm-input--control input,.tm-input--control select{min-height:var(--control-height);}
 .tm-input select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:none;padding-right:44px}
 .tm-input select::-ms-expand{display:none}
 .tm-input input:focus,.tm-input select:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,197,44,.15)}
 .tm-input input,.tm-input select{width:100%;}
 .tm-input .ico{position:absolute;right:12px;top:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none;transform:translateY(-50%);}
+.tm-input--control .ico{top:calc(100% - (var(--control-height)/2));}
 .geo-btn{position:absolute;right:8px;top:50%;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;display:flex;align-items:center;justify-content:center;transition:background var(--t), transform var(--t);transform:translateY(-50%);}
+.tm-input--control .geo-btn{top:calc(100% - (var(--control-height)/2));}
 .geo-btn svg{width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none}
 .tm-input select{padding-right:52px;}
 .tm-input input{padding-right:44px;}
@@ -1168,8 +1172,7 @@
   .tm-input--control select{min-height:var(--control-height);padding:16px 56px 16px 14px;font-size:15px;}
   .tm-input--control select{padding-right:64px;}
   .tm-input--geo input{padding-right:92px;}
-  .tm-input--control .ico{top:calc(100% - (var(--control-height)/2));transform:translateY(-50%);}
-  .tm-input--control .geo-btn{top:calc(100% - (var(--control-height)/2));width:44px;height:44px;right:12px;transform:translateY(-50%);}
+  .tm-input--control .geo-btn{width:44px;height:44px;right:12px;}
 }
   </style>
   <!-- TM-MARK: CSS END -->
