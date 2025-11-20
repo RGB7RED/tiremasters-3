@@ -1083,14 +1083,13 @@
   --bg-1:#0B0D10; --bg-2:#121418; --white:#EEF1F4; --muted:#A3AFBF;
   --steel:#95A2B3; --red:#FF4545; --yellow:#FFC52C; --container:max(72vw, min(92vw, 1280px));
   --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.35); --t:220ms;
-  --calc-bg-url:url('photo 2.1.png');
+  --calc-bg-url:none;
 }
 
 .tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
 
 /* Фон и маска */
-.tm-calc__bg{position:absolute;inset:0;background:var(--bg-1) center/cover no-repeat;filter:saturate(.9) contrast(.95);z-index:-3;}
-.tm-calc__bg{background-image:var(--calc-bg-url)}
+.tm-calc__bg{position:absolute;inset:0;z-index:-3;}
 .tm-calc__mask{position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,12,14,.72) 0%, rgba(10,12,14,.58) 40%, rgba(10,12,14,.42) 100%);z-index:-1}
 
 /* Контейнер: единая колонка на всю ширину до 1280px */
