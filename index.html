@@ -704,13 +704,18 @@
     .tm-about__text {
       display: grid;
       gap: 18px;
-      font-size: clamp(17px, 1.25vw, 19px);
+      font-size: clamp(18px, 1.6vw, 22px);
       line-height: 1.7;
       color: var(--muted);
     }
 
+    .tm-about__text p:not(.tm-about__lead),
+    .tm-about__list {
+      font-size: clamp(20px, 1.9vw, 24px);
+    }
+
     .tm-about__lead {
-      font-size: clamp(18px, 1.6vw, 20px);
+      font-size: clamp(20px, 2vw, 24px);
       color: var(--white);
       font-weight: 600;
     }
