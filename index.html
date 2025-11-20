@@ -1284,9 +1284,6 @@
   if(!root) return;
   requestAnimationFrame(()=> root.classList.add('is-mounted'));
 
-  const TELEGRAM_BOT_TOKEN = '8130437470:AAFRvjDjsNPS2qNXHsBllcVQ4tbW54O7yK8';
-  const TELEGRAM_CHAT_ID = '@AIURM7';
-
   const form = root.querySelector('#calcForm');
   const btnOrder = root.querySelector('#btnOrder');
   const alertBox = root.querySelector('#formAlert');
@@ -1334,18 +1331,10 @@
   }
 
   async function sendToTelegram(payload){
-    if(!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN.startsWith('PASTE_')){
-      throw new Error('Укажите TELEGRAM_BOT_TOKEN в коде');
-    }
-    if(!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID.startsWith('PASTE_')){
-      throw new Error('Укажите TELEGRAM_CHAT_ID в коде');
-    }
-
-    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const res = await fetch(url, {
+    const res = await fetch('https://МОЙ-ДОМЕН.vercel.app/api/sendToTelegram', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: payload }),
+      body: JSON.stringify(payload),
     });
     if(!res.ok){
       const text = await res.text();
@@ -1376,6 +1365,7 @@
       suv: form.suv.checked,
       zkad: formData.get('zkad'),
       contact: formData.get('contact'),
+      name: (formData.get('name')||'').trim(),
     };
 
     btnOrder.disabled = true;
@@ -1383,7 +1373,11 @@
     alertBox.hidden = true;
 
     try{
-      await sendToTelegram(composeMessage(data));
+      await sendToTelegram({
+        name: data.name,
+        phone: data.phone,
+        message: composeMessage(data),
+      });
       alertBox.textContent = 'Заявка отправлена. Мы свяжемся с вами для подтверждения.';
       alertBox.className = 'tm-alert success';
       alertBox.hidden = false;
