@@ -1532,9 +1532,11 @@ document.addEventListener("DOMContentLoaded", () => {
     </ul>
 
     <div class="tm-tow__cta">
-      <a href="#tow-form" class="btn btn-primary-outline">Вызвать эвакуатор</a>
-      <a href="tel:+79531580900" class="btn btn-secondary">Позвонить</a>
-      <div class="tm-tow__messengers">
+      <div class="tm-tow__cta-buttons">
+        <a href="#tow-form" class="btn btn-primary-outline">Вызвать эвакуатор</a>
+        <a href="tel:+79531580900" class="btn btn-secondary">Позвонить</a>
+      </div>
+      <div class="tm-tow__messengers" aria-label="Связаться в мессенджерах">
         <a class="messenger-btn" href="https://t.me/Tiar_MASTERSPro" target="_blank" aria-label="Telegram">
           <svg viewBox="0 0 24 24"><path d="M21.44 3.2 2.35 10.63c-.86.35-.86 1.64.1 1.97l4.86 1.6 1.87 6.07c.24.78 1.22.86 1.66.14l2.67-4.33 4.9 3.66c.77.57 1.86.14 2.06-.82l-.34-14.1Z"/></svg>
         </a>
@@ -1582,14 +1584,15 @@ document.addEventListener("DOMContentLoaded", () => {
   .tm-tow__card h3 { margin: 0 0 6px; font-size: 18px; }
   .tm-tow__card p { margin: 0; font-size: 14px; color: var(--tow-muted); }
 
-  .tm-tow__cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+  .tm-tow__cta { display: grid; gap: 10px; justify-items: center; margin-top: 20px; }
+  .tm-tow__cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all var(--tow-t) ease; box-shadow: var(--tow-shadow); cursor: pointer; }
   .btn-primary-outline { border: 2px solid var(--tow-yellow); color: #111; background: transparent; }
   .btn-primary-outline:hover { background: var(--tow-yellow); color: #111; transform: translateY(-1px); }
   .btn-secondary { border: 1px solid var(--tow-muted); color: var(--tow-white); background: transparent; }
   .btn-secondary:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
 
-  .tm-tow__messengers { display: flex; gap: 10px; justify-content: center; }
+  .tm-tow__messengers { display: flex; gap: 12px; justify-content: center; padding: 6px 0; }
   .messenger-btn { inline-size: 42px; block-size: 42px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--tow-muted); opacity: .9; transition: transform var(--tow-t); }
   .messenger-btn:hover { transform: translateY(-1px); }
   .messenger-btn svg { width: 22px; height: 22px; stroke: var(--tow-muted); fill: none; stroke-width: 2; }
