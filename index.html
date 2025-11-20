@@ -1661,6 +1661,30 @@ document.addEventListener("DOMContentLoaded", () => {
     </header>
 
     <div class="tm-electrician__grid">
+      <section class="tm-electrician__benefits" aria-labelledby="electrician-benefits-title">
+        <h3 id="electrician-benefits-title">Преимущества сервиса</h3>
+        <ul>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 5v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            Выезд от 15 минут по городу
+          </li>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 2 3 7v7c0 6 9 8 9 8s9-2 9-8V7l-9-5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            85% всех поломок устраняем на месте
+          </li>
+          <li>
+            <span class="tm-electrician__benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            Экономия до 4000&nbsp;₽ на эвакуаторе и простое
+          </li>
+        </ul>
+      </section>
+
       <section class="tm-electrician__services" aria-labelledby="electrician-services-title">
         <h3 id="electrician-services-title">Услуги автоэлектрика</h3>
         <div class="tm-electrician__services-list">
@@ -1922,30 +1946,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </section>
 
-      <section class="tm-electrician__benefits" aria-labelledby="electrician-benefits-title">
-        <h3 id="electrician-benefits-title">Преимущества сервиса</h3>
-        <ul>
-          <li>
-            <span class="tm-electrician__benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 5v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </span>
-            Выезд от 15 минут по городу
-          </li>
-          <li>
-            <span class="tm-electrician__benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M12 2 3 7v7c0 6 9 8 9 8s9-2 9-8V7l-9-5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            85% всех поломок устраняем на месте
-          </li>
-          <li>
-            <span class="tm-electrician__benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" focusable="false"><path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-            </span>
-            Экономия до 4000&nbsp;₽ на эвакуаторе и простое
-          </li>
-        </ul>
-      </section>
-
       <section class="tm-electrician__faq" aria-labelledby="electrician-faq-title">
         <h3 id="electrician-faq-title">FAQ</h3>
         <details>
@@ -2098,7 +2098,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .tm-electrician__grid {
       display: grid;
       gap: var(--electrician-gap);
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: 1fr;
       align-items: start;
     }
 
@@ -2119,7 +2119,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     .tm-electrician__services-list {
       display: grid;
-      gap: 12px;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 960px) {
+      .tm-electrician__services-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .tm-electrician-service {
@@ -2461,11 +2468,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     @media (min-width: 769px) {
       .tm-electrician__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .tm-electrician__testimonial {
-        grid-column: span 2;
+        grid-template-columns: 1fr;
       }
     }
 
