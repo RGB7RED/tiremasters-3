@@ -1332,15 +1332,18 @@
 
     async function sendToTelegram(payload){
       const res = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if(!res.ok){
-      const text = await res.text();
-      throw new Error(text || 'Не удалось отправить заявку');
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      let data = {};
+      try { data = await res.json(); } catch(_) {}
+      if(!res.ok || data.ok === false){
+        const text = data?.error || data?.description || (!res.ok ? await res.text() : '') || 'Не удалось отправить заявку';
+        throw new Error(text);
+      }
+      return data;
     }
-  }
 
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
@@ -1383,7 +1386,7 @@
       alertBox.hidden = false;
     } catch(err){
       console.error(err);
-      alertBox.textContent = 'Ошибка отправки. Попробуйте снова или свяжитесь по телефону.';
+      alertBox.textContent = `Ошибка отправки: ${err?.message || 'Попробуйте снова или свяжитесь по телефону.'}`;
       alertBox.className = 'tm-alert error';
       alertBox.hidden = false;
     } finally {
@@ -1725,16 +1728,19 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify({ name, phone, message }),
           });
 
-          if(!response.ok){
-            const text = await response.text();
-            throw new Error(text || 'Не удалось отправить заявку');
+          let data = {};
+          try { data = await response.json(); } catch (_) {}
+
+          if(!response.ok || data.ok === false){
+            const text = data?.error || data?.description || (!response.ok ? await response.text() : '') || 'Не удалось отправить заявку';
+            throw new Error(text);
           }
 
           alertBox.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
           form.reset();
         } catch(err) {
           console.error(err);
-          alertBox.textContent = 'Ошибка отправки. Попробуйте снова или позвоните нам.';
+          alertBox.textContent = `Ошибка отправки: ${err?.message || 'Попробуйте снова или позвоните нам.'}`;
         } finally {
           submitBtn.disabled = false;
         }
@@ -2724,16 +2730,19 @@ document.addEventListener("DOMContentLoaded", () => {
               body: JSON.stringify({ name, phone, message }),
             });
 
-            if (!response.ok) {
-              const text = await response.text();
-              throw new Error(text || 'Не удалось отправить заявку');
+            let data = {};
+            try { data = await response.json(); } catch (_) {}
+
+            if (!response.ok || data.ok === false) {
+              const text = data?.error || data?.description || (!response.ok ? await response.text() : '') || 'Не удалось отправить заявку';
+              throw new Error(text);
             }
 
             alertBox.textContent = 'Готово! Мы перезвоним в течение 10 минут.';
             form.reset();
           } catch (err) {
             console.error(err);
-            alertBox.textContent = 'Ошибка отправки. Попробуйте ещё раз или позвоните нам.';
+            alertBox.textContent = `Ошибка отправки: ${err?.message || 'Попробуйте ещё раз или позвоните нам.'}`;
           } finally {
             submitBtn.disabled = false;
           }
@@ -3915,16 +3924,19 @@ Assumptions (разумные допущения):
             body:JSON.stringify({name:'',phone,message}),
           });
 
-          if(!response.ok){
-            const text=await response.text();
-            throw new Error(text||'Не удалось отправить заявку');
+          let data={};
+          try{data=await response.json();}catch(_){ }
+
+          if(!response.ok||data.ok===false){
+            const text=data?.error||data?.description||(!response.ok?await response.text():'')||'Не удалось отправить заявку';
+            throw new Error(text);
           }
 
           status.textContent='Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
           quickForm.reset();
         }catch(err){
           console.error(err);
-          status.textContent='Ошибка отправки. Попробуйте ещё раз или позвоните нам.';
+          status.textContent=`Ошибка отправки: ${err?.message||'Попробуйте ещё раз или позвоните нам.'}`;
         }finally{
           submitBtn.disabled=false;
         }
