@@ -1284,6 +1284,9 @@
   if(!root) return;
   requestAnimationFrame(()=> root.classList.add('is-mounted'));
 
+  const TELEGRAM_BOT_TOKEN = '8130437470:AAFRvjDjsNPS2qNXHsBllcVQ4tbW54O7yK8';
+  const TELEGRAM_CHAT_ID = '@AIURM7';
+
   const form = root.querySelector('#calcForm');
   const btnOrder = root.querySelector('#btnOrder');
   const alertBox = root.querySelector('#formAlert');
@@ -1303,7 +1306,54 @@
     return ok;
   }
 
-  form.addEventListener('submit', (e)=>{
+  function getServiceLabel(){
+    const checked = form.querySelector('input[name="service"]:checked');
+    if(!checked) return '';
+    const title = checked.closest('.tm-service-card')?.querySelector('.title');
+    return title ? title.textContent.trim() : checked.value;
+  }
+
+  function composeMessage(data){
+    return [
+      '🛠 Заявка с сайта TireMasters',
+      '',
+      `Услуга: ${data.service || '—'}`,
+      `Радиус: ${data.radius || '—'}`,
+      `Тип авто: ${data.cartype || '—'}`,
+      `Адрес: ${data.address || '—'}`,
+      `Телефон: ${data.phone || '—'}`,
+      `Связаться: ${data.contact === 'messenger' ? 'Написать (WA/TG)' : 'Позвонить'}`,
+      `Комментарий: ${data.comment || '—'}`,
+      '',
+      'Коэффициенты:',
+      `• RunFlat: ${data.runflat ? 'Да' : 'Нет'}`,
+      `• Ночной тариф: ${data.night ? 'Да' : 'Нет'}`,
+      `• SUV: ${data.suv ? 'Да' : 'Нет'}`,
+      `• За КАД: ${data.zkad || 0} км`,
+    ].join('\n');
+  }
+
+  async function sendToTelegram(payload){
+    if(!TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN.startsWith('PASTE_')){
+      throw new Error('Укажите TELEGRAM_BOT_TOKEN в коде');
+    }
+    if(!TELEGRAM_CHAT_ID || TELEGRAM_CHAT_ID.startsWith('PASTE_')){
+      throw new Error('Укажите TELEGRAM_CHAT_ID в коде');
+    }
+
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: payload }),
+    });
+    if(!res.ok){
+      const text = await res.text();
+      throw new Error(text || 'Не удалось отправить заявку');
+    }
+  }
+
+  form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!validate()){
       alertBox.textContent = 'Проверьте обязательные поля';
@@ -1312,13 +1362,40 @@
       return;
     }
     if(form.company && form.company.value){ return; }
-    btnOrder.disabled = true; btnOrder.textContent = 'Отправка…';
-    setTimeout(()=>{
-      btnOrder.disabled = false; btnOrder.textContent = 'Вызвать мастера';
+
+    const formData = new FormData(form);
+    const data = {
+      service: getServiceLabel(),
+      radius: formData.get('radius'),
+      cartype: formData.get('cartype'),
+      address: formData.get('address'),
+      phone: (formData.get('phone')||'').trim(),
+      comment: (formData.get('comment')||'').trim(),
+      runflat: form.runflat.checked,
+      night: form.night.checked,
+      suv: form.suv.checked,
+      zkad: formData.get('zkad'),
+      contact: formData.get('contact'),
+    };
+
+    btnOrder.disabled = true;
+    btnOrder.textContent = 'Отправка…';
+    alertBox.hidden = true;
+
+    try{
+      await sendToTelegram(composeMessage(data));
       alertBox.textContent = 'Заявка отправлена. Мы свяжемся с вами для подтверждения.';
       alertBox.className = 'tm-alert success';
       alertBox.hidden = false;
-    }, 800);
+    } catch(err){
+      console.error(err);
+      alertBox.textContent = 'Ошибка отправки. Попробуйте снова или свяжитесь по телефону.';
+      alertBox.className = 'tm-alert error';
+      alertBox.hidden = false;
+    } finally {
+      btnOrder.disabled = false;
+      btnOrder.textContent = 'Вызвать мастера';
+    }
   });
 
   const geoBtn = root.querySelector('#geoBtn');
