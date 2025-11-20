@@ -1330,8 +1330,8 @@
     ].join('\n');
   }
 
-  async function sendToTelegram(payload){
-    const res = await fetch('https://МОЙ-ДОМЕН.vercel.app/api/sendToTelegram', {
+    async function sendToTelegram(payload){
+      const res = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -1689,27 +1689,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <!-- TM-MARK: JS START -->
   <script>
-  (function towFormInit(){
-    const form = document.getElementById('tow-form');
-    const alertBox = form.querySelector('.tm-tow__alert');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const phone = form.phone.value.trim();
-      if(!name || !phone){
-        alertBox.textContent = 'Пожалуйста, заполните обязательные поля';
+    (function towFormInit(){
+      const form = document.getElementById('tow-form');
+      const alertBox = form.querySelector('.tm-tow__alert');
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
+        const location = form.location.value.trim();
+        const comment = form.comment.value.trim();
+
+        if(!name || !phone){
+          alertBox.textContent = 'Пожалуйста, заполните обязательные поля';
+          alertBox.hidden = false;
+          return;
+        }
+
+        const message = [
+          '🚚 Заявка на эвакуатор',
+          `Имя: ${name || '—'}`,
+          `Телефон: ${phone || '—'}`,
+          `Адрес / локация: ${location || '—'}`,
+          `Комментарий: ${comment || '—'}`,
+        ].join('\n');
+
+        const submitBtn = form.querySelector('button');
+        submitBtn.disabled = true;
+        alertBox.textContent = 'Отправка...';
         alertBox.hidden = false;
-        return;
-      }
-      form.querySelector('button').disabled = true;
-      alertBox.textContent = 'Отправка...';
-      alertBox.hidden = false;
-      setTimeout(()=>{
-        alertBox.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-        form.querySelector('button').disabled = false;
-      },1000);
-    });
-  })();
+
+        try {
+          const response = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, message }),
+          });
+
+          if(!response.ok){
+            const text = await response.text();
+            throw new Error(text || 'Не удалось отправить заявку');
+          }
+
+          alertBox.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+          form.reset();
+        } catch(err) {
+          console.error(err);
+          alertBox.textContent = 'Ошибка отправки. Попробуйте снова или позвоните нам.';
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    })();
   </script>
   <!-- TM-MARK: JS END -->
 </section>
@@ -2658,35 +2688,58 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
   </script>
 
-  <script>
-    (function electricianFormInit() {
-      const form = document.getElementById('electrician-form');
-      if (!form) return;
-      const alertBox = form.querySelector('.tm-electrician__alert');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = form.name.value.trim();
-        const phone = form.phone.value.trim();
+    <script>
+      (function electricianFormInit() {
+        const form = document.getElementById('electrician-form');
+        if (!form) return;
+        const alertBox = form.querySelector('.tm-electrician__alert');
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const name = form.name.value.trim();
+          const phone = form.phone.value.trim();
+          const problem = form.problem.value.trim();
 
-        if (!name || !phone) {
-          alertBox.textContent = 'Заполните имя и телефон, чтобы мы связались с вами.';
+          if (!name || !phone) {
+            alertBox.textContent = 'Заполните имя и телефон, чтобы мы связались с вами.';
+            alertBox.hidden = false;
+            return;
+          }
+
+          const message = [
+            '🔌 Заявка на выезд автоэлектрика',
+            `Имя: ${name || '—'}`,
+            `Телефон: ${phone || '—'}`,
+            `Проблема: ${problem || '—'}`,
+          ].join('\n');
+
+          const submitBtn = form.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          alertBox.textContent = 'Отправляем заявку…';
           alertBox.hidden = false;
-          return;
-        }
 
-        const submitBtn = form.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        alertBox.textContent = 'Отправляем заявку…';
-        alertBox.hidden = false;
+          try {
+            const response = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, phone, message }),
+            });
 
-        setTimeout(() => {
-          alertBox.textContent = 'Готово! Мы перезвоним в течение 10 минут.';
-          submitBtn.disabled = false;
-          form.reset();
-        }, 1000);
-      });
-    })();
-  </script>
+            if (!response.ok) {
+              const text = await response.text();
+              throw new Error(text || 'Не удалось отправить заявку');
+            }
+
+            alertBox.textContent = 'Готово! Мы перезвоним в течение 10 минут.';
+            form.reset();
+          } catch (err) {
+            console.error(err);
+            alertBox.textContent = 'Ошибка отправки. Попробуйте ещё раз или позвоните нам.';
+          } finally {
+            submitBtn.disabled = false;
+          }
+        });
+      })();
+    </script>
 </section>
 <!-- TM-MARK: ELECTRICIAN END -->
 
@@ -3805,24 +3858,80 @@ Assumptions (разумные допущения):
 <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
 <script>
 (()=>{
-  const sliderEl=document.querySelector('.cases-slider');
-  if(!sliderEl)return;
+    const sliderEl=document.querySelector('.cases-slider');
+    if(!sliderEl)return;
 
-  const swiper=new Swiper(sliderEl,{slidesPerView:1,spaceBetween:16,pagination:{el:'.cases-slider .swiper-pagination',clickable:true},navigation:{nextEl:sliderEl.querySelector('.swiper-button-next'),prevEl:sliderEl.querySelector('.swiper-button-prev')},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
+    const swiper=new Swiper(sliderEl,{slidesPerView:1,spaceBetween:16,pagination:{el:'.cases-slider .swiper-pagination',clickable:true},navigation:{nextEl:sliderEl.querySelector('.swiper-button-next'),prevEl:sliderEl.querySelector('.swiper-button-prev')},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
 
-  const modal=sliderEl.closest('.cases-section')?.querySelector('.modal-overlay');
-  const cards=sliderEl.querySelectorAll('.case-card');
-  const modalCloseBtn=modal?.querySelector('.modal-close');
+    const modal=sliderEl.closest('.cases-section')?.querySelector('.modal-overlay');
+    const cards=sliderEl.querySelectorAll('.case-card');
+    const modalCloseBtn=modal?.querySelector('.modal-close');
 
-  cards.forEach(card=>{card.addEventListener('click',()=>{
-    if(!swiper.allowClick)return;
-    modal?.classList.add('active');
-  });});
+    cards.forEach(card=>{card.addEventListener('click',()=>{
+      if(!swiper.allowClick)return;
+      modal?.classList.add('active');
+    });});
 
-  modalCloseBtn?.addEventListener('click',()=>{modal?.classList.remove('active');});
-  modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
-})();
-</script>
+    modalCloseBtn?.addEventListener('click',()=>{modal?.classList.remove('active');});
+    modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
+
+    const quickForm=modal?.querySelector('.quick-form');
+    if(quickForm){
+      const phoneInput=quickForm.querySelector('input[type="tel"]');
+      const submitBtn=quickForm.querySelector('button[type="submit"]');
+      const status=document.createElement('p');
+      status.className='quick-form__status';
+      status.style.margin='0';
+      status.style.color='#fff';
+      status.style.fontSize='.9rem';
+      status.style.textAlign='center';
+      status.setAttribute('role','status');
+      status.hidden=true;
+      quickForm.appendChild(status);
+
+      quickForm.addEventListener('submit',async event=>{
+        event.preventDefault();
+        const phone=(phoneInput?.value||'').trim();
+
+        if(!phone){
+          status.textContent='Укажите телефон, чтобы мы могли перезвонить.';
+          status.hidden=false;
+          return;
+        }
+
+        const message=[
+          '⚡️ Быстрая заявка из блока кейсов',
+          `Телефон: ${phone}`,
+        ].join('\n');
+
+        submitBtn.disabled=true;
+        status.textContent='Отправляем заявку…';
+        status.hidden=false;
+
+        try{
+          const response=await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({name:'',phone,message}),
+          });
+
+          if(!response.ok){
+            const text=await response.text();
+            throw new Error(text||'Не удалось отправить заявку');
+          }
+
+          status.textContent='Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+          quickForm.reset();
+        }catch(err){
+          console.error(err);
+          status.textContent='Ошибка отправки. Попробуйте ещё раз или позвоните нам.';
+        }finally{
+          submitBtn.disabled=false;
+        }
+      });
+    }
+  })();
+  </script>
 <!-- TM-MARK: CASES SECTION END -->
 
 <div class="tm-section-divider" aria-hidden="true"></div>
