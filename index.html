@@ -3287,8 +3287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </ol>
 
     <div class="howit__cta" role="group" aria-label="Действия">
-      <a class="btn btn--primary" href="#tm-call" aria-label="Вызвать мастера">Вызвать мастера</a>
-      <a class="btn btn--ghost" href="#tm-price" aria-label="Смотреть цены">Смотреть цены</a>
+      <a class="btn btn--primary" href="#calc" aria-label="Вызвать мастера">Вызвать мастера</a>
     </div>
   </div>
 </section>
@@ -3366,11 +3365,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* CTA */
 .howit__cta{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;} 
-.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; padding:0 18px; border-radius:999px; border:1px solid var(--stroke); color:var(--txt-0); text-decoration:none; transition:transform 180ms ease, background-color 180ms ease;} 
-.btn:hover{transform:translateY(-1px);} 
-.btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px;} 
-.btn--primary{background:#ffffff12;} 
-.btn--ghost{background:transparent;} 
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; height:44px; padding:0 18px; border-radius:999px; border:1px solid var(--stroke); color:var(--txt-0); text-decoration:none; transition:transform 180ms ease, background-color 180ms ease;}
+.btn:hover{transform:translateY(-1px);}
+.btn:focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+.btn--primary{background:var(--accent-yellow); color:#0B0D10; border-color:var(--accent-yellow);}
+.btn--ghost{background:transparent;}
 
 @media (prefers-reduced-motion: reduce){
   .step, .step.is-revealed{transition:none; transform:none; opacity:1;}
