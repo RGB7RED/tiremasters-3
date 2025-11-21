@@ -3573,8 +3573,7 @@ Assumptions (разумные допущения):
           <div class="geo-sub">Выберите район, чтобы увидеть ETA, тарифы и доступность мастеров</div>
         </div>
         <div class="geo-cta">
-          <button class="btn btn-ghost" id="map-btn" aria-label="Показать на карте">Показать на карте</button>
-          <button class="btn btn-primary" id="call-btn" aria-label="Вызвать мастера">Вызвать мастера</button>
+          <a class="btn btn-primary" id="call-btn" href="#calc" aria-label="Вызвать мастера">Вызвать мастера</a>
         </div>
       </div>
 
@@ -3672,7 +3671,6 @@ Assumptions (разумные допущения):
     (function(){
       const badges = Array.from(document.querySelectorAll('.badge'));
       const services = Array.from(document.querySelectorAll('.service-card'));
-      const mapBtn = document.getElementById('map-btn');
       const callBtn = document.getElementById('call-btn');
 
       function clearActive(){
@@ -3705,13 +3703,12 @@ Assumptions (разумные допущения):
         });
       });
 
-      mapBtn.addEventListener('click', ()=>{
-        // placeholder: open map modal or navigate to map section
-        alert('Открыть карту — реализовать в основном макете');
-      });
-      callBtn.addEventListener('click', ()=>{
-        // placeholder: вызвать мастера — отправить форму/открыть модал
-        alert('Вызов мастера — реализовать интеграцию с формой/телефоном');
+      callBtn?.addEventListener('click', (e)=>{
+        const target = document.getElementById('calc');
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
     })();
@@ -4065,27 +4062,6 @@ Assumptions (разумные допущения):
       fill: #FFD166;
     }
 
-    .reviews__cta {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .reviews__cta button {
-      background: #FFD166;
-      color: #0B0D10;
-      border: none;
-      border-radius: 8px;
-      padding: 14px 28px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .reviews__cta button:hover {
-      background: #ffda7a;
-      transform: translateY(-2px);
-    }
-
     .reviews__link {
       text-align: center;
       margin-top: 20px;
@@ -4095,75 +4071,6 @@ Assumptions (разумные допущения):
       color: #FFD166;
       text-decoration: none;
       font-size: 0.9rem;
-    }
-
-    /* Модальное окно */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      transition: opacity 0.2s ease;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: #121418;
-      border-radius: 12px;
-      padding: 24px;
-      width: 90%;
-      max-width: 400px;
-      color: #D1D5DB;
-    }
-
-    .modal-content h3 {
-      margin-top: 0;
-      margin-bottom: 16px;
-    }
-
-    .modal-content label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-    }
-
-    .modal-content input, .modal-content textarea, .modal-content select {
-      width: 100%;
-      background: #1A1C20;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
-      color: #D1D5DB;
-      padding: 8px;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
-    }
-
-    .modal-content button.submit {
-      width: 100%;
-      background: #FFD166;
-      color: #0B0D10;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 0;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: #FFD166;
-      font-size: 1.5rem;
-      cursor: pointer;
     }
   </style>
 </head>
@@ -4179,7 +4086,7 @@ Assumptions (разумные допущения):
         <div class="review-text">Отличный сервис! Приехали быстро, помогли с заменой колеса прямо на трассе. Всё аккуратно, инструменты современные, видно профессионализм.</div>
         <div class="review-footer">
           <div class="review-rating">★★★★★</div>
-          <a href="#" class="review-source" target="_blank">
+          <a href="https://t.me/Tiar_MASTERS" class="review-source" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24"><path d="M9.993 15.568 9.84 19.4c.34 0 .486-.146.664-.32l1.59-1.516 3.297 2.42c.604.336 1.037.16 1.2-.56l2.171-10.192c.197-.914-.353-1.28-.96-1.056L5.1 12.024c-.911.364-.9.888-.155 1.12l3.07.956 7.12-4.49-5.142 5.958Z"/></svg>
             Telegram
           </a>
@@ -4194,7 +4101,7 @@ Assumptions (разумные допущения):
         <div class="review-text">Спасибо мастерам! Прокол заметила поздно ночью, через 30 минут уже приехали. Очень удобно, что круглосуточно. Буду рекомендовать!</div>
         <div class="review-footer">
           <div class="review-rating">★★★★★</div>
-          <a href="#" class="review-source" target="_blank">
+          <a href="https://t.me/Tiar_MASTERS" class="review-source" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24"><path d="M9.993 15.568 9.84 19.4c.34 0 .486-.146.664-.32l1.59-1.516 3.297 2.42c.604.336 1.037.16 1.2-.56l2.171-10.192c.197-.914-.353-1.28-.96-1.056L5.1 12.024c-.911.364-.9.888-.155 1.12l3.07.956 7.12-4.49-5.142 5.958Z"/></svg>
             Telegram
           </a>
@@ -4209,7 +4116,7 @@ Assumptions (разумные допущения):
         <div class="review-text">Балансировка выполнена идеально, вибрации пропали полностью. Приятно видеть такой подход к делу. Рекомендую!</div>
         <div class="review-footer">
           <div class="review-rating">★★★★☆</div>
-          <a href="#" class="review-source" target="_blank">
+          <a href="https://t.me/Tiar_MASTERS" class="review-source" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24"><path d="M9.993 15.568 9.84 19.4c.34 0 .486-.146.664-.32l1.59-1.516 3.297 2.42c.604.336 1.037.16 1.2-.56l2.171-10.192c.197-.914-.353-1.28-.96-1.056L5.1 12.024c-.911.364-.9.888-.155 1.12l3.07.956 7.12-4.49-5.142 5.958Z"/></svg>
             Telegram
           </a>
@@ -4224,62 +4131,17 @@ Assumptions (разумные допущения):
         <div class="review-text">Порадовало, что всё прозрачно по цене и оплате. Приехали точно к указанному времени, сделали быстро. Молодцы, спасибо!</div>
         <div class="review-footer">
           <div class="review-rating">★★★★★</div>
-          <a href="#" class="review-source" target="_blank">
+          <a href="https://t.me/Tiar_MASTERS" class="review-source" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24"><path d="M9.993 15.568 9.84 19.4c.34 0 .486-.146.664-.32l1.59-1.516 3.297 2.42c.604.336 1.037.16 1.2-.56l2.171-10.192c.197-.914-.353-1.28-.96-1.056L5.1 12.024c-.911.364-.9.888-.155 1.12l3.07.956 7.12-4.49-5.142 5.958Z"/></svg>
             Telegram
           </a>
         </div>
     </div>
 
-    <div class="reviews__cta">
-      <button id="openModal">Оставить отзыв</button>
-    </div>
-
     <div class="reviews__link">
-      <a href="#" target="_blank">Смотреть все отзывы в Telegram →</a>
+      <a href="https://t.me/Tiar_MASTERS" target="_blank" rel="noopener noreferrer">Смотреть все отзывы в Telegram →</a>
     </div>
   </section>
-
-  <!-- Модалка -->
-  <div class="modal" id="reviewModal">
-    <div class="modal-content">
-      <button class="close-btn" id="closeModal">×</button>
-      <h3>Оставить отзыв</h3>
-      <label>Имя</label>
-      <input type="text" placeholder="Ваше имя" />
-      <label>Telegram</label>
-      <input type="text" placeholder="@username" />
-      <label>Текст отзыва</label>
-      <textarea rows="4" placeholder="Ваш отзыв..."></textarea>
-      <label>Рейтинг</label>
-      <select>
-        <option>★★★★★</option>
-        <option>★★★★☆</option>
-        <option>★★★☆☆</option>
-        <option>★★☆☆☆</option>
-        <option>★☆☆☆☆</option>
-      </select>
-      <button class="submit">Отправить (заглушка)</button>
-    </div>
-  </div>
-
-  <script>
-    const openModal = document.getElementById('openModal');
-    const closeModal = document.getElementById('closeModal');
-    const modal = document.getElementById('reviewModal');
-
-    openModal.addEventListener('click', () => {
-      modal.classList.add('active');
-    });
-
-    closeModal.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-  </script>
 </body>
 </html>
 <!-- TM-MARK: END -->
