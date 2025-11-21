@@ -1630,6 +1630,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <label>Имя <input type="text" name="name" required></label>
       <label>Телефон <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></label>
       <label>Адрес / Локация <input type="text" name="location" placeholder="Улица, ориентир"></label>
+      <input type="hidden" name="coords" value="">
       <label>Комментарий <textarea name="comment" rows="3" placeholder="Что случилось, марка авто, тип проблемы..."></textarea></label>
       <button type="submit" class="btn btn-primary-outline">Отправить заявку</button>
       <div class="tm-tow__alert" hidden></div>
@@ -1700,6 +1701,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = form.name.value.trim();
         const phone = form.phone.value.trim();
         const location = form.location.value.trim();
+        const coords = form.coords.value.trim();
         const comment = form.comment.value.trim();
 
         if(!name || !phone){
@@ -1713,6 +1715,7 @@ document.addEventListener("DOMContentLoaded", () => {
           `Имя: ${name || '—'}`,
           `Телефон: ${phone || '—'}`,
           `Адрес / локация: ${location || '—'}`,
+          `Координаты: ${coords || '—'}`,
           `Комментарий: ${comment || '—'}`,
         ].join('\n');
 
@@ -1725,7 +1728,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const response = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, phone, message }),
+            body: JSON.stringify({ name, phone, location, coords, message }),
           });
 
           let data = {};

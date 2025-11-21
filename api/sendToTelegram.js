@@ -44,6 +44,8 @@ export default async function handler(req, res) {
 
     const name = formatField(body.name);
     const phone = formatField(body.phone);
+    const location = formatField(body.location || body.address);
+    const coords = formatField(body.coords);
     const message = formatField(body.message);
 
     if (message === '—') {
@@ -55,6 +57,8 @@ export default async function handler(req, res) {
       'Новая заявка с сайта TireMasters:',
       `Имя: ${name}`,
       `Телефон: ${phone}`,
+      `Адрес: ${location}`,
+      `Координаты: ${coords}`,
       `Комментарий: ${message}`,
       '',
     ].join('\n');
