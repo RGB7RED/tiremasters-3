@@ -4844,17 +4844,19 @@ body {
       document.querySelectorAll('[data-action="call-cta"]').forEach(function(a){
         a.href = 'tel:' + TEL_LINK;
       });
-      // Socials quick guard (non-breaking if not present)
-      document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
-        a.href = WA_LINK;
-      });
-      document.querySelectorAll('a[href^="https://t.me/"]').forEach(function(a){
-        a.href = TG_LINK;
-      });
-    })();
-    /* ===========================
-       TM-MARK: FOOTER JS END
-       =========================== */
+    // Socials quick guard (non-breaking if not present)
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
+      a.href = WA_LINK;
+    });
+    document.querySelectorAll('a[href^="https://t.me/"]').forEach(function(a){
+      a.href = TG_LINK;
+    });
+  })();
+  /* ===========================
+     TM-MARK: FOOTER JS END
+     =========================== */
   </script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=08a08324-07f0-459d-b574-7d19a6f8cd07&lang=ru_RU"></script>
+  <script src="js/yandex-suggest.js"></script>
 </body>
 </html>
