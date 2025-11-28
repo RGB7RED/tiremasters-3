@@ -13,8 +13,19 @@ export default async function handler(req, res) {
 
   try {
     const { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } = process.env;
+    const FALLBACK_CHAT_ID = '5911021141';
 
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    const chatIds = [
+      ...(TELEGRAM_CHAT_ID || '')
+        .split(',')
+        .map((id) => id.trim())
+        .filter(Boolean),
+      FALLBACK_CHAT_ID,
+    ];
+
+    const uniqueChatIds = Array.from(new Set(chatIds));
+
+    if (!TELEGRAM_BOT_TOKEN || uniqueChatIds.length === 0) {
       console.error('Telegram bot token or chat ID is missing in environment variables');
       return res.status(500).json({ ok: false, error: 'TELEGRAM credentials are not configured' });
     }
@@ -63,31 +74,44 @@ export default async function handler(req, res) {
       '',
     ].join('\n');
 
-    const telegramResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text,
-        parse_mode: 'HTML',
-      }),
-    });
+    const results = await Promise.all(
+      uniqueChatIds.map(async (chatId) => {
+        const telegramResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text,
+            parse_mode: 'HTML',
+          }),
+        });
 
-    if (!telegramResponse.ok) {
-      let errorText;
-      try {
-        const errorJson = await telegramResponse.json();
-        errorText = errorJson?.description || JSON.stringify(errorJson);
-      } catch (_) {
-        errorText = await telegramResponse.text();
-      }
-      console.error('Telegram API response error:', errorText);
-      return res.status(500).json({ ok: false, error: errorText });
+        if (!telegramResponse.ok) {
+          let errorText;
+          try {
+            const errorJson = await telegramResponse.json();
+            errorText = errorJson?.description || JSON.stringify(errorJson);
+          } catch (_) {
+            errorText = await telegramResponse.text();
+          }
+          console.error(`Telegram API response error for chat ${chatId}:`, errorText);
+          return { chatId, ok: false, error: errorText };
+        }
+
+        return { chatId, ok: true };
+      })
+    );
+
+    const failed = results.filter((r) => !r.ok);
+    const succeeded = results.filter((r) => r.ok);
+
+    if (succeeded.length === 0) {
+      return res.status(500).json({ ok: false, error: failed.map((f) => `${f.chatId}: ${f.error}`).join('; ') });
     }
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, sent: succeeded.map((s) => s.chatId), failed });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ ok: false, error: error?.message || 'Internal server error' });
