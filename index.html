@@ -364,6 +364,7 @@
       <ul>
         <li><a href="#hero">Главная</a></li>
         <li><a href="#about">Кто мы такие?</a></li>
+        <li><a href="#cases">Кейсы</a></li>
         <li><a href="#calc">Онлайн заявка</a></li>
         <li><a href="#promo">Спец предложение</a></li>
         <li><a href="#tow-anchor">Эвакуатор</a></li>
@@ -371,7 +372,6 @@
         <li><a href="#services">Услуги</a></li>
         <li><a href="#how">Как это работает</a></li>
         <li><a href="#geo">География</a></li>
-        <li><a href="#cases">Кейсы</a></li>
         <li><a href="#reviews">Отзывы</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacts">Контакты</a></li>
@@ -834,6 +834,235 @@
   <!-- TM-MARK: CSS END -->
 </section>
 <!-- TM-MARK: О НАС END -->
+
+<div class="tm-section-divider" aria-hidden="true"></div>
+
+<!-- TM-MARK: CASES SECTION START -->
+<!-- Исправления:
+1. Кнопка закрытия модалки теперь корректно работает (правильный селектор и обработчик событий).
+2. Верстка Swiper-карусели выровнена горизонтально, карточки отображаются в одну строку.
+3. Добавлены стили для корректного горизонтального скролла и обрезки переполнения. -->
+
+<section class="cases-section tm-surface--services" id="cases">
+  <div class="container">
+    <h2 class="section-title">Кейсы выездного шиномонтажа</h2>
+
+    <!-- Swiper wrapper -->
+    <div class="swiper cases-slider">
+      <div class="swiper-wrapper">
+        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 1">
+          <div class="case-image">
+            <img src="IMG_6593.png" alt="Выездной шиномонтаж TireMasters чинит прокол колеса Lada XRay на загородной трассе">
+            <div class="gradient-mask"></div>
+            <div class="badges">
+              <span class="badge">Приморский район</span>
+              <span class="badge">ETA 25 мин</span>
+            </div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Lada XRay — прокол колеса на загородной трассе</h3>
+            <p class="case-quote">Клиент проколол переднее колесо по пути за город: машину повело в сторону, а запаски с домкратом с собой не оказалось. Вызвал выездной шиномонтаж TireMasters. Мы приехали на место, аккуратно вывесили авто, нашли саморез в покрышке, восстановили герметичность шины, проверили диск и давление во всех колёсах. Через 30 минут водитель уже безопасно продолжил путь без эвакуатора и лишних простоев.</p>
+          </div>
+        </article>
+
+        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 2">
+          <div class="case-image">
+            <img src="IMG_6594.png" alt="Выездной шиномонтаж TireMasters переобувает машины сотрудников на парковке склада">
+            <div class="gradient-mask"></div>
+            <div class="badges">
+              <span class="badge">Красносельский район</span>
+              <span class="badge">ETA 30 мин</span>
+            </div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Корпоративная переобувка на парковке склада</h3>
+            <p class="case-quote">Локация — парковка строительного склада. Сотрудники весь день на работе, времени ехать в шиномонтаж нет, а сезон уже начался. Руководство вызвало выездной сервис TireMasters прямо на территорию. Мы подъехали на оборудованном фургоне, по очереди переобули машины сотрудников, проверили давление и состояние резины, упаковали изношенные шины. За несколько часов весь автопарк сменил резину без отрыва от рабочего процесса и поездок по сервисам.</p>
+          </div>
+        </article>
+
+        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 3">
+          <div class="case-image">
+            <img src="IMG_6595.png" alt="Белый Mercedes C-Class на домкрате после попадания в яму, рядом фургон выездного шиномонтажа TireMasters">
+            <div class="gradient-mask"></div>
+            <div class="badges">
+              <span class="badge">Выборгский район</span>
+              <span class="badge">ETA 20 мин</span>
+            </div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Mercedes C-Class — повреждение колеса после ямы</h3>
+            <p class="case-quote">Владелец Mercedes поймал глубокую яму на загородной дороге: переднее колесо резко спустило, машину повело в сторону, дальше ехать было небезопасно. Клиент вызвал выездной шиномонтаж TireMasters прямо на место. Мы вывесили автомобиль, сняли повреждённое колесо, проверили диск и резину, установили исправное колесо, подтянули крепёж и проверили давление во всех шинах. Через полчаса водитель спокойно продолжил путь без эвакуатора и долгих визитов в сервис.</p>
+          </div>
+        </article>
+
+        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 4">
+          <div class="case-image">
+            <img src="IMG_6596.png" alt="Жёлтый кроссовер Skoda Yeti на домкрате во дворе ЖК рядом с фургоном выездного сервиса TireMasters">
+            <div class="gradient-mask"></div>
+            <div class="badges">
+              <span class="badge">Московский район</span>
+              <span class="badge">ETA 28 мин</span>
+            </div>
+          </div>
+          <div class="case-content">
+            <h3 class="case-title">Skoda Yeti — сезонная переобувка во дворе ЖК</h3>
+            <p class="case-quote">Владелец жёлтого кроссовера Skoda Yeti использует машину каждый день по работе, стоять в очереди на стационарном шиномонтаже нет времени. Перед началом сезона он вызвал выездной сервис TireMasters прямо во двор жилого комплекса. Мы подняли авто на двух домкратах, заменили комплект колёс на сезонный, проверили давление и состояние резины, подтянули крепёж. Клиент сэкономил несколько часов и сразу уехал по делам — без лишних поездок по сервисам и простоев.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="swiper-button-prev" aria-label="Предыдущий кейс"></div>
+      <div class="swiper-button-next" aria-label="Следующий кейс"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <a href="#" class="cta-all-cases">→ Все кейсы</a>
+  </div>
+
+  <div class="modal-overlay" role="dialog" aria-modal="true" hidden>
+    <div class="modal-window">
+      <button class="modal-close" aria-label="Закрыть">×</button>
+      <h3>Вызвать мастера</h3>
+      <form class="quick-form" action="#" method="post">
+        <input type="tel" placeholder="Ваш телефон" required aria-label="Телефон">
+        <button type="submit">Отправить заявку</button>
+      </form>
+      <p class="modal-phone">или позвоните напрямую: <a href="tel:+79531580900">+7 953 158 0900</a></p>
+    </div>
+  </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+@import url('https://unpkg.com/swiper@10/swiper-bundle.min.css');
+
+.cases-section {color:#fff;padding:80px 0;scroll-margin-top:88px;}
+.container {max-width:1280px;margin:0 auto;padding:0 16px;}
+.section-title {text-align:center;font-size:2rem;margin-bottom:40px;}
+
+.cases-slider {position:relative;overflow:hidden;padding-bottom:48px;}
+.swiper-wrapper {display:flex;}
+.swiper-slide {flex-shrink:0;height:auto;}
+
+.case-card {background:rgba(20,22,26,0.85);border-radius:12px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;min-width:0;display:flex;flex-direction:column;height:100%;}
+.case-card:hover {transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.4);}
+.case-image {position:relative;height:180px;overflow:hidden;}
+.case-image img {width:100%;height:100%;object-fit:cover;}
+.gradient-mask {position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);}
+.badges {position:absolute;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 20px);}
+.badge {background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:.75rem;padding:4px 8px;}
+.case-content {padding:16px;display:flex;flex-direction:column;gap:8px;}
+.case-title {font-size:1.1rem;margin:0;word-break:break-word;}
+.case-quote {font-size:.95rem;color:#ccc;font-style:italic;margin:0;word-break:break-word;}
+.cta-all-cases {display:block;text-align:center;margin-top:32px;color:#e63946;text-decoration:none;font-weight:500;}
+.cta-all-cases:hover{text-decoration:underline;}
+
+.swiper-button-prev,
+.swiper-button-next {color:#fff;}
+
+.modal-overlay {position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:1000;}
+.modal-overlay.active {display:flex;}
+.modal-window {background:#121418;padding:24px;border-radius:12px;width:90%;max-width:400px;box-shadow:0 0 20px rgba(0,0,0,0.6);position:relative;animation:fadeIn .25s ease;}
+.modal-close {position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
+.quick-form {display:flex;flex-direction:column;gap:12px;margin-top:16px;}
+.quick-form input {padding:10px 12px;border:1px solid #333;border-radius:8px;background:#0b0d10;color:#fff;}
+.quick-form button {background:#e63946;border:none;padding:10px 12px;border-radius:8px;color:#fff;font-weight:600;cursor:pointer;transition:background .2s ease;}
+.quick-form button:hover{background:#ff4c58;}
+.modal-phone {font-size:.9rem;margin-top:12px;text-align:center;}
+.modal-phone a {color:#e63946;text-decoration:none;}
+@keyframes fadeIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
+@media(max-width:1024px){.cases-slider{padding-bottom:40px;}}
+@media(max-width:768px){
+  .section-title{font-size:1.6rem;}
+  .case-image{height:160px;}
+  .cases-slider{padding:0 4px 36px;}
+  .cases-slider .swiper-slide{width:min(88vw,360px);}
+  .swiper-pagination-bullets .swiper-pagination-bullet{background:rgba(255,255,255,0.6);}
+  .swiper-pagination-bullet-active{background:#e63946;}
+}
+</style>
+
+<script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+<script>
+(()=>{
+    const sliderEl=document.querySelector('.cases-slider');
+    if(!sliderEl)return;
+
+    const swiper=new Swiper(sliderEl,{slidesPerView:1,spaceBetween:16,pagination:{el:'.cases-slider .swiper-pagination',clickable:true},navigation:{nextEl:sliderEl.querySelector('.swiper-button-next'),prevEl:sliderEl.querySelector('.swiper-button-prev')},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
+
+    const modal=sliderEl.closest('.cases-section')?.querySelector('.modal-overlay');
+    const cards=sliderEl.querySelectorAll('.case-card');
+    const modalCloseBtn=modal?.querySelector('.modal-close');
+
+    cards.forEach(card=>{card.addEventListener('click',()=>{
+      if(!swiper.allowClick)return;
+      modal?.classList.add('active');
+    });});
+
+    modalCloseBtn?.addEventListener('click',()=>{modal?.classList.remove('active');});
+    modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
+
+    const quickForm=modal?.querySelector('.quick-form');
+    if(quickForm){
+      const phoneInput=quickForm.querySelector('input[type="tel"]');
+      const submitBtn=quickForm.querySelector('button[type="submit"]');
+      const status=document.createElement('p');
+      status.className='quick-form__status';
+      status.style.margin='0';
+      status.style.color='#fff';
+      status.style.fontSize='.9rem';
+      status.style.textAlign='center';
+      status.setAttribute('role','status');
+      status.hidden=true;
+      quickForm.appendChild(status);
+
+      quickForm.addEventListener('submit',async event=>{
+        event.preventDefault();
+        const phone=(phoneInput?.value||'').trim();
+
+        if(!phone){
+          status.textContent='Укажите телефон, чтобы мы могли перезвонить.';
+          status.hidden=false;
+          return;
+        }
+
+        const message=[
+          '⚡️ Быстрая заявка из блока кейсов',
+          `Телефон: ${phone}`,
+        ].join('\n');
+
+        submitBtn.disabled=true;
+        status.textContent='Отправляем заявку…';
+        status.hidden=false;
+
+        try{
+          const response=await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({name:'',phone,message}),
+          });
+
+          let data={};
+          try{data=await response.json();}catch(_){ }
+
+          if(!response.ok||data.ok===false){
+            const text=data?.error||data?.description||(!response.ok?await response.text():'')||'Не удалось отправить заявку';
+            throw new Error(text);
+          }
+
+          status.textContent='Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+          quickForm.reset();
+        }catch(err){
+          console.error(err);
+          status.textContent=`Ошибка отправки: ${err?.message||'Попробуйте ещё раз или позвоните нам.'}`;
+        }finally{
+          submitBtn.disabled=false;
+        }
+      });
+    }
+  })();
+  </script>
+<!-- TM-MARK: CASES SECTION END -->
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
@@ -3856,235 +4085,6 @@ Assumptions (разумные допущения):
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
-<!-- TM-MARK: CASES SECTION START -->
-<!-- Исправления:
-1. Кнопка закрытия модалки теперь корректно работает (правильный селектор и обработчик событий).
-2. Верстка Swiper-карусели выровнена горизонтально, карточки отображаются в одну строку.
-3. Добавлены стили для корректного горизонтального скролла и обрезки переполнения. -->
-
-<section class="cases-section tm-surface--services" id="cases">
-  <div class="container">
-    <h2 class="section-title">Кейсы выездного шиномонтажа</h2>
-
-    <!-- Swiper wrapper -->
-    <div class="swiper cases-slider">
-      <div class="swiper-wrapper">
-        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 1">
-          <div class="case-image">
-            <img src="IMG_6593.png" alt="Выездной шиномонтаж TireMasters чинит прокол колеса Lada XRay на загородной трассе">
-            <div class="gradient-mask"></div>
-            <div class="badges">
-              <span class="badge">Приморский район</span>
-              <span class="badge">ETA 25 мин</span>
-            </div>
-          </div>
-          <div class="case-content">
-            <h3 class="case-title">Lada XRay — прокол колеса на загородной трассе</h3>
-            <p class="case-quote">Клиент проколол переднее колесо по пути за город: машину повело в сторону, а запаски с домкратом с собой не оказалось. Вызвал выездной шиномонтаж TireMasters. Мы приехали на место, аккуратно вывесили авто, нашли саморез в покрышке, восстановили герметичность шины, проверили диск и давление во всех колёсах. Через 30 минут водитель уже безопасно продолжил путь без эвакуатора и лишних простоев.</p>
-          </div>
-        </article>
-
-        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 2">
-          <div class="case-image">
-            <img src="IMG_6594.png" alt="Выездной шиномонтаж TireMasters переобувает машины сотрудников на парковке склада">
-            <div class="gradient-mask"></div>
-            <div class="badges">
-              <span class="badge">Красносельский район</span>
-              <span class="badge">ETA 30 мин</span>
-            </div>
-          </div>
-          <div class="case-content">
-            <h3 class="case-title">Корпоративная переобувка на парковке склада</h3>
-            <p class="case-quote">Локация — парковка строительного склада. Сотрудники весь день на работе, времени ехать в шиномонтаж нет, а сезон уже начался. Руководство вызвало выездной сервис TireMasters прямо на территорию. Мы подъехали на оборудованном фургоне, по очереди переобули машины сотрудников, проверили давление и состояние резины, упаковали изношенные шины. За несколько часов весь автопарк сменил резину без отрыва от рабочего процесса и поездок по сервисам.</p>
-          </div>
-        </article>
-
-        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 3">
-          <div class="case-image">
-            <img src="IMG_6595.png" alt="Белый Mercedes C-Class на домкрате после попадания в яму, рядом фургон выездного шиномонтажа TireMasters">
-            <div class="gradient-mask"></div>
-            <div class="badges">
-              <span class="badge">Выборгский район</span>
-              <span class="badge">ETA 20 мин</span>
-            </div>
-          </div>
-          <div class="case-content">
-            <h3 class="case-title">Mercedes C-Class — повреждение колеса после ямы</h3>
-            <p class="case-quote">Владелец Mercedes поймал глубокую яму на загородной дороге: переднее колесо резко спустило, машину повело в сторону, дальше ехать было небезопасно. Клиент вызвал выездной шиномонтаж TireMasters прямо на место. Мы вывесили автомобиль, сняли повреждённое колесо, проверили диск и резину, установили исправное колесо, подтянули крепёж и проверили давление во всех шинах. Через полчаса водитель спокойно продолжил путь без эвакуатора и долгих визитов в сервис.</p>
-          </div>
-        </article>
-
-        <article class="case-card swiper-slide" tabindex="0" aria-label="Кейс 4">
-          <div class="case-image">
-            <img src="IMG_6596.png" alt="Жёлтый кроссовер Skoda Yeti на домкрате во дворе ЖК рядом с фургоном выездного сервиса TireMasters">
-            <div class="gradient-mask"></div>
-            <div class="badges">
-              <span class="badge">Московский район</span>
-              <span class="badge">ETA 28 мин</span>
-            </div>
-          </div>
-          <div class="case-content">
-            <h3 class="case-title">Skoda Yeti — сезонная переобувка во дворе ЖК</h3>
-            <p class="case-quote">Владелец жёлтого кроссовера Skoda Yeti использует машину каждый день по работе, стоять в очереди на стационарном шиномонтаже нет времени. Перед началом сезона он вызвал выездной сервис TireMasters прямо во двор жилого комплекса. Мы подняли авто на двух домкратах, заменили комплект колёс на сезонный, проверили давление и состояние резины, подтянули крепёж. Клиент сэкономил несколько часов и сразу уехал по делам — без лишних поездок по сервисам и простоев.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-button-prev" aria-label="Предыдущий кейс"></div>
-      <div class="swiper-button-next" aria-label="Следующий кейс"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <a href="#" class="cta-all-cases">→ Все кейсы</a>
-  </div>
-
-  <div class="modal-overlay" role="dialog" aria-modal="true" hidden>
-    <div class="modal-window">
-      <button class="modal-close" aria-label="Закрыть">×</button>
-      <h3>Вызвать мастера</h3>
-      <form class="quick-form" action="#" method="post">
-        <input type="tel" placeholder="Ваш телефон" required aria-label="Телефон">
-        <button type="submit">Отправить заявку</button>
-      </form>
-      <p class="modal-phone">или позвоните напрямую: <a href="tel:+79531580900">+7 953 158 0900</a></p>
-    </div>
-  </div>
-</section>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-@import url('https://unpkg.com/swiper@10/swiper-bundle.min.css');
-
-.cases-section {color:#fff;padding:80px 0;scroll-margin-top:88px;}
-.container {max-width:1280px;margin:0 auto;padding:0 16px;}
-.section-title {text-align:center;font-size:2rem;margin-bottom:40px;}
-
-.cases-slider {position:relative;overflow:hidden;padding-bottom:48px;}
-.swiper-wrapper {display:flex;}
-.swiper-slide {flex-shrink:0;height:auto;}
-
-.case-card {background:rgba(20,22,26,0.85);border-radius:12px;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;cursor:pointer;min-width:0;display:flex;flex-direction:column;height:100%;}
-.case-card:hover {transform:scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.4);}
-.case-image {position:relative;height:180px;overflow:hidden;}
-.case-image img {width:100%;height:100%;object-fit:cover;}
-.gradient-mask {position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);}
-.badges {position:absolute;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:calc(100% - 20px);}
-.badge {background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;font-size:.75rem;padding:4px 8px;}
-.case-content {padding:16px;display:flex;flex-direction:column;gap:8px;}
-.case-title {font-size:1.1rem;margin:0;word-break:break-word;}
-.case-quote {font-size:.95rem;color:#ccc;font-style:italic;margin:0;word-break:break-word;}
-.cta-all-cases {display:block;text-align:center;margin-top:32px;color:#e63946;text-decoration:none;font-weight:500;}
-.cta-all-cases:hover{text-decoration:underline;}
-
-.swiper-button-prev,
-.swiper-button-next {color:#fff;}
-
-.modal-overlay {position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:1000;}
-.modal-overlay.active {display:flex;}
-.modal-window {background:#121418;padding:24px;border-radius:12px;width:90%;max-width:400px;box-shadow:0 0 20px rgba(0,0,0,0.6);position:relative;animation:fadeIn .25s ease;}
-.modal-close {position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;}
-.quick-form {display:flex;flex-direction:column;gap:12px;margin-top:16px;}
-.quick-form input {padding:10px 12px;border:1px solid #333;border-radius:8px;background:#0b0d10;color:#fff;}
-.quick-form button {background:#e63946;border:none;padding:10px 12px;border-radius:8px;color:#fff;font-weight:600;cursor:pointer;transition:background .2s ease;}
-.quick-form button:hover{background:#ff4c58;}
-.modal-phone {font-size:.9rem;margin-top:12px;text-align:center;}
-.modal-phone a {color:#e63946;text-decoration:none;}
-@keyframes fadeIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
-@media(max-width:1024px){.cases-slider{padding-bottom:40px;}}
-@media(max-width:768px){
-  .section-title{font-size:1.6rem;}
-  .case-image{height:160px;}
-  .cases-slider{padding:0 4px 36px;}
-  .cases-slider .swiper-slide{width:min(88vw,360px);}
-  .swiper-pagination-bullets .swiper-pagination-bullet{background:rgba(255,255,255,0.6);}
-  .swiper-pagination-bullet-active{background:#e63946;}
-}
-</style>
-
-<script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
-<script>
-(()=>{
-    const sliderEl=document.querySelector('.cases-slider');
-    if(!sliderEl)return;
-
-    const swiper=new Swiper(sliderEl,{slidesPerView:1,spaceBetween:16,pagination:{el:'.cases-slider .swiper-pagination',clickable:true},navigation:{nextEl:sliderEl.querySelector('.swiper-button-next'),prevEl:sliderEl.querySelector('.swiper-button-prev')},breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:4}}});
-
-    const modal=sliderEl.closest('.cases-section')?.querySelector('.modal-overlay');
-    const cards=sliderEl.querySelectorAll('.case-card');
-    const modalCloseBtn=modal?.querySelector('.modal-close');
-
-    cards.forEach(card=>{card.addEventListener('click',()=>{
-      if(!swiper.allowClick)return;
-      modal?.classList.add('active');
-    });});
-
-    modalCloseBtn?.addEventListener('click',()=>{modal?.classList.remove('active');});
-    modal?.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('active');});
-
-    const quickForm=modal?.querySelector('.quick-form');
-    if(quickForm){
-      const phoneInput=quickForm.querySelector('input[type="tel"]');
-      const submitBtn=quickForm.querySelector('button[type="submit"]');
-      const status=document.createElement('p');
-      status.className='quick-form__status';
-      status.style.margin='0';
-      status.style.color='#fff';
-      status.style.fontSize='.9rem';
-      status.style.textAlign='center';
-      status.setAttribute('role','status');
-      status.hidden=true;
-      quickForm.appendChild(status);
-
-      quickForm.addEventListener('submit',async event=>{
-        event.preventDefault();
-        const phone=(phoneInput?.value||'').trim();
-
-        if(!phone){
-          status.textContent='Укажите телефон, чтобы мы могли перезвонить.';
-          status.hidden=false;
-          return;
-        }
-
-        const message=[
-          '⚡️ Быстрая заявка из блока кейсов',
-          `Телефон: ${phone}`,
-        ].join('\n');
-
-        submitBtn.disabled=true;
-        status.textContent='Отправляем заявку…';
-        status.hidden=false;
-
-        try{
-          const response=await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({name:'',phone,message}),
-          });
-
-          let data={};
-          try{data=await response.json();}catch(_){ }
-
-          if(!response.ok||data.ok===false){
-            const text=data?.error||data?.description||(!response.ok?await response.text():'')||'Не удалось отправить заявку';
-            throw new Error(text);
-          }
-
-          status.textContent='Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-          quickForm.reset();
-        }catch(err){
-          console.error(err);
-          status.textContent=`Ошибка отправки: ${err?.message||'Попробуйте ещё раз или позвоните нам.'}`;
-        }finally{
-          submitBtn.disabled=false;
-        }
-      });
-    }
-  })();
-  </script>
-<!-- TM-MARK: CASES SECTION END -->
-
-<div class="tm-section-divider" aria-hidden="true"></div>
-
 <!-- TM-MARK: START -->
 <!DOCTYPE html>
 <html lang="ru">
@@ -4722,12 +4722,12 @@ body {
           <ul class="tm-nav__list" aria-label="Якоря по секциям">
             <li><a class="tm-nav__link focusable" href="#hero">Hero</a></li>
             <li><a class="tm-nav__link focusable" href="#about">Кто мы такие?</a></li>
+            <li><a class="tm-nav__link focusable" href="#cases">Кейсы</a></li>
             <li><a class="tm-nav__link focusable" href="#calculator">Онлайн заявка</a></li>
             <li><a class="tm-nav__link focusable" href="#services">Услуги</a></li>
             <li><a class="tm-nav__link focusable" href="#benefits">Почему мы</a></li>
             <li><a class="tm-nav__link focusable" href="#howitworks">Как это работает</a></li>
             <li><a class="tm-nav__link focusable" href="#geo">География</a></li>
-            <li><a class="tm-nav__link focusable" href="#cases">Кейсы</a></li>
             <li><a class="tm-nav__link focusable" href="#reviews">Отзывы</a></li>
             <li><a class="tm-nav__link focusable" href="#faq">FAQ</a></li>
             <li><a class="tm-nav__link focusable" href="#promo">Спец предложение</a></li>
