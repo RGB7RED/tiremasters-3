@@ -1716,6 +1716,15 @@ document.addEventListener("DOMContentLoaded", () => {
       <button type="submit" class="btn btn-primary-outline">Отправить заявку</button>
       <div class="tm-tow__alert" hidden></div>
     </form>
+
+    <div class="tm-tow__gallery" aria-label="Фотографии эвакуатора">
+      <div class="tm-tow__gallery-track">
+        <img src="IMG_6600.jpeg" alt="Эвакуатор TireMasters — фото 1">
+        <img src="IMG_6601.jpeg" alt="Эвакуатор TireMasters — фото 2">
+        <img src="IMG_6602.jpeg" alt="Эвакуатор TireMasters — фото 3">
+        <img src="IMG_6603.jpeg" alt="Эвакуатор TireMasters — фото 4">
+      </div>
+    </div>
   </div>
   <!-- TM-MARK: HTML END -->
 
@@ -1770,6 +1779,17 @@ document.addEventListener("DOMContentLoaded", () => {
   .tm-tow__form input, .tm-tow__form textarea { padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: #0B0D10; color: var(--tow-white); outline: none; }
   .tm-tow__form input:focus, .tm-tow__form textarea:focus { border-color: var(--tow-yellow); box-shadow: 0 0 0 3px rgba(255,197,44,.2); }
   .tm-tow__alert { margin-top: 8px; font-size: 14px; color: var(--tow-yellow); text-align: center; }
+
+  .tm-tow__gallery { width: 100%; margin: 18px auto 0; }
+  .tm-tow__gallery-track { display: flex; gap: 12px; overflow-x: auto; padding: 8px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.3) rgba(255,255,255,.08); }
+  .tm-tow__gallery-track::-webkit-scrollbar { height: 8px; }
+  .tm-tow__gallery-track::-webkit-scrollbar-track { background: rgba(255,255,255,.05); border-radius: 999px; }
+  .tm-tow__gallery-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,.3); border-radius: 999px; }
+  .tm-tow__gallery img { width: clamp(240px, 26vw, 320px); height: 200px; object-fit: cover; border-radius: var(--tow-radius); box-shadow: var(--tow-shadow); flex: 0 0 auto; scroll-snap-align: start; background: #0B0D10; }
+
+  @media (max-width: 540px) {
+    .tm-tow__gallery img { width: 78vw; height: 180px; }
+  }
 
   @media (max-width:720px){
     .tm-tow__card h3{font-size:16px;}
