@@ -1,142 +1,70 @@
-import { sendTelegramLead, TIREMASTERS_CHAT_ID } from './telegram.js';
-
-function formatLeadMessage({
-  serviceTitle,
-  page,
-  name,
-  phone,
-  addressLabel,
-  address,
-  commentLabel,
-  comment,
-}) {
-  const now = new Date().toLocaleString('ru-RU');
-
-  return [
-    `Новая заявка: ${serviceTitle}`,
-    '',
-    `Страница: ${page}`,
-    `Имя: ${name || '—'}`,
-    `Телефон: ${phone}`,
-    `${addressLabel}: ${address || '—'}`,
-    `${commentLabel}: ${comment || '—'}`,
-    '',
-    'Источник: сайт TireMasters',
-    `Время: ${now}`,
-  ].join('\n');
-}
-
-function setupEvacuatorForm() {
-  const form = document.getElementById('evacuator-form');
+function setupLeadForm(formSelector, serviceLabel) {
+  const form = document.querySelector(formSelector);
   if (!form) return;
 
-  const statusEl = document.getElementById('evacuator-form-status');
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const nameInput = form.querySelector('[name="name"]');
+  const phoneInput = form.querySelector('[name="phone"]');
+  const addressInput = form.querySelector('[name="address"]');
+  const commentInput = form.querySelector('[name="comment"]');
+  const submitButton = form.querySelector('[type="submit"]');
+  const statusBox = form.querySelector('[data-form-status]');
+
+  function setStatus(type, message) {
+    if (!statusBox) return;
+    statusBox.textContent = message || '';
+    statusBox.dataset.statusType = type || '';
+  }
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    if (!submitBtn || !statusEl) return;
+    setStatus('', '');
+    if (!submitButton) return;
 
-    statusEl.textContent = '';
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Отправляем...';
+    const originalLabel = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправляем…';
 
-    const formData = new FormData(form);
-    const name = formData.get('name')?.toString().trim() || '';
-    const phone = formData.get('phone')?.toString().trim() || '';
-    const address = formData.get('address')?.toString().trim() || '';
-    const comment = formData.get('comment')?.toString().trim() || '';
+    const name = nameInput?.value.trim();
+    const phone = phoneInput?.value.trim();
+    const address = addressInput?.value.trim();
+    const comment = commentInput?.value.trim();
 
-    if (!phone) {
-      statusEl.textContent = 'Укажите, пожалуйста, телефон.';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Отправить заявку';
+    const digits = (phone || '').replace(/\D/g, '');
+    if (digits.length < 5) {
+      setStatus('error', 'Введите корректный номер телефона');
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
       return;
     }
 
-    const message = formatLeadMessage({
-      serviceTitle: 'ЭВАКУАТОР',
-      page: 'evacuator.html',
-      name,
-      phone,
-      addressLabel: 'Адрес / локация',
-      address,
-      commentLabel: 'Комментарий',
-      comment,
-    });
-
     try {
-      await sendTelegramLead(TIREMASTERS_CHAT_ID, message);
-      statusEl.textContent = 'Заявка отправлена. Мы перезвоним в ближайшее время.';
+      await window.TM_sendTelegramLead({
+        service: serviceLabel,
+        name,
+        phone,
+        address,
+        comment,
+      });
+
       form.reset();
+      setStatus('success', 'Заявка отправлена. Мы перезвоним вам в ближайшее время.');
     } catch (error) {
-      console.error(error);
-      statusEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.';
+      console.error('Lead submission error', error);
+      setStatus(
+        'error',
+        'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.'
+      );
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Отправить заявку';
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
     }
   });
 }
 
-function setupAvtoelektrikForm() {
-  const form = document.getElementById('avtoelektrik-form');
-  if (!form) return;
-
-  const statusEl = document.getElementById('avtoelektrik-form-status');
-  const submitBtn = form.querySelector('button[type="submit"]');
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    if (!submitBtn || !statusEl) return;
-
-    statusEl.textContent = '';
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Отправляем...';
-
-    const formData = new FormData(form);
-    const name = formData.get('name')?.toString().trim() || '';
-    const phone = formData.get('phone')?.toString().trim() || '';
-    const address = formData.get('address')?.toString().trim() || '';
-    const issue = formData.get('issue')?.toString().trim() || '';
-
-    if (!phone) {
-      statusEl.textContent = 'Укажите, пожалуйста, телефон.';
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Вызвать автоэлектрика';
-      return;
-    }
-
-    const message = formatLeadMessage({
-      serviceTitle: 'АВТОЭЛЕКТРИК',
-      page: 'avtoelektrik.html',
-      name,
-      phone,
-      addressLabel: 'Адрес или ориентир',
-      address,
-      commentLabel: 'Что произошло',
-      comment: issue,
-    });
-
-    try {
-      await sendTelegramLead(TIREMASTERS_CHAT_ID, message);
-      statusEl.textContent = 'Заявка отправлена. Мы перезвоним в ближайшее время.';
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      statusEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.';
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Вызвать автоэлектрика';
-    }
-  });
+function initLeadForms() {
+  setupLeadForm('#evacuator-form', 'Эвакуатор');
+  setupLeadForm('#avtoelektrik-form', 'Автоэлектрик');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setupEvacuatorForm();
-  setupAvtoelektrikForm();
-});
-
-export { setupEvacuatorForm, setupAvtoelektrikForm };
+document.addEventListener('DOMContentLoaded', initLeadForms);

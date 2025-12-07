@@ -855,7 +855,7 @@
       <label>Адрес / Локация <input type="text" name="address" placeholder="Например: Колпино, Пушкин, Шушары, КАД, М11…"></label>
       <label>Комментарий <textarea name="comment" rows="3" placeholder="Что случилось, марка авто, тип проблемы..."></textarea></label>
       <button type="submit" class="btn btn-primary-outline">Отправить заявку</button>
-      <div class="tm-tow__alert form-status" id="evacuator-form-status" role="status"></div>
+      <p class="tm-tow__alert form-status" data-form-status role="status"></p>
     </form>
 
     <div class="tm-tow__gallery" aria-label="Фотографии эвакуатора">
@@ -926,6 +926,9 @@
   .tm-tow__form input, .tm-tow__form textarea { padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: #0B0D10; color: var(--tow-white); outline: none; }
   .tm-tow__form input:focus, .tm-tow__form textarea:focus { border-color: var(--tow-yellow); box-shadow: 0 0 0 3px rgba(255,197,44,.2); }
   .tm-tow__alert { margin-top: 8px; font-size: 14px; color: var(--tow-yellow); text-align: center; }
+  .form-status { margin-top: 12px; font-size: 14px; }
+  .form-status[data-status-type="success"] { color: #a5d6a7; }
+  .form-status[data-status-type="error"] { color: #ef5350; }
   .tm-tow__gallery { width: 100%; margin: 18px auto 0; overflow: hidden; }
   .tm-tow__gallery-track { display: flex; gap: 12px; overflow-x: auto; padding: 8px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.3) rgba(255,255,255,.08); box-sizing: border-box; width: 100%; }
   .tm-tow__gallery-track::-webkit-scrollbar { height: 8px; }
@@ -1223,7 +1226,8 @@
   }
 </style>
 
-<script type="module" src="js/forms.js"></script>
+<script src="js/telegram.js"></script>
+<script src="js/forms.js"></script>
 <script>
   document.querySelectorAll('.tm-faq__question').forEach((btn) => {
     btn.addEventListener('click', () => {

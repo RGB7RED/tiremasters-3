@@ -528,6 +528,19 @@
       cursor: pointer;
     }
 
+    .form-status {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .form-status[data-status-type="success"] {
+      color: #a5d6a7;
+    }
+
+    .form-status[data-status-type="error"] {
+      color: #ef5350;
+    }
+
     .tm-section-divider {
       width: 100%;
       height: 12px;
@@ -971,10 +984,10 @@
         </label>
       </div>
       <label>Что произошло?
-        <textarea name="issue" placeholder="Например: не заводится, горит чек, села батарея"></textarea>
+        <textarea name="comment" placeholder="Например: не заводится, горит чек, села батарея"></textarea>
       </label>
       <button type="submit">Вызвать автоэлектрика</button>
-      <div class="tm-form__status form-status" id="avtoelektrik-form-status" role="status"></div>
+      <p class="tm-form__status form-status" data-form-status role="status"></p>
     </form>
   </section>
 
@@ -1032,7 +1045,8 @@
     </div>
   </footer>
 
-  <script type="module" src="js/forms.js"></script>
+  <script src="js/telegram.js"></script>
+  <script src="js/forms.js"></script>
   <script>
     const burger = document.querySelector('.burger button');
     const drawer = document.getElementById('mobileDrawer');
