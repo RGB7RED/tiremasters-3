@@ -958,7 +958,7 @@
       <h2>Заявка на выезд автоэлектрика</h2>
       <p>Оставьте контакты и опишите симптом — перезвоним за пару минут, подтвердим стоимость и время приезда.</p>
     </div>
-    <form class="tm-form">
+    <form id="avtoelektrik-form" class="tm-form">
       <div class="tm-form-grid">
         <label>Имя
           <input type="text" name="name" placeholder="Как к вам обращаться" required />
@@ -967,77 +967,16 @@
           <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
         </label>
         <label>Адрес или ориентир
-          <input type="text" name="location" placeholder="СПб, район или трасса" />
+          <input type="text" name="address" placeholder="СПб, район или трасса" />
         </label>
       </div>
       <label>Что произошло?
         <textarea name="issue" placeholder="Например: не заводится, горит чек, села батарея"></textarea>
       </label>
       <button type="submit">Вызвать автоэлектрика</button>
+      <div class="tm-form__status form-status" id="avtoelektrik-form-status" role="status"></div>
     </form>
   </section>
-
-  <script>
-    const autoElectricForm = document.querySelector('.tm-form');
-
-    if (autoElectricForm) {
-      const status = document.createElement('p');
-      status.className = 'tm-form__status';
-      status.style.margin = '0';
-      status.style.color = '#B6BBC3';
-      status.setAttribute('role', 'status');
-      status.hidden = true;
-      autoElectricForm.appendChild(status);
-
-      const submitBtn = autoElectricForm.querySelector('button[type="submit"]');
-
-      autoElectricForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        if (!autoElectricForm.reportValidity()) return;
-
-        status.textContent = 'Отправляем заявку…';
-        status.hidden = false;
-        submitBtn.disabled = true;
-
-        const formData = new FormData(autoElectricForm);
-        const name = (formData.get('name') || '').toString().trim();
-        const phone = (formData.get('phone') || '').toString().trim();
-        const location = (formData.get('location') || '').toString().trim();
-        const issue = (formData.get('issue') || '').toString().trim();
-
-        const message = [
-          '🔌 Заявка на выезд автоэлектрика',
-          name ? `Имя: ${name}` : 'Имя не указано',
-          `Телефон: ${phone || '—'}`,
-          location ? `Адрес/ориентир: ${location}` : 'Адрес не указан',
-          issue ? `Описание: ${issue}` : 'Описание: —',
-        ].join('\n');
-
-        try {
-          const response = await fetch('/api/sendToTelegram', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, phone, location, message }),
-          });
-
-          const data = await response.json().catch(() => ({}));
-          if (!response.ok || data.ok === false) {
-            const text = data?.error || data?.description || (!response.ok ? await response.text() : '');
-            throw new Error(text || 'Не удалось отправить заявку. Попробуйте ещё раз.');
-          }
-
-          status.textContent = 'Спасибо! Мы свяжемся с вами для уточнения деталей.';
-          autoElectricForm.reset();
-        } catch (error) {
-          console.error(error);
-          status.textContent = `Ошибка отправки: ${error?.message || 'Попробуйте ещё раз или свяжитесь по телефону.'}`;
-        } finally {
-          submitBtn.disabled = false;
-        }
-      });
-    }
-  </script>
 
   <div class="tm-section-divider" aria-hidden="true"></div>
 
@@ -1093,6 +1032,7 @@
     </div>
   </footer>
 
+  <script type="module" src="js/forms.js"></script>
   <script>
     const burger = document.querySelector('.burger button');
     const drawer = document.getElementById('mobileDrawer');
