@@ -576,13 +576,27 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     }
 
-    footer {
-      padding: 28px 0 40px;
-      background: #0a0c0f;
-      color: var(--text-1);
-      text-align: center;
-      font-size: 14px;
+    .tm-footer {
+      background: #0B0D10;
+      color: #E8EAED;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 20px 30px;
     }
+
+    .tm-footer__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .tm-footer h3 { margin: 0 0 10px; font-size: 18px; }
+    .tm-footer p { margin: 0 0 8px; color: #B6BBC3; }
+    .tm-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+    .tm-footer a { color: #E8EAED; text-decoration: none; }
+    .tm-footer a:hover,
+    .tm-footer a:focus-visible { text-decoration: underline; }
 
     @media (max-width: 640px) {
       body {
@@ -606,7 +620,7 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a href="#hero" class="brand"><img src="logo.png" alt="Логотип" /><span>TireMasters</span></a>
+      <a href="#tm-autoelectric-hero" class="brand"><img src="logo.png" alt="Логотип" /><span>TireMasters</span></a>
       <nav class="tm-main-services-nav" aria-label="Выбор услуги">
         <a href="index.html" class="tm-main-services-link">Выездной шиномонтаж</a>
         <a href="evacuator.html" class="tm-main-services-link">Эвакуатор</a>
@@ -625,15 +639,13 @@
     </div>
     <nav class="tm-secondary-nav" aria-label="Навигация по странице">
       <div class="tm-secondary-nav__inner">
-        <a class="tm-secondary-nav__link" href="#hero">Главная</a>
-        <a class="tm-secondary-nav__link" href="#tm-autoelectric-situations">Когда нужен автоэлектрик</a>
+        <a class="tm-secondary-nav__link" href="#tm-autoelectric-hero">Главная</a>
+        <a class="tm-secondary-nav__link" href="#tm-autoelectric-situations">Ситуации</a>
         <a class="tm-secondary-nav__link" href="#tm-autoelectric-services">Услуги</a>
         <a class="tm-secondary-nav__link" href="#tm-autoelectric-prices">Цены</a>
         <a class="tm-secondary-nav__link" href="#tm-autoelectric-geo">География</a>
-        <a class="tm-secondary-nav__link" href="#tm-crosslinks">Другие услуги</a>
         <a class="tm-secondary-nav__link" href="#reviews">Отзывы</a>
         <a class="tm-secondary-nav__link" href="#faq">FAQ</a>
-        <a class="tm-secondary-nav__link" href="#calc">Заявка</a>
         <a class="tm-secondary-nav__link" href="#contacts">Контакты</a>
       </div>
     </nav>
@@ -654,21 +666,19 @@
     </div>
     <div class="mobile-drawer__list">
       <ul>
-        <li><a href="#hero">Главная</a></li>
-        <li><a href="#tm-autoelectric-situations">Когда нужен автоэлектрик</a></li>
+        <li><a href="#tm-autoelectric-hero">Главная</a></li>
+        <li><a href="#tm-autoelectric-situations">Ситуации</a></li>
         <li><a href="#tm-autoelectric-services">Услуги</a></li>
         <li><a href="#tm-autoelectric-prices">Цены</a></li>
         <li><a href="#tm-autoelectric-geo">География</a></li>
-        <li><a href="#tm-crosslinks">Другие услуги</a></li>
         <li><a href="#reviews">Отзывы</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#calc">Заявка</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
     </div>
   </aside>
 
-  <section id="hero" class="tm-hero" aria-label="Первый экран TireMasters">
+  <section id="tm-autoelectric-hero" class="tm-hero" aria-label="Первый экран TireMasters">
     <div class="tm-hero__container">
       <div class="tm-hero__col tm-hero__col--left">
         <h1 class="tm-hero__title">Выездной автоэлектрик 24/7 в Санкт-Петербурге и Ленинградской области</h1>
@@ -989,8 +999,35 @@
     </div>
   </section>
 
-  <footer>
-    TireMasters — выездной автоэлектрик, шиномонтаж и эвакуатор. Санкт-Петербург и Ленинградская область, 24/7.
+  <footer class="tm-footer" id="footer">
+    <div class="tm-footer__grid">
+      <div>
+        <h3>Услуги</h3>
+        <ul>
+          <li><a href="index.html">Шиномонтаж</a></li>
+          <li><a href="evacuator.html">Эвакуатор</a></li>
+          <li><a href="avtoelektrik.html">Автоэлектрик</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Навигация</h3>
+        <ul>
+          <li><a href="#tm-autoelectric-hero">Главная</a></li>
+          <li><a href="#tm-autoelectric-situations">Ситуации</a></li>
+          <li><a href="#tm-autoelectric-services">Услуги</a></li>
+          <li><a href="#tm-autoelectric-prices">Цены</a></li>
+          <li><a href="#tm-autoelectric-geo">География</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>О TireMasters</h3>
+        <p>Выездной автоэлектрик по СПб и ЛО. Диагностика, запуск двигателя, замена аккумулятора и помощь на дороге 24/7.</p>
+        <p><a href="tel:+79531580900">+7 953 158 0900</a> — звоните или пишите в мессенджеры, подтвердим стоимость до выезда.</p>
+      </div>
+    </div>
   </footer>
 
   <script>
