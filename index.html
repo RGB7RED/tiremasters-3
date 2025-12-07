@@ -566,7 +566,7 @@
         <a href="evacuator.html" class="tm-main-services-link">Эвакуатор</a>
         <a href="avtoelektrik.html" class="tm-main-services-link">Автоэлектрик</a>
       </nav>
-      <a class="cta-primary active header-cta" href="#calc">Вызвать шиномонтаж</a>
+      <a class="cta-primary active header-cta" href="tel:+79531580900">Вызвать шиномонтаж</a>
       <div class="right">
         <a class="contact-icon" href="https://t.me/Tiar_MASTERSPro" target="_blank" aria-label="Telegram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 13.2L9.3 17.1l3-2.3 4.4 3.2 2.9-13.7L3 9.2l4.6 1.4 10.7-6.7L9.5 13.2z" fill="currentColor"/></svg>
@@ -686,7 +686,7 @@
       <p class="tm-hero__subtitle">Ремонт проколов и порезов, сезонная переобувка и помощь на дороге. Приедем в среднем за ~25 минут, работаем по всему СПб и ЛО, оплата картой.</p>
 
       <div class="tm-hero__cta">
-        <a href="#calc" class="btn btn-primary-outline" aria-label="Вызвать шиномонтаж — перейти к калькулятору">Вызвать шиномонтаж</a>
+        <a href="tel:+79531580900" class="btn btn-primary-outline" aria-label="Вызвать шиномонтаж — позвонить">Вызвать шиномонтаж</a>
         <a href="tel:+79531580900" class="btn btn-secondary" aria-label="Позвонить в TireMasters">Позвонить</a>
         <div class="tm-hero__messengers" role="group" aria-label="Мессенджеры">
           <a class="messenger-btn" href="https://wa.me/79531580900" target="_blank" rel="noopener" aria-label="Написать в WhatsApp" title="WhatsApp">
@@ -1401,630 +1401,6 @@
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
-<!-- TM-MARK: КАЛЬКУЛЯТОР START -->
-<section id="calc" class="tm-calc tm-surface--services tm-surface--services--yellow" aria-label="Калькулятор онлайн-заявки TireMasters">
-  <!-- TM-MARK: HTML START -->
-  <!--
-    Разумные допущения:
-    1) Фон — одно статичное фото 16:9 (рекомендовано 1920×1080 или выше), сюжет: ночной мокрый асфальт с бликами фар.
-       Путь к фото задаётся в переменной --calc-bg-url (см. CSS).
-    2) Коэффициенты: RunFlat +20%, SUV +15%, Ночной тариф +20% (22:00–08:00), За КАД: 35 ₽/км (в одну сторону).
-    3) База цен — диапазоны по ключевым услугам; итог выдаётся как «от–до». Это не счёт, а ориентир.
-    4) Обязательные поля: Услуга, Радиус, Телефон. Связь — выбор «Позвоните» или «Напишите в мессенджер».
-    5) Антиспам: скрытое поле honeypot + задержка отправки.
-  -->
-
-  <!-- Фон: статичное фото + диагональный затемняющий градиент + декоративные разделители -->
-  <div class="tm-calc__bg" aria-hidden="true"></div>
-  <div class="tm-calc__mask" aria-hidden="true"></div>
-
-  <div class="tm-calc__container">
-    <!-- Левая колонка: форма -->
-    <div class="tm-calc__left">
-      <h2 class="tm-calc__title">Онлайн-заявка</h2>
-      <p class="tm-calc__subtitle">Рассчитаем ориентир цены и перезвоним для подтверждения ETA</p>
-
-      <form class="tm-calc__form" id="calcForm" novalidate>
-        <!-- Honeypot -->
-        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"/>
-
-        <!-- Услуга: сетка иконок-карточек -->
-        <fieldset class="tm-fieldset">
-          <legend>Выберите услугу <span aria-hidden="true">*</span></legend>
-          <div class="tm-service-grid" role="group" aria-label="Услуга">
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="repair-puncture" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></span>
-              <span class="title">Ремонт проколов</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="sidewall-repair" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6"/></svg></span>
-              <span class="title">Ремонт боковых порезов</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="hernia-repair" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>
-              <span class="title">Ремонт грыж</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="spare-install" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5 12h14"/></svg></span>
-              <span class="title">Установка запаски</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="tire-change" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5h12l2 7-2 7H6L4 12l2-7Z"/></svg></span>
-              <span class="title">Замена резины</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="stud-install" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9h6v6H9z"/></svg></span>
-              <span class="title">Дошиповка шин</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="rim-straightening" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8"/></svg></span>
-              <span class="title">Правка дисков</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="tire-storage" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M4 11h16"/></svg></span>
-              <span class="title">Хранение шин</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="lock-removal" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 10h4v4h-4z"/></svg></span>
-              <span class="title">Снятие секреток</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="fuel-delivery" required>
-              <span class="icon icon--tire" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l3 3"/></svg></span>
-              <span class="title">Подвоз топлива</span>
-              <span class="hint">Шиномонтаж</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="computer-diagnostics" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M12 16v4"/><path d="M8 20h8"/></svg></span>
-              <span class="title">Компьютерная диагностика</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="engine-start" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 13l6-10 6 10h-5l5 9-11-9h5z"/></svg></span>
-              <span class="title">Запуск двигателя</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="engine-diagnostics" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h3l3 7 4-14 4 7h4"/></svg></span>
-              <span class="title">Диагностика двигателя</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="battery-replacement" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 4v3M17 4v3"/></svg></span>
-              <span class="title">Замена аккумулятора</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="truck-electric" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13h13V6H3z"/><path d="M16 10h4l1 3v5h-5z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
-              <span class="title">Грузовой автоэлектрик</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="jump-start" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7h4l-2 5h4l-3 7"/></svg></span>
-              <span class="title">Прикурить автомобиль</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="odometer-correction" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 16 0"/><path d="M12 4v8l4 2"/></svg></span>
-              <span class="title">Скрутить пробег</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="alarm-disable" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 10V7a7 7 0 0 1 14 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg></span>
-              <span class="title">Отключение сигнализации</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="key-making" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 7a5 5 0 1 1 5 5l-2 2v3H8v-2H6v-2H5"/></svg></span>
-              <span class="title">Изготовление ключей</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="wiring-repair" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h4v10H4z"/><path d="M10 7h4v10h-4z"/><path d="M16 7h4v10h-4z"/></svg></span>
-              <span class="title">Ремонт проводки</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="alternator-repair" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v8l4 4"/></svg></span>
-              <span class="title">Ремонт генераторов</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="starter-repair" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 6h9l5 6-5 6H5z"/></svg></span>
-              <span class="title">Ремонт стартеров</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="immobilizer-disable" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 12h14v8H5z"/></svg></span>
-              <span class="title">Отключение иммобилайзера</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="immobilizer-flash" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 5h14v4H5z"/><path d="M7 13l5-6 5 6"/><path d="M12 11v8"/></svg></span>
-              <span class="title">Перепрошивка иммобилайзера</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="alarm-repair" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11V7a8 8 0 0 1 16 0v4"/><path d="M7 14h10"/><path d="M7 18h10"/></svg></span>
-              <span class="title">Ремонт сигнализации</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-            <label class="tm-service-card">
-              <input type="radio" name="service" value="mobile-autoservice" required>
-              <span class="icon icon--electric" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 11h11l3 3v5H5z"/><path d="M9 11V7h7v4"/><circle cx="8" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span>
-              <span class="title">Автосервис на выезд</span>
-              <span class="hint">Автоэлектрик</span>
-            </label>
-          </div>
-          <p class="err" id="err-service" hidden>Выберите услугу</p>
-        </fieldset>
-
-        <!-- Радиус + Тип авто в две колонки -->
-        <div class="row-2">
-          <label class="tm-input tm-input--control">
-            <span>Радиус шин <em>*</em></span>
-            <select name="radius" required>
-              <option value="" disabled selected>Выберите R13–R26</option>
-              <option>R13</option><option>R14</option><option>R15</option><option>R16</option>
-              <option>R17</option><option>R18</option><option>R19</option><option>R20</option>
-              <option>R21</option><option>R22</option><option>R23</option><option>R24</option>
-              <option>R25</option><option>R26</option>
-            </select>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            <p class="err" id="err-radius" hidden>Выберите радиус</p>
-          </label>
-
-          <label class="tm-input tm-input--control">
-            <span>Тип авто</span>
-            <select name="cartype">
-              <option value="sedan" selected>Легковой</option>
-              <option value="suv">SUV / Кроссовер</option>
-              <option value="van">Микроавтобус</option>
-            </select>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          </label>
-        </div>
-
-        <!-- Адрес + геолокация -->
-        <label class="tm-input tm-input--control tm-input--geo">
-          <span>Адрес / локация</span>
-          <input type="text" name="address" inputmode="text" placeholder="Улица, ориентир…">
-          <button class="geo-btn" type="button" id="geoBtn" aria-label="Определить по геолокации">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>
-          </button>
-        </label>
-
-        <!-- Контакты -->
-        <div class="row-2">
-          <label class="tm-input tm-input--control">
-            <span>Телефон <em>*</em></span>
-            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.78.57 2.63a2 2 0 0 1-.45 2.11L8.1 9.1a16 16 0 0 0 6 6l.64-1.12a2 2 0 0 1 2.11-.45c.85.27 1.73.45 2.63.57A2 2 0 0 1 22 16.92z"/></svg>
-            <p class="err" id="err-phone" hidden>Введите телефон</p>
-          </label>
-
-          <label class="tm-input tm-input--control">
-            <span>Комментарий</span>
-            <input type="text" name="comment" placeholder="Пожелания, подъезд, секретки…">
-            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </label>
-        </div>
-
-        <!-- Коэффициенты (смешанный режим) -->
-        <div class="tm-coefs" role="group" aria-label="Коэффициенты">
-          <label class="chk"><input type="checkbox" name="runflat"> RunFlat</label>
-          <label class="chk"><input type="checkbox" name="night"> Ночной тариф (22:00–08:00)</label>
-          <label class="chk"><input type="checkbox" name="suv"> SUV</label>
-          <label class="tm-input km">
-            <span>За КАД, км</span>
-            <input type="number" name="zkad" min="0" step="1" placeholder="0">
-          </label>
-        </div>
-
-        <!-- Связь предпочтительнее -->
-        <fieldset class="tm-fieldset small">
-          <legend>Как связаться?</legend>
-          <label class="radio"><input type="radio" name="contact" value="call" checked> Позвоните</label>
-          <label class="radio"><input type="radio" name="contact" value="messenger"> Напишите (WA/TG)</label>
-        </fieldset>
-        <!-- CTA -->
-        <div class="tm-actions">
-          <button type="submit" class="btn btn-secondary" id="btnOrder">Вызвать шиномонтаж</button>
-        </div>
-
-        <div class="tm-alert" id="formAlert" role="alert" hidden></div>
-      </form>
-
-      <div class="tm-cta-corner" role="region" aria-label="Способы связи">
-        <a class="cta-btn cta-primary" href="tel:+79531580900" aria-label="Позвонить в TireMasters">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.3 1.78.57 2.63a2 2 0 0 1-.45 2.11L8.1 9.1a16 16 0 0 0 6 6l.64-1.12a2 2 0 0 1 2.11-.45c.85.27 1.73.45 2.63.57A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span class="txt"><strong>Позвонить</strong><em>+7 953 158 0900</em></span>
-        </a>
-        <a class="cta-btn" href="https://t.me/Tiar_MASTERSPro" target="_blank" rel="noopener" aria-label="Написать в Telegram">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.44 3.2 2.35 10.63c-.86.35-.86 1.64.1 1.97l4.86 1.6 1.87 6.07c.24.78 1.22.86 1.66.14l2.67-4.33 4.9 3.66c.77.57 1.86.14 2.06-.82l-.34-14.1Z"/></svg></span>
-          <span class="txt"><strong>Telegram</strong><em>@Tiar_MASTERSPro</em></span>
-        </a>
-        <a class="cta-btn" href="https://wa.me/79531580900" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
-          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.47 14.33c-.28-.14-1.66-.8-1.92-.9-.26-.1-.46-.14-.66.14-.2.28-.76.9-.94 1.08-.18.18-.34.2-.62.06-.28-.14-1.16-.43-2.2-1.38-.81-.72-1.36-1.6-1.52-1.88-.16-.28-.02-.44.12-.58.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.1-.18.06-.34-.02-.48-.08-.14-.66-1.58-.9-2.16-.24-.58-.48-.5-.66-.5-.18 0-.38-.02-.58-.02s-.54.08-.82.38c-.28.3-1.08 1.06-1.08 2.58 0 1.52 1.1 2.98 1.26 3.18.16.2 2.16 3.3 5.22 4.54.73.3 1.3.48 1.74.62.73.24 1.38.2 1.9.12.58-.08 1.78-.72 2.04-1.42.26-.7.26-1.3.2-1.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.58-.42Z"/></svg></span>
-          <span class="txt"><strong>WhatsApp</strong><em>написать</em></span>
-        </a>
-      </div>
-
-    </div>
-  </div>
-  <!-- TM-MARK: HTML END -->
-
-  <!-- TM-MARK: CSS START -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-:root{
-  --bg-1:#0B0D10; --bg-2:#121418; --white:#EEF1F4; --muted:#A3AFBF;
-  --steel:#95A2B3; --red:#FF4545; --yellow:#FFC52C; --container:max(72vw, min(92vw, 1280px));
-  --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.35); --t:220ms;
-  --calc-bg-url:none;
-}
-
-.tm-calc{position:relative;isolation:isolate;color:var(--white);padding:56px 0;scroll-margin-top:88px;border-top:1px solid rgba(255,255,255,.08);}
-
-/* Фон и маска */
-.tm-calc__bg{position:absolute;inset:0;z-index:-3;}
-.tm-calc__mask{position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,12,14,.72) 0%, rgba(10,12,14,.58) 40%, rgba(10,12,14,.42) 100%);z-index:-1}
-
-/* Контейнер: единая колонка на всю ширину до 1280px */
-.tm-calc__container{width:var(--container);margin-inline:auto;display:flex;flex-direction:column;gap:24px;align-items:stretch}
-
-.tm-calc__title{margin:0 0 6px;font-size:clamp(22px,2.8vw,36px);font-weight:800}
-.tm-calc__subtitle{margin:0 0 14px;color:var(--muted)}
-
-/* Панель формы */
-.tm-calc__form{background:rgba(13,16,20,.86);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-.tm-fieldset{border:1px dashed rgba(255,255,255,.1);padding:12px;border-radius:12px;margin:12px 0 10px}
-.tm-fieldset.small{padding:10px}
-.tm-fieldset legend{padding:0 6px;color:var(--steel);font-size:13px}
-
-/* Сетка услуг (иконки-карточки) */
-.tm-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.tm-service-card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:16px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(20,24,28,.5);cursor:pointer;transition:transform var(--t), border-color var(--t), background var(--t);min-height:140px;text-align:center}
-.tm-service-card input{display:none}
-.tm-service-card .icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow);}
-.tm-service-card .icon--electric{border-color:#4ec8ff;background:rgba(78,200,255,.08);color:#4ec8ff}
-.tm-service-card .icon--tire{border-color:var(--yellow);background:rgba(255,197,44,.08);color:var(--yellow)}
-.tm-service-card svg{width:22px;height:22px}
-.tm-service-card svg *{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.tm-service-card .title{font-weight:700;font-size:14px;line-height:1.3}
-.tm-service-card .hint{font-size:11px;color:var(--muted)}
-.tm-service-card:has(input:checked){border-color:var(--yellow);background:rgba(255,197,44,.08)}
-.tm-service-card:hover{transform:translateY(-1px)}
-
-/* Двухколоночные поля */
-.row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tm-input{position:relative;display:grid;gap:6px}
-.tm-input > span{font-size:13px;color:var(--steel)}
-.tm-input--control{--control-height:56px;}
-.tm-input input,.tm-input select{padding:12px 38px 12px 12px;background:#0B0D10;border:1px solid rgba(255,255,255,.1);border-radius:12px;color:var(--white);outline:none;transition:border-color var(--t), box-shadow var(--t)}
-.tm-input--control input,.tm-input--control select{min-height:var(--control-height);}
-.tm-input select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:none;padding-right:44px}
-.tm-input select::-ms-expand{display:none}
-.tm-input input:focus,.tm-input select:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,197,44,.15)}
-.tm-input input,.tm-input select{width:100%;}
-.tm-input .ico{position:absolute;right:12px;top:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;stroke:var(--steel);stroke-width:2;fill:none;pointer-events:none;transform:translateY(-50%);}
-.tm-input--control .ico{top:calc(100% - (var(--control-height)/2));}
-.geo-btn{position:absolute;right:8px;top:50%;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:transparent;display:flex;align-items:center;justify-content:center;transition:background var(--t), transform var(--t);transform:translateY(-50%);}
-.tm-input--control .geo-btn{top:calc(100% - (var(--control-height)/2));}
-.geo-btn svg{width:18px;height:18px;stroke:var(--steel);stroke-width:2;fill:none}
-.tm-input select{padding-right:52px;}
-.tm-input input{padding-right:44px;}
-.geo-btn:hover,.geo-btn:focus{background:rgba(255,255,255,.06);transform:translateY(calc(-50% - 1px));}
-
-/* Коэффициенты */
-.tm-coefs{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
-.chk{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);padding:8px 10px;border-radius:10px}
-.tm-coefs .km{width:120px}
-
-
-/* Кнопки */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;text-decoration:none;transition:all var(--t) ease;box-shadow:var(--shadow);cursor:pointer}
-.btn-primary-outline{color:#111;background:transparent;border:2px solid var(--yellow)}
-.btn-primary-outline:hover,.btn-primary-outline:focus{background:var(--yellow);color:#111;transform:translateY(-1px)}
-.btn-secondary{color:var(--white);background:transparent;border:1px solid var(--steel)}
-.btn-secondary:hover,.btn-secondary:focus{background:#1a1f27}
-.tm-actions{display:flex;flex-wrap:wrap;gap:10px}
-
-
-/* Ошибки и алерты */
-.err{color:#ff8b8b;font-size:12px;margin:4px 0 0}
-.hp{position:absolute!important;left:-9999px!important;opacity:0!important}
-.tm-alert{margin-top:10px;padding:10px;border-radius:10px;border:1px solid transparent}
-.tm-alert.success{border-color:rgba(67,211,130,.5);background:rgba(67,211,130,.07);color:#a7e3c2}
-.tm-alert.error{border-color:rgba(255,69,69,.5);background:rgba(255,69,69,.07);color:#ffb0b0}
-
-/* Анимации появления (FadeUp как в Hero) */
-.tm-calc__left{opacity:0;transform:translateY(10px)}
-.tm-calc.is-mounted .tm-calc__left{animation:fadeUp var(--t) ease forwards 80ms}
-
-@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-
-/* Респонсив */
-
-@media (max-width: 720px){
-  .tm-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .row-2{grid-template-columns:1fr}
-  .tm-input--control{--control-height:60px;}
-  .tm-input--control input,
-  .tm-input--control select{min-height:var(--control-height);padding:16px 56px 16px 14px;font-size:15px;}
-  .tm-input--control select{padding-right:64px;}
-  .tm-input--geo input{padding-right:92px;}
-  .tm-input--control .geo-btn{width:44px;height:44px;right:12px;}
-}
-  </style>
-  <!-- TM-MARK: CSS END -->
-
- <!-- TM-MARK: CTA УГОЛ CSS START -->
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-:root{
-  --ctaRadius:16px;
-  --ctaShadow:0 10px 30px rgba(0,0,0,.35);
-}
-
-/* Общие стили CTA */
-.tm-cta-corner{
-  margin-top:24px;
-  display:grid;
-  gap:12px;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.cta-btn{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:12px;
-  padding:14px 20px;
-  min-height:72px;
-  border-radius:var(--ctaRadius);
-  text-decoration:none;
-  background:rgba(20,24,28,.72);
-  border:1px solid rgba(255,255,255,.12);
-  color:#EEF1F4;
-  box-shadow:var(--ctaShadow);
-  transition:transform 220ms ease, background 220ms ease, border-color 220ms ease;
-}
-.cta-btn:hover,
-.cta-btn:focus{
-  transform:translateY(-1px);
-  background:rgba(20,24,28,.86);
-  border-color:rgba(255,255,255,.2);
-}
-
-.cta-btn .ico{
-  width:44px;
-  height:44px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  border:2px solid #FFC52C;
-}
-.cta-btn .ico svg{
-  width:22px;
-  height:22px;
-  stroke:#95A2B3;
-  stroke-width:2;
-  fill:none;
-}
-
-.cta-btn .txt{
-  display:grid;
-  gap:4px;
-}
-.cta-btn .txt strong{
-  font-size:16px;
-  line-height:1.1;
-}
-.cta-btn .txt em{
-  font-style:normal;
-  font-size:12px;
-  color:#A3AFBF;
-}
-
-/* Цветовые модификаторы */
-.cta-primary{
-  border:2px solid #FFC52C;
-  background:rgba(255,197,44,.08);
-}
-.cta-primary:hover{
-  background:#FFC52C;
-  color:#111;
-}
-.cta-primary:hover .ico{
-  border-color:#111;
-}
-/* Адаптив */
-@media (max-width:1024px){
-  .tm-cta-corner{
-    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-@media (max-width:720px){
-  .tm-cta-corner{
-    grid-template-columns:1fr;
-  }
-}
-</style>
-<!-- TM-MARK: CTA УГОЛ CSS END -->
-
-
-  <!-- TM-MARK: JS START -->
-  <script>
-(function calcInit(){
-  const root = document.querySelector('.tm-calc');
-  if(!root) return;
-  requestAnimationFrame(()=> root.classList.add('is-mounted'));
-
-  const form = root.querySelector('#calcForm');
-  const btnOrder = root.querySelector('#btnOrder');
-  const alertBox = root.querySelector('#formAlert');
-
-  const errService = root.querySelector('#err-service');
-  const errRadius = root.querySelector('#err-radius');
-  const errPhone = root.querySelector('#err-phone');
-
-  function validate(){
-    const f = new FormData(form);
-    let ok = true;
-    alertBox.hidden = true;
-    if(!f.get('service')){ errService.hidden = false; ok = false; } else errService.hidden = true;
-    if(!f.get('radius')){ errRadius.hidden = false; ok = false; } else errRadius.hidden = true;
-    const phone = (f.get('phone')||'').trim();
-    if(!phone){ errPhone.hidden = false; ok = false; } else errPhone.hidden = true;
-    return ok;
-  }
-
-  function getServiceLabel(){
-    const checked = form.querySelector('input[name="service"]:checked');
-    if(!checked) return '';
-    const title = checked.closest('.tm-service-card')?.querySelector('.title');
-    return title ? title.textContent.trim() : checked.value;
-  }
-
-  function composeMessage(data){
-    return [
-      '🛠 Заявка с сайта TireMasters',
-      '',
-      `Услуга: ${data.service || '—'}`,
-      `Радиус: ${data.radius || '—'}`,
-      `Тип авто: ${data.cartype || '—'}`,
-      `Адрес: ${data.address || '—'}`,
-      `Телефон: ${data.phone || '—'}`,
-      `Связаться: ${data.contact === 'messenger' ? 'Написать (WA/TG)' : 'Позвонить'}`,
-      `Комментарий: ${data.comment || '—'}`,
-      '',
-      'Коэффициенты:',
-      `• RunFlat: ${data.runflat ? 'Да' : 'Нет'}`,
-      `• Ночной тариф: ${data.night ? 'Да' : 'Нет'}`,
-      `• SUV: ${data.suv ? 'Да' : 'Нет'}`,
-      `• За КАД: ${data.zkad || 0} км`,
-    ].join('\n');
-  }
-
-    async function sendToTelegram(payload){
-      const res = await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      let data = {};
-      try { data = await res.json(); } catch(_) {}
-      if(!res.ok || data.ok === false){
-        const text = data?.error || data?.description || (!res.ok ? await res.text() : '') || 'Не удалось отправить заявку';
-        throw new Error(text);
-      }
-      return data;
-    }
-
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    if(!validate()){
-      alertBox.textContent = 'Проверьте обязательные поля';
-      alertBox.className = 'tm-alert error';
-      alertBox.hidden = false;
-      return;
-    }
-    if(form.company && form.company.value){ return; }
-
-    const formData = new FormData(form);
-    const data = {
-      service: getServiceLabel(),
-      radius: formData.get('radius'),
-      cartype: formData.get('cartype'),
-      address: formData.get('address'),
-      phone: (formData.get('phone')||'').trim(),
-      comment: (formData.get('comment')||'').trim(),
-      runflat: form.runflat.checked,
-      night: form.night.checked,
-      suv: form.suv.checked,
-      zkad: formData.get('zkad'),
-      contact: formData.get('contact'),
-      name: (formData.get('name')||'').trim(),
-    };
-
-    btnOrder.disabled = true;
-    btnOrder.textContent = 'Отправка…';
-    alertBox.hidden = true;
-
-    try{
-      await sendToTelegram({
-        name: data.name,
-        phone: data.phone,
-        message: composeMessage(data),
-      });
-      alertBox.textContent = 'Заявка отправлена. Мы свяжемся с вами для подтверждения.';
-      alertBox.className = 'tm-alert success';
-      alertBox.hidden = false;
-    } catch(err){
-      console.error(err);
-      alertBox.textContent = `Ошибка отправки: ${err?.message || 'Попробуйте снова или свяжитесь по телефону.'}`;
-      alertBox.className = 'tm-alert error';
-      alertBox.hidden = false;
-    } finally {
-      btnOrder.disabled = false;
-      btnOrder.textContent = 'Вызвать шиномонтаж';
-    }
-  });
-
-  const geoBtn = root.querySelector('#tm-tyre-geoBtn');
-  if(geoBtn){
-    geoBtn.addEventListener('click', async ()=>{
-      if(!navigator.geolocation) return;
-      geoBtn.disabled = true;
-      navigator.geolocation.getCurrentPosition(async (pos)=>{
-        try{
-          const {latitude, longitude} = pos.coords;
-          form.address.value = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
-        } finally { geoBtn.disabled = false; }
-      }, ()=>{ geoBtn.disabled = false; }, { enableHighAccuracy:true, timeout:6000 });
-    });
-  }
-})();
-  </script>
-  <!-- TM-MARK: JS END -->
-</section>
-<!-- TM-MARK: КАЛЬКУЛЯТОР END -->
-
-<div class="tm-section-divider" aria-hidden="true"></div>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -2060,62 +1436,13 @@
       position: relative;
       isolation: isolate;
       overflow: clip;
-      background:
-        linear-gradient(135deg, var(--services-mask-from) 0%, var(--services-mask-to) 100%);
+      background: #0B0D10;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* Верхний «шеврон» и нижний «протектор» как декоративные слои */
     .tm-surface--services::before,
     .tm-surface--services::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .tm-surface--services::before {
-      z-index: -2;
-      background:
-        repeating-linear-gradient(135deg,
-          var(--services-line-color) 0px 6px,
-          transparent 6px 28px);
-      opacity: .7;
-      mix-blend-mode: screen;
-      mask-image: linear-gradient(180deg,
-        rgba(0, 0, 0, .92) 0%,
-        rgba(0, 0, 0, .92) 18%,
-        transparent 24%,
-        transparent 34%,
-        rgba(0, 0, 0, .92) 42%,
-        rgba(0, 0, 0, .92) 64%,
-        transparent 70%,
-        transparent 78%,
-        rgba(0, 0, 0, .92) 86%,
-        rgba(0, 0, 0, .92) 100%);
-      mask-size: 100% 320px;
-      mask-repeat: repeat;
-      -webkit-mask-image: linear-gradient(180deg,
-        rgba(0, 0, 0, .92) 0%,
-        rgba(0, 0, 0, .92) 18%,
-        transparent 24%,
-        transparent 34%,
-        rgba(0, 0, 0, .92) 42%,
-        rgba(0, 0, 0, .92) 64%,
-        transparent 70%,
-        transparent 78%,
-        rgba(0, 0, 0, .92) 86%,
-        rgba(0, 0, 0, .92) 100%);
-      -webkit-mask-size: 100% 320px;
-      -webkit-mask-repeat: repeat;
-    }
-
-    .tm-surface--services::after {
-      z-index: -1;
-      background:
-        linear-gradient(to bottom, rgba(10,12,14,.88), transparent 55%),
-        radial-gradient(90% 100% at 50% 120%, rgba(255,255,255,.06), transparent 70%),
-        linear-gradient(to top, rgba(8,9,11,.82), transparent 60%);
+      content: none;
     }
 
     .tm-surface--services--yellow {
@@ -2308,7 +1635,7 @@
             <p>Прокол колеса — не повод тратить время на поиск сервиса. Мастер TireMasters приедет к вам за 20–30 минут и восстановит шину прямо на месте. Мы используем профессиональные инструменты и надежные жгуты, которые гарантируют герметичность. Вам не нужно искать домкрат или запаску — всё привезём с собой. Быстро, аккуратно и с гарантией безопасности на дороге.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2326,7 +1653,7 @@
             <p>Боковой порез шины — серьёзная проблема, но в большинстве случаев её можно устранить на месте. Наш специалист проведёт диагностику и аккуратно восстановит повреждение специальной технологией усиленной вулканизации. Это сэкономит вам деньги на покупке новой покрышки. Работа выполняется быстро и качественно, без снятия колеса с автомобиля. После ремонта вы сможете спокойно продолжить движение.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2344,7 +1671,7 @@
             <p>Если на шине появилась грыжа — не рискуйте безопасностью. Мы выезжаем в любое место Санкт-Петербурга и Ленобласти, чтобы помочь вам прямо на дороге. Мастер оценит повреждение и выполнит локальный ремонт с использованием армирующих материалов. Это восстановит прочность шины и продлит срок её службы. Вы избежите дорогостоящей замены и просто продолжите путь.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2362,7 +1689,7 @@
             <p>Если колесо спущено или повреждено, не мучайтесь сами. Наш специалист приедет и быстро установит запаску, даже если вы на трассе или во дворе. Мы бережно поднимем авто, снимем повреждённое колесо и надёжно закрепим запасное. Всё займёт не больше 20 минут. Без усилий, без грязи и без риска повредить авто.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2380,7 +1707,7 @@
             <p>Пора сменить зимнюю или летнюю резину? Мы сделаем это прямо у вашего дома или офиса. Профессиональное оборудование на выезде позволяет проводить замену так же качественно, как в стационарном шиномонтаже. Мастер проверит давление, балансировку и состояние покрышек. Удобно, быстро и без потери времени.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2398,7 +1725,7 @@
             <p>Потеряли часть шипов? Мы вернём шинам сцепление с дорогой. Наши мастера выполняют дошиповку прямо на месте — без необходимости ехать в сервис. Используются качественные шипы, соответствующие стандарту производителя. После процедуры шина снова будет вести себя уверенно на льду и снегу. Безопасность и уверенность на зимней дороге возвращаются за считанные минуты.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2416,7 +1743,7 @@
             <p>Неровности дороги, ямы и бордюры могут погнуть диск. Мы приедем и аккуратно исправим деформацию без снятия с машины, если это возможно. Используем профессиональное оборудование и контроль геометрии. После правки колесо снова вращается идеально ровно, без вибраций и биений. Экономия времени и бюджета по сравнению с покупкой нового диска.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2434,7 +1761,7 @@
             <p>Нет места для хранения комплекта резины? Мы предлагаем удобный сезонный сервис хранения шин. Забираем колеса прямо от вас, храним в сухом, проветриваемом складе с нужной температурой. Весной или осенью просто вызывайте нас — и мы вернём комплект обратно. Это удобно, безопасно и освобождает место дома.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2452,7 +1779,7 @@
             <p>Потеряли ключ от секреток или он сломался? Не беда — мы приедем и аккуратно снимем секретные гайки без повреждения дисков. Работа выполняется с использованием профессиональных инструментов. Восстановим доступ к колесу быстро и без риска для крепежей. Это безопаснее и надёжнее, чем пытаться открутить самому.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2470,7 +1797,7 @@
             <p>Закончилось топливо по дороге — на трассе, во дворе или за городом? Мастер TireMasters привезёт бензин или дизель нужного типа и объёма прямо к вашему автомобилю. Мы приезжаем в среднем за 25–40 минут по Санкт-Петербургу и ближайшим районам ЛО, помогаем безопасно залить топливо и, при необходимости, запустить двигатель. Вам не нужно искать канистру, открытую АЗС или просить помощи у случайных водителей — всё решим на месте.</p>
           </div>
           <div class="actions">
-            <a class="btn primary" href="#calc">Вызвать шиномонтаж</a>
+            <a class="btn primary" href="tel:+79531580900">Вызвать шиномонтаж</a>
             <ul class="utils" aria-label="Быстрые детали">
               <li class="badge">24/7</li>
               <li class="badge">СПб/ЛО</li>
@@ -2864,25 +2191,10 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
 <div class="tm-section-divider" aria-hidden="true"></div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
-body {
-  background-color: #2a2a2a;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(142, 148, 160, 0.15) 0px,
-    rgba(142, 148, 160, 0.15) 4px,
-    transparent 4px,
-    transparent 30px,
-    rgba(82, 87, 97, 0.15) 30px,
-    rgba(82, 87, 97, 0.15) 34px,
-    transparent 34px,
-    transparent 60px
-  ); /* Чередующиеся серые полоски */
-  background-size: 64px 100%;
-}
+  body {
+    background: #0B0D10;
+  }
 </style>
-
-
 
 <div class="tm-section-divider" aria-hidden="true"></div>
 
@@ -2902,7 +2214,7 @@ body {
       <a href="https://t.me/Tiar_MASTERSPro" target="_blank" class="btn secondary">Написать в Telegram</a>
     </div>
 
-    <p class="contacts-alt-text">Или оставьте заявку через калькулятор ниже</p>
+    <p class="contacts-alt-text">Или напишите нам в мессенджере — отвечаем за 5–10 минут</p>
 
     <div class="contacts-badges">
       <span class="badge">Мы на связи 24/7</span>
@@ -3118,8 +2430,7 @@ body {
     /* Top chevron separator */
     .tm-footer__chevron {
       height: 8px;
-      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0 12px, transparent 12px 24px);
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.6));
+      background: var(--tm-bg-deep);
     }
 
     .tm-footer__inner {
