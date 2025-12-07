@@ -43,20 +43,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-0: #0b0d10;
-      --bg-1: #12151b;
+      --bg-0: #0B0D10;
+      --bg-1: #12151B;
       --surface: rgba(255, 255, 255, 0.04);
       --surface-strong: rgba(255, 255, 255, 0.08);
-      --text-0: #e8eaed;
-      --text-1: #b6bbc3;
-      --accent-yellow: #ffc107;
-      --accent: #ffc107;
-      --muted: #8e949f;
+      --text-0: #E8EAED;
+      --text-1: #B6BBC3;
+      --accent-yellow: #FFC107;
+      --accent: #FFC107;
+      --muted: #8E949F;
       --focus: rgba(41, 182, 246, 0.6);
-      --container: min(1100px, 92vw);
+      --container: min(92vw, 1100px);
+      --anim-mid: 220ms;
+      --header-height: 64px;
+      --header-offset: var(--header-height);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -65,155 +68,52 @@
       font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif;
       background: var(--bg-0);
       color: var(--text-0);
-      padding-top: 112px;
+      padding-top: var(--header-offset);
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
-    header.site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: var(--bg-0);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-    }
+    header.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--bg-0); border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      height: 64px;
-      padding: 0 20px;
-      max-width: var(--container);
-      margin: 0 auto;
-    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; padding: 0 20px; max-width: 1100px; margin: 0 auto; }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text-0);
-      font-weight: 700;
-    }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text-0); text-decoration: none; font-weight: 700; flex-shrink: 0; }
+    .brand img { width: 32px; height: 32px; object-fit: contain; }
 
-    .brand img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
+    .tm-main-services-nav { display: flex; align-items: center; gap: 10px; flex: 1; justify-content: center; flex-wrap: wrap; min-width: 0; }
+    .tm-main-services-link { padding: 10px 14px; border-radius: 10px; text-decoration: none; color: var(--text-0); background: rgba(255,255,255,0.04); font-weight: 600; transition: background var(--anim-mid) ease, color var(--anim-mid) ease, box-shadow var(--anim-mid) ease; white-space: nowrap; }
+    .tm-main-services-link:hover, .tm-main-services-link:focus-visible { background: rgba(255,255,255,0.08); outline: none; }
+    .tm-main-services-link.tm-active { background: var(--accent-yellow); color: #000; font-weight: 700; box-shadow: 0 0 12px rgba(255,193,7,0.4), 0 4px 14px rgba(0,0,0,0.35); }
 
-    .tm-main-services-nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
-    .tm-main-services-link {
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text-0);
-      background: var(--surface);
-      font-weight: 600;
-      transition: background 200ms ease, color 200ms ease, box-shadow 200ms ease;
-      white-space: nowrap;
-    }
-
-    .tm-main-services-link:hover,
-    .tm-main-services-link:focus-visible {
-      background: var(--surface-strong);
-      outline: none;
-    }
-
-    .tm-main-services-link.tm-active {
-      background: var(--accent-yellow);
-      color: #000;
-      font-weight: 700;
-      box-shadow: 0 0 12px rgba(255, 193, 7, 0.4), 0 4px 14px rgba(0, 0, 0, 0.35);
-    }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .contact-icon,
-    .cta-primary,
-    .burger button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--surface);
-      color: var(--text-0);
-      border: none;
-      cursor: pointer;
-      transition: background 200ms ease;
+    .contact-icon, .cta-primary, .burger button {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-0); border: none; cursor: pointer;
+      transition: background var(--anim-mid) ease;
     }
 
     .cta-primary {
-      padding: 0 14px;
-      background: var(--accent);
-      color: #111;
-      font-weight: 700;
-      width: auto;
-      border-radius: 12px;
-      text-decoration: none;
+      padding: 0 14px; background: var(--accent-yellow); color: #111; font-weight: 700; border-radius: 12px; width: auto;
+      min-height: 40px; text-align: center; text-decoration: none;
     }
 
-    .cta-primary:hover,
-    .cta-primary:focus-visible {
-      background: #ffd54f;
-      outline: none;
-    }
+    .cta-primary.active { background: var(--accent-yellow); color: #111; box-shadow: 0 0 16px rgba(255,193,7,0.4); }
+    .burger button:hover, .contact-icon:hover { background: rgba(255,255,255,0.1); }
 
-    .burger button:hover,
-    .contact-icon:hover {
-      background: var(--surface-strong);
-    }
+    .tm-secondary-nav { border-top: 1px solid rgba(255,255,255,0.06); padding: 10px 20px 12px; background: rgba(0,0,0,0.18); }
 
-    .tm-secondary-nav {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 10px 20px 12px;
-      background: rgba(0, 0, 0, 0.2);
-    }
+    .tm-secondary-nav__inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px; }
+    .tm-secondary-nav__inner::-webkit-scrollbar { height: 6px; }
+    .tm-secondary-nav__inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 999px; }
 
-    .tm-secondary-nav__inner {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-
-    .tm-secondary-nav__link {
-      color: var(--text-0);
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: var(--surface);
-      white-space: nowrap;
-      font-size: 14px;
-      transition: background 200ms ease;
-    }
+    .tm-secondary-nav__link { color: var(--text-0); text-decoration: none; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,0.04); white-space: nowrap; font-size: 14px; transition: background var(--anim-mid) ease; }
 
     .tm-secondary-nav__link:hover,
     .tm-secondary-nav__link:focus-visible {
-      background: var(--surface-strong);
+      background: rgba(255, 255, 255, 0.08);
       outline: none;
     }
 
@@ -364,91 +264,100 @@
       line-height: 1.6;
     }
 
-    .tm-hero {
-      padding: clamp(56px, 8vw, 96px) 0 clamp(42px, 6vw, 72px);
-      background: radial-gradient(circle at 20% 20%, rgba(255, 193, 7, 0.08), transparent 30%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.4) 100%);
+    .tm-hero{position:relative;min-height:80vh;isolation:isolate;display:grid;place-items:stretch;scroll-margin-top:calc(var(--header-offset) + 24px);background:
+        linear-gradient(125deg, rgba(8, 10, 12, .92) 0%, rgba(8, 10, 12, .76) 55%, rgba(8, 10, 12, .82) 100%);}
+    .tm-hero::before,.tm-hero::after{content:"";position:absolute;inset:0;pointer-events:none;}
+    .tm-hero::before{z-index:-2;background:
+        repeating-linear-gradient(135deg,
+          rgba(255, 69, 69, .42) 0 calc(140px),
+          rgba(255, 197, 44, .42) calc(140px) calc(140px * 2));
+      opacity:.85;
+      mix-blend-mode:screen;
+    }
+    .tm-hero::after{z-index:-1;background:
+        radial-gradient(65% 65% at 28% 40%, rgba(8, 9, 11, .88) 0%, rgba(8, 9, 11, .7) 48%, rgba(8, 9, 11, .46) 70%, rgba(8, 9, 11, .3) 100%),
+        linear-gradient(180deg, rgba(5, 6, 7, .65) 0%, rgba(5, 6, 7, .3) 55%, rgba(5, 6, 7, .76) 100%);
     }
 
-    .tm-hero__container {
-      max-width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      align-items: center;
+    .tm-hero__container{width:var(--container);margin-inline:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;padding:48px 0;align-items:center;}
+    .tm-hero__col{color:var(--text-0);}
+    .tm-hero__title{font-size:clamp(28px,3.4vw,48px);line-height:1.08;margin:0 0 12px;font-weight:800;letter-spacing:.2px;}
+    .tm-hero__subtitle{font-size:clamp(16px,1.2vw,18px);color:var(--muted);margin:0 0 20px}
+
+    /* CTA */
+      .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;text-decoration:none;transition:all var(--anim-mid) ease;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+      .btn-primary-outline{color:#111;background:transparent;border:2px solid var(--accent-yellow);}
+      .btn-primary-outline:hover,.btn-primary-outline:focus{background:var(--accent-yellow);color:#111;transform:translateY(-1px)}
+      .btn-secondary{color:var(--text-0);background:transparent;border:1px solid #95A2B3}
+      .btn-secondary:hover,.btn-secondary:focus{background:#1a1f27}
+
+      /* Цвета CTA на первом экране */
+      .tm-hero .btn-primary-outline{
+        background: var(--accent-yellow);
+        border-color: var(--accent-yellow);
+        color: #111;
+      }
+      .tm-hero .btn-primary-outline:hover,
+      .tm-hero .btn-primary-outline:focus{
+        background: #ffd95a;
+        border-color: #ffd95a;
+        color: #0b0d10;
+        transform: translateY(-1px);
+      }
+
+      .tm-hero .btn-secondary{
+        background: #FF4545;
+        border-color: #FF4545;
+        color: #0b0d10;
+      }
+      .tm-hero .btn-secondary:hover,
+      .tm-hero .btn-secondary:focus{
+        background: #ff5f5f;
+        border-color: #ff5f5f;
+        color: #0b0d10;
+        transform: translateY(-1px);
+      }
+
+    .tm-hero__cta{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-bottom:14px;}
+    .tm-hero__messengers{display:flex;align-items:center;gap:10px;}
+    .messenger-btn{inline-size:42px;block-size:42px;display:grid;place-items:center;border-radius:50%;border:2px solid #95A2B3;opacity:.9}
+    .messenger-btn svg{width:22px;height:22px;stroke:#95A2B3;stroke-width:2;fill:none}
+    .tm-hero__note{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* Метрики */
+    .tm-metrics{display:grid;gap:14px;list-style:none;margin:0;padding:0}
+    .tm-metric{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;background:rgba(20,24,28,.6);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(4px)}
+    .tm-metric__icon{inline-size:40px;block-size:40px;border-radius:50%;display:grid;place-items:center;border:2px solid #FF4545;}
+    .tm-metric__icon svg{width:22px;height:22px;stroke:#95A2B3;stroke-width:2;fill:none}
+    .tm-metric__value{font-size:18px;font-weight:800;display:block;line-height:1.1}
+    .tm-metric__label{font-size:13px;color:var(--muted);display:block;margin-top:2px}
+
+    /* Правый столбец — логотип */
+    .tm-hero__logo{max-width:420px;width:100%;height:auto;filter:drop-shadow(0 6px 24px rgba(0,0,0,.5));opacity:.95;display:block;margin-inline:auto}
+
+    /* Входные анимации */
+    .tm-hero__col--left,.tm-hero__col--center,.tm-hero__col--right{opacity:0;transform:translateY(10px);}
+    .tm-hero.is-mounted .tm-hero__col--left{animation:fadeUp var(--anim-mid) ease forwards 80ms}
+    .tm-hero.is-mounted .tm-hero__col--center{animation:fadeUp var(--anim-mid) ease forwards 160ms}
+    .tm-hero.is-mounted .tm-hero__col--right{animation:fadeUp var(--anim-mid) ease forwards 240ms}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+    /* Респонсив */
+    @media (max-width: 1024px){
+      .tm-hero__container{grid-template-columns:1.2fr 1fr;}
+      .tm-hero__col--right{order:3}
+    }
+    @media (max-width: 720px){
+      .tm-hero__container{grid-template-columns:1fr;padding:28px 0}
+      .tm-hero__cta{gap:10px;justify-content:center;text-align:center}
+      .tm-metrics{grid-template-columns:1fr}
+      .tm-metric{grid-template-columns:1fr;justify-items:center;text-align:center}
+      .tm-metric__icon{margin:0 auto 8px}
+      .tm-metric__value{margin-bottom:4px}
+      .tm-hero__col--right{display:flex;justify-content:center}
+      .tm-hero__logo{max-width:300px;margin-top:10px}
     }
 
-    .tm-hero__title {
-      margin: 0 0 16px;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.25;
-      letter-spacing: 0.01em;
-    }
-
-    .tm-hero__subtitle {
-      margin: 0 0 20px;
-      color: var(--text-1);
-      line-height: 1.6;
-    }
-
-    .tm-hero__cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .btn-primary-outline {
-      border: 1px solid var(--accent);
-      color: #111;
-      background: var(--accent);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--surface-strong);
-      color: var(--text-0);
-      background: transparent;
-    }
-
-    .tm-metrics {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .tm-metric {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 10px;
-      align-items: center;
-      padding: 12px;
-      border-radius: 12px;
-      background: var(--surface);
-    }
-
-    .tm-metric__icon svg {
-      width: 24px;
-      height: 24px;
-      color: var(--accent);
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-    }
 
     .tm-situations-grid,
     .tm-services-grid,
@@ -650,64 +559,26 @@
     .tm-footer a:focus-visible { text-decoration: underline; }
 
     @media (max-width: 767px) {
-      body {
-        padding-top: 0;
-      }
+      :root { --header-offset: 0px; }
 
-      header.site-header {
-        position: static;
-      }
+      body { padding-top: 0; }
 
-      .header-inner {
-        flex-wrap: wrap;
-        align-items: flex-start;
-        height: auto;
-        padding: 12px 16px;
-        gap: 10px;
-      }
+      header.site-header { position: static; }
 
-      .brand {
-        order: 1;
-        flex: 1 1 auto;
-      }
+      .header-inner { flex-wrap: wrap; align-items: flex-start; height: auto; padding: 12px 16px; gap: 10px; }
 
-      .header-cta {
-        order: 2;
-        flex: 1 0 100%;
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
-      }
+      .brand { order: 1; flex: 1 1 auto; }
 
-      .right {
-        order: 1;
-        margin-left: auto;
-      }
+      .header-cta { order: 2; flex: 1 0 100%; width: 100%; justify-content: center; min-height: 48px; }
+
+      .right { order: 1; margin-left: auto; }
 
       .site-header .tm-main-services-nav,
-      .tm-secondary-nav {
-        display: none;
-      }
+      .tm-secondary-nav { display: none; }
 
-      .tm-main-services-nav {
-        order: 3;
-        flex: 1 0 100%;
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
-        overflow-x: visible;
-        white-space: normal;
-        padding: 4px 0;
-      }
+      .tm-main-services-nav { order: 3; flex: 1 0 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; overflow-x: visible; white-space: normal; padding: 4px 0; }
 
-      .tm-main-services-link {
-        text-align: center;
-        font-size: 13px;
-        line-height: 1.2;
-        padding: 6px 8px;
-        border-radius: 10px;
-        white-space: normal;
-      }
+      .tm-main-services-link { text-align: center; font-size: 13px; line-height: 1.2; padding: 6px 8px; border-radius: 10px; white-space: normal; }
 
       .tm-secondary-nav {
         position: static;
@@ -721,21 +592,11 @@
     }
 
     @media (max-width: 640px) {
-      body {
-        padding-top: 0;
-      }
-
-      .header-inner {
-        padding: 0 16px;
-      }
-
-      .tm-secondary-nav__inner {
-        gap: 8px;
-      }
-
-      .tm-table {
-        min-width: 560px;
-      }
+      .header-inner { padding: 0 16px; }
+      .right { gap: 8px; }
+      .contact-icon { display: none; }
+      .cta-primary { display: inline-flex; align-items: center; justify-content: center; width: auto; min-width: 0; min-height: 44px; padding: 0 14px; font-size: 14px; white-space: nowrap; }
+      .burger button { width: 44px; height: 44px; background: rgba(255,255,255,0.08); }
     }
   </style>
 </head>
@@ -748,14 +609,9 @@
         <a href="evacuator.html" class="tm-main-services-link">Эвакуатор</a>
         <a href="avtoelektrik.html" class="tm-main-services-link tm-active">Автоэлектрик</a>
       </nav>
-      <a class="cta-primary header-cta" href="#calc">Вызвать автоэлектрика</a>
+      <a class="cta-primary active header-cta" href="#calc">Вызвать автоэлектрика</a>
       <div class="right">
-        <a class="contact-icon" href="https://t.me/Tiar_MASTERSPro" target="_blank" aria-label="Telegram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 13.2L9.3 17.1l3-2.3 4.4 3.2 2.9-13.7L3 9.2l4.6 1.4 10.7-6.7L9.5 13.2z" fill="currentColor"/></svg>
-        </a>
-        <a class="contact-icon" href="tel:+79531580900" aria-label="Позвонить">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.3 2.5 3.2 4.5 5.7 5.7l1.9-1.9c.3-.3.8-.4 1.2-.3 1 .3 2 .4 3.1.4.6 0 1 .4 1 .9v3.1c0 .6-.4 1-.9 1C10.9 20 4 13.1 4 4.9c0-.5.4-.9 1-.9H8c.6 0 1 .4 1 .9 0 1 .1 2.1.4 3.1.1.4 0 .9-.3 1.2l-1.9 1.5z" fill="currentColor"/></svg>
-        </a>
+
         <div class="burger"><button aria-label="Открыть меню"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
       </div>
     </div>
@@ -804,46 +660,67 @@
 
   <section id="tm-autoelectric-hero" class="tm-hero" aria-label="Первый экран TireMasters">
     <div class="tm-hero__container">
+      <!-- Колонка 1: текст + CTA + мессенджеры -->
       <div class="tm-hero__col tm-hero__col--left">
         <h1 class="tm-hero__title">Выездной автоэлектрик 24/7 в Санкт-Петербурге и Ленинградской области</h1>
         <p class="tm-hero__subtitle">Приедем, когда машина не заводится, села батарея или на панели горят ошибки. Диагностика и ремонт электрики на месте, примерные цены от 2000 ₽, выезд в среднем от ~25 минут.</p>
+
         <div class="tm-hero__cta">
-          <a href="#calc" class="btn btn-primary-outline" aria-label="Вызвать автоэлектрика">Вызвать автоэлектрика</a>
+          <a href="#calc" class="btn btn-primary-outline" aria-label="Вызвать автоэлектрика — перейти к калькулятору">Вызвать автоэлектрика</a>
           <a href="tel:+79531580900" class="btn btn-secondary" aria-label="Позвонить в TireMasters">Позвонить</a>
+          <div class="tm-hero__messengers" role="group" aria-label="Мессенджеры">
+            <a class="messenger-btn" href="https://wa.me/79531580900" target="_blank" rel="noopener" aria-label="Написать в WhatsApp" title="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.33c-.28-.14-1.66-.8-1.92-.9-.26-.1-.46-.14-.66.14-.2.28-.76.9-.94 1.08-.18.18-.34.2-.62.06-.28-.14-1.16-.43-2.2-1.38-.81-.72-1.36-1.6-1.52-1.88-.16-.28-.02-.44.12-.58.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.1-.18.06-.34-.02-.48-.08-.14-.66-1.58-.9-2.16-.24-.58-.48-.5-.66-.5-.18 0-.38-.02-.58-.02s-.54.08-.82.38c-.28.3-1.08 1.06-1.08 2.58 0 1.52 1.1 2.98 1.26 3.18.16.2 2.16 3.3 5.22 4.54.73.3 1.3.48 1.74.62.73.24 1.38.2 1.9.12.58-.08 1.78-.72 2.04-1.42.26-.7.26-1.3.2-1.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.58-.42Z"/></svg>
+            </a>
+            <a class="messenger-btn" href="https://t.me/Tiar_MASTERSPro" target="_blank" rel="noopener" aria-label="Написать в Telegram" title="Telegram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.44 3.2 2.35 10.63c-.86.35-.86 1.64.1 1.97l4.86 1.6 1.87 6.07c.24.78 1.22.86 1.66.14l2.67-4.33 4.9 3.66c.77.57 1.86.14 2.06-.82l-.34-14.1Z"/></svg>
+            </a>
+          </div>
         </div>
+
+        <div class="tm-hero__note" aria-hidden="true">Работаем 24/7 по СПб и ближайшим районам ЛО, выезд в среднем ~25 минут</div>
       </div>
+
+      <!-- Колонка 2: метрики -->
       <div class="tm-hero__col tm-hero__col--center">
         <ul class="tm-metrics" aria-label="Преимущества">
           <li class="tm-metric">
             <span class="tm-metric__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6l4 2"></path></svg>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6l4 2"/></svg>
             </span>
-            <div>
-              <div class="tm-metric__value">~25 мин</div>
-              <div class="tm-metric__label">Среднее время выезда по СПб</div>
-            </div>
+            <span class="tm-metric__value">~25 мин</span>
+            <span class="tm-metric__label">Среднее время выезда по СПб</span>
           </li>
           <li class="tm-metric">
             <span class="tm-metric__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 12h16M4 8h16M4 16h16" /></svg>
+              <svg viewBox="0 0 24 24"><path d="M4 12h16M4 8h16M4 16h16"/></svg>
             </span>
-            <div>
-              <div class="tm-metric__value">Цены от 2000 ₽</div>
-              <div class="tm-metric__label">Прозрачные расчёты до выезда</div>
-            </div>
+            <span class="tm-metric__value">Цены от 2000 ₽</span>
+            <span class="tm-metric__label">Прозрачные расчёты до выезда</span>
           </li>
           <li class="tm-metric">
             <span class="tm-metric__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-3.6 7-8 8-4.4-1-8-4-8-8V7l8-4Z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.28 2.94 7.58 7 9 4.06-1.42 7-4.72 7-9V6l-7-3Z"/></svg>
             </span>
-            <div>
-              <div class="tm-metric__value">Работаем 24/7</div>
-              <div class="tm-metric__label">Ночные выезды и трассы</div>
-            </div>
+            <span class="tm-metric__value">Работаем 24/7</span>
+            <span class="tm-metric__label">Ночные выезды и трассы</span>
           </li>
         </ul>
       </div>
+
+      <!-- Колонка 3: логотип -->
+      <div class="tm-hero__col tm-hero__col--right">
+        <img class="tm-hero__logo" src="logo.png" alt="TireMasters — логотип" loading="eager" decoding="async"/>
+      </div>
     </div>
+
+    <script>
+    (function heroMount(){
+      const hero = document.querySelector('.tm-hero');
+      if(!hero) return;
+      requestAnimationFrame(() => hero.classList.add('is-mounted'));
+    })();
+    </script>
   </section>
 
   <div class="tm-section-divider" aria-hidden="true"></div>
