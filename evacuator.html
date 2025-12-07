@@ -883,6 +883,21 @@
   .tm-tow__card p { margin: 0; font-size: 14px; color: var(--tow-muted); }
   .tm-tow__cta { display: grid; gap: 10px; justify-items: center; margin-top: 20px; }
   .tm-tow__cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .tm-tow__cta .btn-primary-outline,
+  .tm-tow__form .btn-primary-outline {
+    background: var(--tow-yellow);
+    border-color: var(--tow-yellow);
+    color: #111;
+  }
+  .tm-tow__cta .btn-primary-outline:hover,
+  .tm-tow__cta .btn-primary-outline:focus,
+  .tm-tow__form .btn-primary-outline:hover,
+  .tm-tow__form .btn-primary-outline:focus {
+    background: #ffd95a;
+    border-color: #ffd95a;
+    color: #0b0d10;
+    transform: translateY(-1px);
+  }
   .tm-tow__messengers { display: flex; gap: 12px; justify-content: center; padding: 6px 0; }
   .tm-tow__messengers .messenger-btn { inline-size: 42px; block-size: 42px; display: grid; place-items: center; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); color: var(--tow-white); background: rgba(255,255,255,.04); transition: transform var(--tow-t), border-color var(--tow-t), background var(--tow-t); }
   .tm-tow__messengers .messenger-btn:hover { transform: translateY(-2px); border-color: var(--tow-yellow); background: rgba(255,255,255,.08); }
