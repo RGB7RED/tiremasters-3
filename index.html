@@ -441,6 +441,20 @@
       padding: clamp(44px, 6vw, 80px) 16px;
     }
 
+    /* Тёмный фон для секций с ценами и географией без полос */
+    #tm-tyre-prices,
+    #tm-tyre-geo {
+      background-color: var(--bg-0);
+      background-image: none;
+    }
+
+    #tm-tyre-prices::before,
+    #tm-tyre-prices::after,
+    #tm-tyre-geo::before,
+    #tm-tyre-geo::after {
+      content: none;
+    }
+
     .tm-section-header {
       max-width: 1100px;
       margin: 0 auto 20px;
