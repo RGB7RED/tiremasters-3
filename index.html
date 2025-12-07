@@ -1371,7 +1371,7 @@
         status.hidden=false;
 
         try{
-          const response=await fetch('https://tiremasters-3.vercel.app/api/sendToTelegram',{
+          const response=await fetch('/api/sendToTelegram',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({name:'',phone,message}),
