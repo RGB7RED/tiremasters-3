@@ -350,6 +350,110 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.6);
     }
 
+    .tm-section {
+      padding: clamp(44px, 6vw, 80px) 16px;
+    }
+
+    .tm-section-header {
+      max-width: 1100px;
+      margin: 0 auto 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tm-section-header h2 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 34px);
+    }
+
+    .tm-section-header p {
+      margin: 0;
+      color: var(--text-1);
+      line-height: 1.6;
+    }
+
+    .tm-table-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .tm-table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      color: var(--text-0);
+    }
+
+    .tm-table thead {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .tm-table th,
+    .tm-table td {
+      padding: 14px 12px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .tm-table tbody tr:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tm-table tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tm-table-note {
+      max-width: 1100px;
+      margin: 12px auto 0;
+      color: var(--text-1);
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .tm-geo-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .tm-geo-card {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+    }
+
+    .tm-geo-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .tm-geo-card p {
+      margin: 0;
+      color: var(--text-1);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .tm-table {
+        min-width: 0;
+      }
+
+      .tm-table-wrapper {
+        border-radius: 12px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2274,6 +2378,115 @@
   </section>
   <!-- TM-MARK: SERVICES_BLOCK END -->
 
+  <section id="tm-tyre-prices" class="tm-section">
+    <div class="tm-section-header">
+      <h2>Цены на выездной шиномонтаж</h2>
+      <p>Ниже указаны примерные базовые цены за одно колесо. Итоговая стоимость зависит от радиуса, типа автомобиля и конкретной ситуации на месте.</p>
+    </div>
+
+    <div class="tm-table-wrapper">
+      <table class="tm-table">
+        <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>Легковой авто<br>(по 1 колесу)</th>
+            <th>Кроссовер / SUV<br>(по 1 колесу)</th>
+            <th>Микроавтобус<br>(по 1 колесу)</th>
+            <th>Примечание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ремонт прокола колеса</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Без серьёзных повреждений боковины</td>
+          </tr>
+          <tr>
+            <td>Ремонт бокового пореза</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>По возможности восстановления шины</td>
+          </tr>
+          <tr>
+            <td>Ремонт «грыжи»/пузыря</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Зависит от степени повреждения, не всегда возможен</td>
+          </tr>
+          <tr>
+            <td>Сезонная переобувка (снятие / установка колёс)</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Стоимость указана за одно колесо, комплект считается суммарно</td>
+          </tr>
+          <tr>
+            <td>Установка запасного колеса</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Включая снятие повреждённого колеса</td>
+          </tr>
+          <tr>
+            <td>Снятие секреток</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Без повреждения диска, при доступе к болтам</td>
+          </tr>
+          <tr>
+            <td>Подвоз топлива</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Топливо и объём уточняются при вызове</td>
+          </tr>
+          <tr>
+            <td>Выезд мастера и диагностика</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>от 2000 ₽</td>
+            <td>Если работы не выполняются, оплачивается только выезд</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="tm-table-note">
+      Ночью и в сложных случаях (дальние выезды, сильные повреждения диска или резины, сложный доступ к колесу) действует повышающий коэффициент.
+      Точную стоимость мастер озвучит перед началом работ.
+    </p>
+  </section>
+
+  <div class="tm-anchor" id="geo"></div>
+  <section id="tm-tyre-geo" class="tm-section">
+    <div class="tm-section-header">
+      <h2>Где работает выездной шиномонтаж TireMasters</h2>
+      <p>Приезжаем на выездной шиномонтаж по всему Санкт-Петербургу и в ближайшие города Ленинградской области — во дворы, на парковки и прямо на трассу.</p>
+    </div>
+
+    <div class="tm-geo-grid">
+      <article class="tm-geo-card">
+        <h3>Центр и основные районы СПб</h3>
+        <p>Адмиралтейский, Центральный, Петроградский, Василеостровский районы — среднее время выезда от ~25 минут с учётом дорожной ситуации.</p>
+      </article>
+
+      <article class="tm-geo-card">
+        <h3>Юг Санкт-Петербурга и пригороды</h3>
+        <p>Московский, Фрунзенский, Кировский, Красносельский, Колпино, Пушкин, Павловск, Гатчина — приоритетное направление, выезд в среднем от ~30–50 минут.</p>
+      </article>
+
+      <article class="tm-geo-card">
+        <h3>КАД, ЗСД и трассы</h3>
+        <p>Выезд на КАД, ЗСД, М10, М11 и другие магистрали. ETA уточняется при звонке в зависимости от пробок и точки вызова.</p>
+      </article>
+    </div>
+  </section>
+
   <div class="tm-section-divider" aria-hidden="true"></div>
 
   <!-- Anchor target for "Почему мы" navigation item -->
@@ -2642,7 +2855,7 @@ Assumptions (разумные допущения):
   </style>
 </head>
 <body>
-  <section id="geo" class="geo-section" aria-labelledby="geo-heading">
+  <section id="geo-demo" class="geo-section" aria-labelledby="geo-heading">
     <div class="geo-overlay" aria-hidden="true"></div>
     <div class="geo-container">
       <div class="geo-header">
