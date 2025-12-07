@@ -958,12 +958,57 @@
   <script>
     const towForm = document.getElementById('tow-form');
     if (towForm) {
-      towForm.addEventListener('submit', (e) => {
+      const alertBox = towForm.querySelector('.tm-tow__alert');
+      const submitBtn = towForm.querySelector('button[type="submit"]');
+
+      towForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const alertBox = towForm.querySelector('.tm-tow__alert');
-        alertBox.textContent = 'Спасибо! Оператор свяжется с вами для уточнения деталей эвакуации.';
+
+        if (!towForm.reportValidity()) return;
+
+        alertBox.textContent = 'Отправляем заявку…';
         alertBox.hidden = false;
-        towForm.reset();
+        submitBtn.disabled = true;
+
+        const formData = new FormData(towForm);
+        const name = (formData.get('name') || '').toString().trim();
+        const phone = (formData.get('phone') || '').toString().trim();
+        const location = (formData.get('location') || '').toString().trim();
+        const coords = (formData.get('coords') || '').toString().trim();
+        const comment = (formData.get('comment') || '').toString().trim();
+
+        const message = [
+          '🚛 Новая заявка на эвакуатор',
+          name ? `Имя: ${name}` : 'Имя не указано',
+          `Телефон: ${phone || '—'}`,
+          location ? `Адрес/локация: ${location}` : 'Адрес не указан',
+          coords ? `Координаты: ${coords}` : '',
+          comment ? `Комментарий: ${comment}` : 'Комментарий: —',
+        ]
+          .filter(Boolean)
+          .join('\n');
+
+        try {
+          const response = await fetch('/api/sendToTelegram', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone, location, coords, message }),
+          });
+
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || data.ok === false) {
+            const text = data?.error || data?.description || (!response.ok ? await response.text() : '');
+            throw new Error(text || 'Не удалось отправить заявку. Попробуйте ещё раз.');
+          }
+
+          alertBox.textContent = 'Спасибо! Оператор свяжется с вами для уточнения деталей эвакуации.';
+          towForm.reset();
+        } catch (error) {
+          console.error(error);
+          alertBox.textContent = `Ошибка отправки: ${error?.message || 'Попробуйте ещё раз или позвоните нам.'}`;
+        } finally {
+          submitBtn.disabled = false;
+        }
       });
     }
   </script>
