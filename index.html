@@ -2882,14 +2882,20 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
           body: JSON.stringify({ message })
         });
 
-        if (!response.ok) {
+                if (!response.ok) {
           throw new Error('Ошибка ответа сервера: ' + response.status);
         }
 
         statusEl.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
         statusEl.dataset.statusType = 'success';
         form.reset();
+
+        // Яндекс.Метрика: заявка действительно отправлена
+        if (window.ym) {
+          ym(105562834, 'reachGoal', 'zayavka_otpravlena');
+        }
       } catch (error) {
+
         console.error(error);
         statusEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.';
         statusEl.dataset.statusType = 'error';
