@@ -526,6 +526,94 @@
       gap: 16px;
     }
 
+        .tm-form {
+      max-width: var(--container);
+      margin: 0 auto;
+      background: var(--surface);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      gap: 16px;
+    }
+
+    .tm-form .tm-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .tm-form label {
+      display: grid;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .tm-form input,
+    .tm-form textarea {
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0f1217;
+      color: var(--text-0);
+      padding: 12px;
+      font-size: 15px;
+      font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    .tm-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .tm-form button {
+      justify-self: start;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent);
+      color: #111;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tm-consent {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .tm-consent__label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .tm-consent__label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .tm-consent a {
+      color: var(--accent-yellow);
+      text-decoration: underline;
+    }
+
+    .form-status {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .form-status[data-status-type="success"] {
+      color: #a5d6a7;
+    }
+
+    .form-status[data-status-type="error"] {
+      color: #ef5350;
+    }
+
+
     .tm-geo-card {
       padding: 16px;
       border-radius: 14px;
@@ -1955,7 +2043,7 @@
           </label>
         </div>
 
-        <button type="submit" class="btn btn-primary">
+        <button type="submit">
           Отправить заявку
         </button>
 
