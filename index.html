@@ -1894,6 +1894,76 @@
     </p>
   </section>
 
+   <!-- TM-MARK: TYRE REQUEST SECTION -->
+  <section id="tm-tyre-request" class="tm-section tm-tyre-request">
+    <div class="tm-section-header">
+      <h2>Заявка на выездной шиномонтаж</h2>
+      <p>
+        Заполните короткую форму — перезвоним за несколько минут, уточним адрес,
+        тип колёс и ситуацию, и отправим мобильный шиномонтаж.
+      </p>
+    </div>
+
+    <div class="tm-section-body">
+      <form id="tyre-request-form" class="tm-form" novalidate>
+        <div class="tm-form-grid">
+          <label>
+            Имя
+            <input
+              type="text"
+              name="name"
+              autocomplete="name"
+              required
+            >
+          </label>
+
+          <label>
+            Телефон
+            <input
+              type="tel"
+              name="phone"
+              placeholder="+7 (___) ___-__-__"
+              autocomplete="tel"
+              required
+            >
+          </label>
+
+          <label>
+            Комментарий
+            <textarea
+              name="comment"
+              placeholder="Где вы находитесь, какая машина и что случилось?"
+            ></textarea>
+          </label>
+        </div>
+
+        <div class="tm-consent">
+          <label class="tm-consent__label">
+            <input
+              type="checkbox"
+              name="personal_data_consent"
+              value="yes"
+              required
+            >
+            <span>
+              Нажимая кнопку, я даю согласие на обработку персональных данных
+              в соответствии с
+              <a href="policy.html" target="_blank" rel="noopener noreferrer">Политикой</a>
+              и соглашаюсь с
+              <a href="rules.html" target="_blank" rel="noopener noreferrer">Правилами</a>.
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Отправить заявку
+        </button>
+
+        <p class="form-status" data-form-status role="status"></p>
+      </form>
+    </div>
+  </section>
+  
   <div class="tm-anchor" id="tm-tyre-geo"></div>
   <section id="tm-tyre-geo" class="tm-section">
     <div class="tm-section-header">
@@ -2686,5 +2756,59 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
   </script>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=08a08324-07f0-459d-b574-7d19a6f8cd07&lang=ru_RU"></script>
   <script src="js/yandex-suggest.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#tyre-request-form');
+    if (!form) return;
+
+    const statusEl = form.querySelector('[data-form-status]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // проверяем обязательные поля и чекбокс
+      if (!form.reportValidity()) return;
+
+      const formData = new FormData(form);
+      const name = (formData.get('name') || '').toString().trim();
+      const phone = (formData.get('phone') || '').toString().trim();
+      const comment = (formData.get('comment') || '').toString().trim();
+
+      const message = [
+        '⚡️ Заявка на выездной шиномонтаж',
+        '',
+        `Имя: ${name || '—'}`,
+        `Телефон: ${phone || '—'}`,
+        `Комментарий: ${comment || '—'}`,
+        '',
+        'Страница: шиномонтаж (главная TireMasters)'
+      ].join('\n');
+
+      try {
+        statusEl.textContent = 'Отправляем заявку...';
+        statusEl.removeAttribute('data-status-type');
+
+        const response = await fetch('/api/sendToTelegram', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        if (!response.ok) {
+          throw new Error('Ошибка ответа сервера: ' + response.status);
+        }
+
+        statusEl.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+        statusEl.dataset.statusType = 'success';
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        statusEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.';
+        statusEl.dataset.statusType = 'error';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
