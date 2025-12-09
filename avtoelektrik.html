@@ -527,6 +527,30 @@
       font-weight: 700;
       cursor: pointer;
     }
+        .tm-consent {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .tm-consent__label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .tm-consent__label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .tm-consent a {
+      color: var(--accent-yellow);
+      text-decoration: underline;
+    }
+
 
     .form-status {
       margin-top: 12px;
@@ -971,7 +995,7 @@
       <h2>Заявка на выезд автоэлектрика</h2>
       <p>Оставьте контакты и опишите симптом — перезвоним за пару минут, подтвердим стоимость и время приезда.</p>
     </div>
-    <form id="avtoelektrik-form" class="tm-form">
+        <form id="avtoelektrik-form" class="tm-form">
       <div class="tm-form-grid">
         <label>Имя
           <input type="text" name="name" placeholder="Как к вам обращаться" required />
@@ -979,16 +1003,26 @@
         <label>Телефон
           <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
         </label>
-        <label>Адрес или ориентир
-          <input type="text" name="address" placeholder="СПб, район или трасса" />
+        
+      </div>
+
+      <div class="tm-consent">
+        <label class="tm-consent__label">
+          <input type="checkbox" name="personal_data_consent" value="yes" required />
+          <span>
+            Нажимая кнопку, я даю согласие на обработку персональных данных
+            в соответствии с
+            <a href="policy.html" target="_blank" rel="noopener noreferrer">Политикой</a>
+            и соглашаюсь с
+            <a href="rules.html" target="_blank" rel="noopener noreferrer">Правилами</a>.
+          </span>
         </label>
       </div>
-      <label>Что произошло?
-        <textarea name="comment" placeholder="Например: не заводится, горит чек, села батарея"></textarea>
-      </label>
+
       <button type="submit">Вызвать автоэлектрика</button>
       <p class="tm-form__status form-status" data-form-status role="status"></p>
     </form>
+
   </section>
 
   <div class="tm-section-divider" aria-hidden="true"></div>
