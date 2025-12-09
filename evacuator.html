@@ -848,15 +848,28 @@
       </div>
     </div>
 
-    <form id="evacuator-form" class="tm-tow__form" novalidate>
+        <form id="evacuator-form" class="tm-tow__form" novalidate>
       <h3>Заявка на эвакуатор</h3>
       <label>Имя <input type="text" name="name" required></label>
       <label>Телефон <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></label>
-      <label>Адрес / Локация <input type="text" name="address" placeholder="Например: Колпино, Пушкин, Шушары, КАД, М11…"></label>
-      <label>Комментарий <textarea name="comment" rows="3" placeholder="Что случилось, марка авто, тип проблемы..."></textarea></label>
+      
+      <div class="tm-consent">
+        <label class="tm-consent__label">
+          <input type="checkbox" name="personal_data_consent" value="yes" required />
+          <span>
+            Нажимая кнопку, я даю согласие на обработку персональных данных
+            в соответствии с
+            <a href="policy.html" target="_blank" rel="noopener noreferrer">Политикой</a>
+            и соглашаюсь с
+            <a href="rules.html" target="_blank" rel="noopener noreferrer">Правилами</a>.
+          </span>
+        </label>
+      </div>
+
       <button type="submit" class="btn btn-primary-outline">Отправить заявку</button>
       <p class="tm-tow__alert form-status" data-form-status role="status"></p>
     </form>
+
 
     <div class="tm-tow__gallery" aria-label="Фотографии эвакуатора">
       <div class="tm-tow__gallery-track">
@@ -924,6 +937,31 @@
   .tm-tow__form h3 { margin: 0 0 10px; font-size: 20px; }
   .tm-tow__form label { display: grid; gap: 6px; text-align: left; color: var(--tow-muted); font-size: 14px; }
   .tm-tow__form input, .tm-tow__form textarea { padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: #0B0D10; color: var(--tow-white); outline: none; }
+      .tm-consent {
+    font-size: 12px;
+    color: var(--tow-muted);
+  }
+
+  .tm-consent__label {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .tm-consent__label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .tm-consent a {
+    color: var(--tow-yellow);
+    text-decoration: underline;
+  }
+
   .tm-tow__form input:focus, .tm-tow__form textarea:focus { border-color: var(--tow-yellow); box-shadow: 0 0 0 3px rgba(255,197,44,.2); }
   .tm-tow__alert { margin-top: 8px; font-size: 14px; color: var(--tow-yellow); text-align: center; }
   .form-status { margin-top: 12px; font-size: 14px; }
