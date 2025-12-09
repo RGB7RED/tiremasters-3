@@ -870,6 +870,68 @@
       <p class="tm-tow__alert form-status" data-form-status role="status"></p>
     </form>
 
+        <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('evacuator-form');
+        if (!form) return;
+
+        const statusEl = form.querySelector('[data-form-status]');
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          // Проверяем обязательные поля и чекбокс (если добавишь)
+          if (!form.reportValidity()) return;
+
+          const formData = new FormData(form);
+          const name = (formData.get('name') || '').toString().trim();
+          const phone = (formData.get('phone') || '').toString().trim();
+          const address = (formData.get('address') || '').toString().trim();
+          const comment = (formData.get('comment') || '').toString().trim();
+
+          const message = [
+            '⚡️ Заявка на эвакуатор',
+            '',
+            `Имя: ${name || '—'}`,
+            `Телефон: ${phone || '—'}`,
+            `Адрес / локация: ${address || '—'}`,
+            `Комментарий: ${comment || '—'}`,
+            '',
+            'Страница: эвакуатор (TireMasters)'
+          ].join('\n');
+
+          try {
+            statusEl.textContent = 'Отправляем заявку...';
+            statusEl.removeAttribute('data-status-type');
+
+            const response = await fetch('/api/sendToTelegram', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ message })
+            });
+
+            if (!response.ok) {
+              throw new Error('Ошибка ответа сервера: ' + response.status);
+            }
+
+            statusEl.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+            statusEl.dataset.statusType = 'success';
+            form.reset();
+
+            // Яндекс.Метрика: заявка действительно отправлена
+            if (window.ym) {
+              ym(105562834, 'reachGoal', 'zayavka_otpravlena');
+            }
+          } catch (error) {
+            console.error(error);
+            statusEl.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или позвоните по телефону.';
+            statusEl.dataset.statusType = 'error';
+          }
+        });
+      });
+    </script>
+
+
 
     <div class="tm-tow__gallery" aria-label="Фотографии эвакуатора">
       <div class="tm-tow__gallery-track">
